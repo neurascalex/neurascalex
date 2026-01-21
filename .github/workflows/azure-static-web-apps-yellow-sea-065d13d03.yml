@@ -27,15 +27,12 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # 👇 THIS MUST MATCH THE SECRET NAME YOU JUST CREATED IN GITHUB 👇
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
+          # 👇 We are using the standard name now
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          
-          # Setup for your site
           app_location: "/"
-          # 👇 IF YOU HAVE NOT CREATED THE 'api' FOLDER YET, CHANGE THIS TO "" (empty quotes)
-          api_location: "api" 
+          api_location: "" # Keeping this empty to prevent API errors
           output_location: "."
 
   close_pull_request_job:
@@ -47,5 +44,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
