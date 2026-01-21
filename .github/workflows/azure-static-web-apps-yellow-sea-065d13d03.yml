@@ -30,7 +30,8 @@ jobs:
           # ------------------------------------------------------------------------------------
           # 👇 REPLACE THE TEXT BELOW WITH YOUR ACTUAL SECRET NAME FROM GITHUB SETTINGS 👇
           # ------------------------------------------------------------------------------------
-          azure_static_web_apps_api_token: ${{ secrets.YOUR_SPECIFIC_SECRET_NAME_HERE }} 
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_SEA_065D13D03
+ }} 
           
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Leave this line alone
           action: "upload"
@@ -54,5 +55,6 @@ jobs:
           # ------------------------------------------------------------------------------------
           azure_static_web_apps_api_token: ${{ secrets.YOUR_SPECIFIC_SECRET_NAME_HERE }}
           action: "close"
+
 
 
