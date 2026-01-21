@@ -23,41 +23,20 @@ jobs:
           submodules: true
           lfs: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-<<<<<<< HEAD
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_SEA_065D13D03 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "/" 
-          api_location: ""
-          output_location: "dist"
-          skip_app_build: true
-=======
-          # 👇 WE ARE USING THE NEW SIMPLE NAME HERE 👇
+          # 👇 THIS MUST MATCH THE SECRET NAME YOU JUST CREATED IN GITHUB 👇
           azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
+          
+          # Setup for your site
           app_location: "/"
-          api_location: "api"
+          # 👇 IF YOU HAVE NOT CREATED THE 'api' FOLDER YET, CHANGE THIS TO "" (empty quotes)
+          api_location: "api" 
           output_location: "."
->>>>>>> c93a03d441b2a92b6290b54db56cceb1f151b192
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -68,6 +47,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # 👇 AND HERE 👇
           azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
           action: "close"
