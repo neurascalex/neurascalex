@@ -41,6 +41,7 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
+<<<<<<< HEAD
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_SEA_065D13D03 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
@@ -48,6 +49,15 @@ jobs:
           api_location: ""
           output_location: "dist"
           skip_app_build: true
+=======
+          # 👇 WE ARE USING THE NEW SIMPLE NAME HERE 👇
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"
+          api_location: "api"
+          output_location: "."
+>>>>>>> c93a03d441b2a92b6290b54db56cceb1f151b192
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -58,7 +68,6 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # I have inserted your specific secret name below:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_SEA_065D13D03 }}
+          # 👇 AND HERE 👇
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
           action: "close"
-
