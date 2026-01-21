@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - neurascalex
 on:
   push:
     branches:
-      - main
+      - Production
   workflow_dispatch:
 
 env:
