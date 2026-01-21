@@ -22,20 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Environment variables
-.env
-.env.local
-.env.production
-.env.development
-
-# Azure
-.azure/
-
-# Build files
-build/
-*.tsbuildinfo
-
-# Package lock files (keep package-lock.json for consistency)
-# yarn.lock
-# pnpm-lock.yaml
