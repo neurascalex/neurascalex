@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 type DemoStep = 'form' | 'submitting' | 'path-a-portal' | 'path-b-review' | 'final-booked';
 
@@ -18,6 +18,21 @@ const Demo: React.FC = () => {
     goal: 'Reduce repetition & admin',
     note: ''
   });
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to form section when component mounts or hash changes
+    if (location.hash === '#form') {
+      const formSection = document.getElementById('demo-form');
+      if (formSection) {
+        setTimeout(() => {
+          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const calendarUrl = "https://calendar.app.google/8kSG3vmsYcZSgDXZ8";
 

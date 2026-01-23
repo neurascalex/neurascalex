@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const FreeTrial: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -22,6 +22,21 @@ const FreeTrial: React.FC = () => {
     consentContact: false,
     consentPublicVerification: false
   });
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to form section when component mounts or hash changes
+    if (location.hash === '#form') {
+      const formSection = document.getElementById('trial-form');
+      if (formSection) {
+        setTimeout(() => {
+          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -133,7 +148,7 @@ const FreeTrial: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen py-24">
-      <div className="max-w-3xl mx-auto px-6">
+      <div id="trial-form" className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl serif text-teal-800 mb-4">Start your 30-Day Clinician Digital Twin Trial</h1>
           <p className="text-gray-500 font-light text-lg mb-2">We verify clinician identity, create your private testing environment, and share your Twin + dashboard access.</p>
