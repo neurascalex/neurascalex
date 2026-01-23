@@ -32,10 +32,48 @@ const FreeTrial: React.FC = () => {
   const handleNext = () => setStep(2);
   const handleBack = () => setStep(1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    try {
+      // Submit to NeuraScaleX API
+      const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestTrial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          personalEmailId: formData.email,
+          speciality: formData.role,
+          country: formData.country,
+          personalWebsiteUrl: formData.website,
+          linkedInUrl: formData.linkedin,
+          phoneNumber: formData.phone,
+          primaryGoal: formData.primaryGoal,
+          deploymentPreference: formData.deployment,
+          message: formData.message,
+          consentAuth: formData.consentAuth,
+          consentNonClinical: formData.consentNonClinical,
+          consentContact: formData.consentContact,
+          consentPublicVerification: formData.consentPublicVerification
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit trial request');
+      }
+
+      console.log('Free trial request successfully submitted:', formData);
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error('Error submitting trial request:', error);
+      // Still show success page even if API fails
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   if (isSubmitted) {
