@@ -36,36 +36,45 @@ const FreeTrial: React.FC = () => {
     e.preventDefault();
     
     try {
+      // Consent fields are used for validation only, not sent to API
+      const requestBody = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        personalEmailId: formData.email,
+        speciality: formData.role,
+        country: formData.country,
+        personalWebsiteUrl: formData.website || '',
+        linkedInUrl: formData.linkedin || '',
+        phoneNumber: formData.phone || '',
+        primaryGoal: formData.primaryGoal,
+        deploymentPreference: formData.deployment,
+        message: formData.message || ''
+      };
+
+      console.log('Submitting trial request with payload:', requestBody);
+
       // Submit to NeuraScaleX API
       const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestTrial', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          personalEmailId: formData.email,
-          speciality: formData.role,
-          country: formData.country,
-          personalWebsiteUrl: formData.website,
-          linkedInUrl: formData.linkedin,
-          phoneNumber: formData.phone,
-          primaryGoal: formData.primaryGoal,
-          deploymentPreference: formData.deployment,
-          message: formData.message,
-          consentAuth: formData.consentAuth,
-          consentNonClinical: formData.consentNonClinical,
-          consentContact: formData.consentContact,
-          consentPublicVerification: formData.consentPublicVerification
-        })
+        body: JSON.stringify(requestBody)
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
-        throw new Error('Failed to submit trial request');
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Failed to submit trial request: ${response.status} - ${errorText}`);
       }
 
-      console.log('Free trial request successfully submitted:', formData);
+      const responseData = await response.json();
+      console.log('API Response:', responseData);
+      console.log('Free trial request successfully submitted');
+      
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
