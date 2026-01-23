@@ -7,7 +7,8 @@ type DemoStep = 'form' | 'submitting' | 'path-a-portal' | 'path-b-review' | 'fin
 const Demo: React.FC = () => {
   const [step, setStep] = useState<DemoStep>('form');
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     role: '',
     website: '',
@@ -29,22 +30,54 @@ const Demo: React.FC = () => {
     e.preventDefault();
     setStep('submitting');
 
-    // Professional API submission simulation
-    // This relays the clinical context to shyam@hrdigitalmedia.com
-    await new Promise(resolve => setTimeout(resolve, 1800));
+    try {
+      // Submit to NeuraScaleX API
+      const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestDemo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          personalEmailId: formData.email,
+          speciality: formData.role,
+          personalWebsiteUrl: formData.website,
+          linkedInUrl: formData.linkedin,
+          country: formData.country,
+          primaryGoal: formData.goal,
+          message: formData.note
+        })
+      });
 
-    console.log('Context successfully relayed to shyam@hrdigitalmedia.com:', formData);
+      if (!response.ok) {
+        throw new Error('Failed to submit demo request');
+      }
 
-    // Routing Logic: Verification Path
-    // Clinicians providing clinical verification (website/LinkedIn) get the priority booking option
-    const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
-    
-    if (isVerified) {
-      setStep('path-a-portal');
-    } else {
-      setStep('path-b-review');
+      console.log('Demo request successfully submitted:', formData);
+
+      // Routing Logic: Verification Path
+      // Clinicians providing clinical verification (website/LinkedIn) get the priority booking option
+      const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
+      
+      if (isVerified) {
+        setStep('path-a-portal');
+      } else {
+        setStep('path-b-review');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error('Error submitting demo request:', error);
+      // Still proceed to next step even if API fails
+      const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
+      
+      if (isVerified) {
+        setStep('path-a-portal');
+      } else {
+        setStep('path-b-review');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // 1. FORM STEP
@@ -101,13 +134,18 @@ const Demo: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Full name*</label>
-                    <input required name="fullName" value={formData.fullName} onChange={handleInputChange} type="text" className="w-full p-4 bg-white border border-gray-200 outline-none focus:ring-1 focus:ring-teal-800 transition-all text-sm" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">First name*</label>
+                    <input required name="firstName" value={formData.firstName} onChange={handleInputChange} type="text" className="w-full p-4 bg-white border border-gray-200 outline-none focus:ring-1 focus:ring-teal-800 transition-all text-sm" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Work email*</label>
-                    <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full p-4 bg-white border border-gray-200 outline-none focus:ring-1 focus:ring-teal-800 transition-all text-sm" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Last name*</label>
+                    <input required name="lastName" value={formData.lastName} onChange={handleInputChange} type="text" className="w-full p-4 bg-white border border-gray-200 outline-none focus:ring-1 focus:ring-teal-800 transition-all text-sm" />
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Work email*</label>
+                  <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full p-4 bg-white border border-gray-200 outline-none focus:ring-1 focus:ring-teal-800 transition-all text-sm" />
                 </div>
 
                 <div className="space-y-2">
@@ -176,10 +214,12 @@ const Demo: React.FC = () => {
       <div className="animate-in fade-in duration-700 bg-white min-h-screen flex flex-col items-center py-24 px-6">
         <div className="max-w-4xl w-full">
           <div className="text-center mb-16">
-            <div className="inline-block w-20 h-20 bg-teal-800 rounded-full flex items-center justify-center border border-teal-700/20 shadow-xl mb-10">
-              <svg className="w-10 h-10 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+            <div className="mb-10 flex justify-center">
+              <div className="w-20 h-20 bg-teal-800 rounded-full flex items-center justify-center border border-teal-700/20 shadow-xl">
+                <svg className="w-10 h-10 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
             </div>
             <h1 className="text-4xl md:text-5xl serif text-teal-800 mb-6">Thank you, your request is being processed.</h1>
             <p className="text-xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto mb-12">
