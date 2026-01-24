@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { sendToInfoInbox } from '../services/emailService';
 
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     type: 'General enquiry',
     message: ''
@@ -32,13 +32,30 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Send to info@neurascalex.com via service
-    const success = await sendToInfoInbox('CONTACT', formData);
-    
-    if (success) {
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/ContactUs_NoKey/ContactMessage', {
+        method: 'POST',
+        headers: {
+          'accept': 'text/plain',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          personalEmailId: formData.email,
+          typeOfEnquiry: formData.type,
+          message: formData.message
+        })
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
     }
+    
     setIsSubmitting(false);
   };
 
@@ -94,16 +111,29 @@ const Contact: React.FC = () => {
                 <div className="w-10 h-10 border-4 border-navy-800 border-t-transparent rounded-full animate-spin"></div>
               </div>
             )}
-            <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Name <span className="text-red-500">*</span></label>
-              <input 
-                required 
-                type="text" 
-                className="w-full p-5 border border-gray-200 rounded-lg outline-none focus:border-navy-800 transition-colors bg-white text-sm"
-                placeholder="Your full name"
-                value={formData.name}
-                onChange={e => setFormData({...formData, name: e.target.value})}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">First Name <span className="text-red-500">*</span></label>
+                <input 
+                  required 
+                  type="text" 
+                  className="w-full p-5 border border-gray-200 rounded-lg outline-none focus:border-navy-800 transition-colors bg-white text-sm"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={e => setFormData({...formData, firstName: e.target.value})}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Last Name <span className="text-red-500">*</span></label>
+                <input 
+                  required 
+                  type="text" 
+                  className="w-full p-5 border border-gray-200 rounded-lg outline-none focus:border-navy-800 transition-colors bg-white text-sm"
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={e => setFormData({...formData, lastName: e.target.value})}
+                />
+              </div>
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Email <span className="text-red-500">*</span></label>
