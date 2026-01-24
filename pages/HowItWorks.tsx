@@ -1,8 +1,14 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const HowItWorks: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location]);
+
   return (
     <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen">
       {/* 1) Hero Section */}

@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               <li><Link to="/about" className="hover:text-white transition-colors">Our Mission</Link></li>
               <li><Link to="/demo" className="hover:text-white transition-colors">Request Demo</Link></li>
               <li><Link to="/free-trial" className="hover:text-white transition-colors">Free Trial</Link></li>
-              <li><a href="mailto:info@neurascalex.com" className="hover:text-white transition-colors">Support</a></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 

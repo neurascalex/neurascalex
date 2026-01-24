@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const FreeTrial: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -22,6 +22,21 @@ const FreeTrial: React.FC = () => {
     consentContact: false,
     consentPublicVerification: false
   });
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to form section when component mounts or hash changes
+    if (location.hash === '#form') {
+      const formSection = document.getElementById('trial-form');
+      if (formSection) {
+        setTimeout(() => {
+          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -36,36 +51,45 @@ const FreeTrial: React.FC = () => {
     e.preventDefault();
     
     try {
+      // Consent fields are used for validation only, not sent to API
+      const requestBody = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        personalEmailId: formData.email,
+        speciality: formData.role,
+        country: formData.country,
+        personalWebsiteUrl: formData.website || '',
+        linkedInUrl: formData.linkedin || '',
+        phoneNumber: formData.phone || '',
+        primaryGoal: formData.primaryGoal,
+        deploymentPreference: formData.deployment,
+        message: formData.message || ''
+      };
+
+      console.log('Submitting trial request with payload:', requestBody);
+
       // Submit to NeuraScaleX API
       const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestTrial', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          personalEmailId: formData.email,
-          speciality: formData.role,
-          country: formData.country,
-          personalWebsiteUrl: formData.website,
-          linkedInUrl: formData.linkedin,
-          phoneNumber: formData.phone,
-          primaryGoal: formData.primaryGoal,
-          deploymentPreference: formData.deployment,
-          message: formData.message,
-          consentAuth: formData.consentAuth,
-          consentNonClinical: formData.consentNonClinical,
-          consentContact: formData.consentContact,
-          consentPublicVerification: formData.consentPublicVerification
-        })
+        body: JSON.stringify(requestBody)
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
-        throw new Error('Failed to submit trial request');
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Failed to submit trial request: ${response.status} - ${errorText}`);
       }
 
-      console.log('Free trial request successfully submitted:', formData);
+      const responseData = await response.json();
+      console.log('API Response:', responseData);
+      console.log('Free trial request successfully submitted');
+      
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
@@ -124,7 +148,7 @@ const FreeTrial: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen py-24">
-      <div className="max-w-3xl mx-auto px-6">
+      <div id="trial-form" className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl serif text-teal-800 mb-4">Start your 30-Day Clinician Digital Twin Trial</h1>
           <p className="text-gray-500 font-light text-lg mb-2">We verify clinician identity, create your private testing environment, and share your Twin + dashboard access.</p>

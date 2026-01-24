@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 type DemoStep = 'form' | 'submitting' | 'path-a-portal' | 'path-b-review' | 'final-booked';
 
@@ -18,6 +18,21 @@ const Demo: React.FC = () => {
     goal: 'Reduce repetition & admin',
     note: ''
   });
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to form section when component mounts or hash changes
+    if (location.hash === '#form') {
+      const formSection = document.getElementById('demo-form');
+      if (formSection) {
+        setTimeout(() => {
+          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const calendarUrl = "https://calendar.app.google/8kSG3vmsYcZSgDXZ8";
 
@@ -32,27 +47,39 @@ const Demo: React.FC = () => {
 
     try {
       // Submit to NeuraScaleX API
+      const requestBody = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        personalEmailId: formData.email,
+        speciality: formData.role,
+        personalWebsiteUrl: formData.website || '',
+        linkedInUrl: formData.linkedin || '',
+        country: formData.country,
+        primaryGoal: formData.goal,
+        message: formData.note || ''
+      };
+
+      console.log('Submitting demo request with payload:', requestBody);
+
       const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestDemo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          personalEmailId: formData.email,
-          speciality: formData.role,
-          personalWebsiteUrl: formData.website,
-          linkedInUrl: formData.linkedin,
-          country: formData.country,
-          primaryGoal: formData.goal,
-          message: formData.note
-        })
+        body: JSON.stringify(requestBody)
       });
 
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('Failed to submit demo request');
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Failed to submit demo request: ${response.status} - ${errorText}`);
       }
+
+      const responseData = await response.json();
+      console.log('API Response:', responseData);
 
       console.log('Demo request successfully submitted:', formData);
 
