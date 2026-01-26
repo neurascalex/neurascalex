@@ -1,24 +1,18 @@
 
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location]);
-
   const teamMembers = [
     {
       category: "STRATEGY",
       name: "Shyam Pitla",
-      role: "Founder & CEO",
+      role: "Founder | Product & Strategy",
       bio: "Operator and product strategist building the Clinician Digital Twin category—governance-first, workflow-true, and adoption-led. Leads product direction, pilots, and go-to-market."
     },
     {
       category: "CLINICAL",
-      name: "Prof. Dr. Deepak Ravindran",
+      name: "Dr. Deepak Ravindran",
       role: "Clinical Advisor & Pioneer",
       bio: "Practicing pain specialist and pilot partner. Guides scope boundaries, safe refusals, and clinical realism—ensuring the Twin reflects how clinicians communicate without drifting into advice."
     },
@@ -31,13 +25,13 @@ const About: React.FC = () => {
     {
       category: "GOVERNANCE",
       name: "Vikas Arora",
-      role: "Non-Executive Director",
-      bio: "Provides governance oversight and strategic counsel, ensuring NeuraScaleX remains disciplined in its standards, positioning, and long-term defensibility."
+      role: "Business Mentor",
+      bio: "Provides strategic mentorship and commercial counsel, ensuring NeuraScaleX remains disciplined in its standards, positioning, and long-term defensibility."
     },
     {
       category: "TECHNOLOGY",
       name: "Anil",
-      role: "Head of Product & Engineering",
+      role: "Head of Engineering",
       bio: "Leads engineering delivery, deployment reliability, and security foundations—ensuring the platform is production-ready, auditable, and scalable across multiple clinician deployments."
     }
   ];
@@ -72,27 +66,38 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* OUR MISSION */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div>
-            <h2 className="text-4xl serif text-teal-800 mb-8">Our mission</h2>
-            <p className="text-xl text-navy-900/70 font-light leading-relaxed mb-10">
-              To help trusted clinicians scale their knowledge safely—without diluting standards, compromising boundaries, or needing to be “always on.”
+      {/* FOUNDER'S NOTE (Mission) */}
+      <section className="py-32 bg-navy-950 text-white relative overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+        
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+          <div className="flex items-center justify-center gap-4 mb-12 opacity-50">
+             <div className="h-px w-16 bg-gray-400"></div>
+             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-300">A Note From The Founder</span>
+             <div className="h-px w-16 bg-gray-400"></div>
+          </div>
+
+          <h2 className="text-4xl md:text-6xl serif mb-16 leading-tight">
+            Our Mission: <br/>
+            <span className="text-gold-500">1 Million Clinical Hours Reclaimed.</span>
+          </h2>
+
+          <div className="space-y-10 text-xl md:text-2xl font-light text-gray-300 leading-relaxed max-w-3xl mx-auto font-serif">
+            <p>
+              "I founded NeuraScaleX because I saw the world’s most brilliant clinical minds trapped behind a wall of repetitive administration.
+            </p>
+            <p>
+              My vision is to decouple clinical expertise from biological time. We aren’t building 'chatbots'; we are building <span className="text-white underline decoration-gold-500/50 underline-offset-4 decoration-1">Infrastructure for Human Wisdom.</span>
+            </p>
+            <p>
+              By digitizing the 'first mile' of the patient journey, we allow clinicians like Dr. Abrar and Dr. Deepak to focus on what they do best: high-level clinical judgment. We are here to ensure that your legacy isn't limited by your calendar."
             </p>
           </div>
-          <div className="space-y-8">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-6">Outcomes:</h3>
-            {[
-              "Reduce repetition and admin load",
-              "Protect voice, judgement, and reputation",
-              "Route people to the right next step—safely"
-            ].map((item, i) => (
-              <div key={i} className="flex items-start">
-                <span className="text-gold-500 text-xl mr-6 font-serif italic">0{i+1}</span>
-                <p className="text-lg text-navy-800 font-light">{item}</p>
-              </div>
-            ))}
+
+          <div className="mt-20">
+            <h3 className="text-5xl serif text-gold-500 italic mb-4">Shyam Pitla</h3>
+            <div className="w-16 h-0.5 bg-gold-500/30 mx-auto mb-4"></div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">Founder, NeuraScaleX</p>
           </div>
         </div>
       </section>
@@ -172,7 +177,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl serif text-teal-800 mb-8">Safety is the product.</h2>
           <p className="text-lg text-gray-600 mb-12 font-light leading-relaxed">
-            NeuraScaleX is non-clinical by design, built from approved sources only, and engineered to refuse diagnosis/treatment guidance. Every Twin is tested privately before launch.
+            NeuraScaleX is non-clinical by design, built from approved sources only, and engineered to refuse diagnosis/treatment advice. Every Twin is tested privately before launch.
           </p>
           <Link to="/safety" className="text-sm font-bold uppercase tracking-widest text-teal-800 border-b border-teal-800/30 pb-1 hover:text-navy-900 transition-colors">
             Read our Safety Approach →

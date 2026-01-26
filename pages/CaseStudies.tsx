@@ -51,10 +51,10 @@ const CaseStudies: React.FC = () => {
             <h3 className="text-2xl serif text-teal-800 mb-8">Ready to see the pricing model?</h3>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Link 
-                to="/product"
+                to="/free-trial"
                 className="bg-navy-800 text-white px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-navy-900 transition-all shadow-xl"
               >
-                VIEW PLANS & PRICING
+                START FREE TRIAL
               </Link>
               <button className="bg-gold-500 text-navy-900 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-gold-600 transition-all">
                 ACCESS IMPACT CHECKLIST

@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface ExampleTwin {
   title: string;
@@ -14,11 +14,6 @@ interface ExampleTwin {
 const Examples: React.FC = () => {
   const [selectedTwin, setSelectedTwin] = useState<ExampleTwin | null>(null);
   const [showRefusal, setShowRefusal] = useState<string | null>(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location]);
 
   const exampleTwins: ExampleTwin[] = [
     {

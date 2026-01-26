@@ -7,10 +7,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Platform', path: '/platform' },
     { name: 'How it works', path: '/how-it-works' },
-    { name: 'Examples', path: '/examples' },
-    { name: 'Pricing', path: '/pricing' },
     { name: 'Safety', path: '/safety' },
     { name: 'About', path: '/about' },
   ];
@@ -71,7 +68,7 @@ const Navbar: React.FC = () => {
                 to="/free-trial"
                 className="bg-gold-500 text-navy-950 px-6 py-2.5 rounded-sm text-sm font-bold hover:bg-gold-600 transition-all shadow-md"
               >
-                Free Trial
+                Start Free Trial
               </Link>
             </div>
           </div>

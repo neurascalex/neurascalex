@@ -1,14 +1,8 @@
 
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Pricing: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location]);
-
   return (
     <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen">
       {/* HERO */}
@@ -65,6 +59,13 @@ const Pricing: React.FC = () => {
                   <span className="text-gold-500 mr-4 font-bold">/</span> {item}
                 </li>
               ))}
+              {/* Added to match Home page consistency */}
+              <li className="flex items-start text-sm font-medium text-navy-800">
+                <span className="text-gold-500 mr-4 font-bold">/</span> 
+                <span>
+                   <strong className="font-bold text-teal-900">White-Glove Build:</strong> Personal setup & calibration <span className="text-gold-600 font-bold">(£3,000 Waived)</span>
+                </span>
+              </li>
             </ul>
           </div>
         </div>

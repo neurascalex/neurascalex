@@ -1,14 +1,8 @@
 
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location]);
-
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -102,111 +96,135 @@ const Product: React.FC = () => {
       {/* 3) The Mental Model - 3 Layers */}
       <section id="modules" className="py-32 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-24">
-          <h2 className="text-4xl lg:text-6xl serif text-navy-800 mb-8 leading-tight">It’s not a chatbot. <br/><span className="italic">It’s clinical-grade architecture.</span></h2>
-          <p className="text-xl text-gray-500 font-light max-w-3xl mx-auto">
-            One system with three layers—so you scale trust first, then insight, then execution.
-          </p>
+          <h2 className="text-4xl lg:text-6xl serif text-navy-800 mb-8 leading-tight">One System. Three Layers. <br/><span className="italic">Zero Hallucinations.</span></h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Module 1: Front Door */}
-          <div className="bg-white p-12 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col group hover:-translate-y-2 transition-all duration-500">
-            <div className="w-16 h-16 bg-softgreen rounded-2xl flex items-center justify-center text-teal-800 mb-8 group-hover:bg-teal-800 group-hover:text-gold-500 transition-colors">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3 className="text-3xl serif text-navy-900 mb-4">Front Door</h3>
-            <p className="text-sm font-bold text-teal-800 uppercase tracking-widest mb-6 italic">Your expertise—available 24/7.</p>
-            <ul className="space-y-4 mb-10 flex-grow">
+          <div className="bg-white p-10 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+            <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-teal-800">1</div>
+            <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-navy-900">FRONT DOOR</h3>
+            <p className="text-lg serif italic mb-8 text-teal-800">Deflect & Educate</p>
+            <p className="text-sm mb-6 font-medium text-gray-600">Embedded on your website, your Digital Twin answers:</p>
+            <ul className="space-y-3 mb-10 flex-grow">
               {[
-                "Embedded on your website (or share link)",
-                "Answers from your approved material",
-                "Explains your specific programmes",
-                "Refuses clinical advice safely"
+                "What's your approach to [condition]?",
+                "How much does a consultation cost?",
+                "Do you work with [insurance provider]?",
+                "What programmes do you offer?"
               ].map((b, i) => (
-                <li key={i} className="text-sm text-gray-500 flex items-start">
-                  <span className="text-gold-500 mr-3 mt-1 text-xs">●</span> {b}
+                <li key={i} className="text-sm text-gray-500 flex items-start leading-relaxed">
+                  <span className="text-gold-500 mr-3 mt-0.5">●</span> {b}
                 </li>
               ))}
             </ul>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 pt-6 border-t border-gray-50">Deflect routine queries. Improve quality.</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-teal-800 pt-6 border-t border-gray-50">Result: Patients arrive informed. Staff stops repeating.</p>
           </div>
 
           {/* Module 2: Signals */}
-          <div className="bg-navy-900 p-12 rounded-[24px] shadow-2xl border border-navy-800 flex flex-col group hover:-translate-y-2 transition-all duration-500 text-white">
-            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-gold-500 mb-8 group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <h3 className="text-3xl serif text-gold-500 mb-4">Signals</h3>
-            <p className="text-sm font-bold text-white uppercase tracking-widest mb-6 italic">Insights before they hit your inbox.</p>
-            <ul className="space-y-4 mb-10 flex-grow">
+          <div className="bg-navy-900 p-10 rounded-[24px] shadow-2xl border border-navy-800 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500 text-white">
+            <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-gold-500">2</div>
+            <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-gold-500">SIGNALS</h3>
+            <p className="text-lg serif italic mb-8 text-white">Intelligence Dashboard</p>
+            <p className="text-sm mb-6 font-medium text-gray-300">See what patients are really asking:</p>
+            <ul className="space-y-3 mb-10 flex-grow">
               {[
-                "Top patient questions & trending topics",
-                "Enquiry quality indicators",
-                "Self-serve resolution metrics",
-                "Content gap analysis"
+                "12 people asked about ADHD protocols",
+                "Top concern: medication side effects",
+                "Content gap identified: insurance",
+                "Peak question time: Sundays at 10 PM"
               ].map((b, i) => (
-                <li key={i} className="text-sm text-gray-400 flex items-start">
-                  <span className="text-gold-500 mr-3 mt-1 text-xs">●</span> {b}
+                <li key={i} className="text-sm text-gray-400 flex items-start leading-relaxed">
+                  <span className="text-gold-500 mr-3 mt-0.5">●</span> {b}
                 </li>
               ))}
             </ul>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 pt-6 border-t border-white/5">Turn conversations into priorities.</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500 pt-6 border-t border-white/5">Result: You know what to create before they ask.</p>
           </div>
 
           {/* Module 3: Actions */}
-          <div className="bg-white p-12 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col group hover:-translate-y-2 transition-all duration-500">
-            <div className="w-16 h-16 bg-softgreen rounded-2xl flex items-center justify-center text-teal-800 mb-8 group-hover:bg-teal-800 group-hover:text-gold-500 transition-colors">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 className="text-3xl serif text-navy-900 mb-4">Actions</h3>
-            <p className="text-sm font-bold text-teal-800 uppercase tracking-widest mb-6 italic">Convert signals into next steps.</p>
-            <ul className="space-y-4 mb-10 flex-grow">
+          <div className="bg-white p-10 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+            <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-teal-800">3</div>
+            <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-navy-900">ACTIONS</h3>
+            <p className="text-lg serif italic mb-8 text-teal-800">Smart Routing</p>
+            <p className="text-sm mb-6 font-medium text-gray-600">High-intent patients get the right next step:</p>
+            <ul className="space-y-3 mb-10 flex-grow">
               {[
-                "Lead routing & structured enquiry capture",
-                "Dynamic \"Next Step\" prompts (Book/Apply)",
-                "Admin triage logic for practice staff",
-                "Handoff alerts based on your rules"
+                "Booking links (when ready)",
+                "Programme enrollment (when qualified)",
+                "Safety escalation (clinical advice)",
+                "Resource library (seeking info)"
               ].map((b, i) => (
-                <li key={i} className="text-sm text-gray-500 flex items-start">
-                  <span className="text-gold-500 mr-3 mt-1 text-xs">●</span> {b}
+                <li key={i} className="text-sm text-gray-500 flex items-start leading-relaxed">
+                  <span className="text-gold-500 mr-3 mt-0.5">●</span> {b}
                 </li>
               ))}
             </ul>
             <div className="pt-6 border-t border-gray-50">
-               <span className="bg-teal-50 text-teal-800 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Available in Pilot / Rolling Release</span>
+               <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800">Result: Your inbox has only qualified enquiries.</span>
             </div>
           </div>
+        </div>
+        
+        <div className="text-center mt-20">
+          <p className="text-xl text-gray-500 font-light max-w-3xl mx-auto italic leading-relaxed">
+            "Your Digital Twin doesn't just answer questions—it learns what your patients need and routes them intelligently."
+          </p>
         </div>
       </section>
 
       {/* 4) Where it lives - Placement options */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl serif text-navy-800 mb-8">It lives where patients already look.</h2>
-          <p className="text-lg text-gray-500 font-light mb-20 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl lg:text-5xl serif text-navy-900 mb-8 leading-tight">It lives where patients already look.</h2>
+          <p className="text-lg md:text-xl text-gray-500 font-light mb-24 max-w-3xl mx-auto leading-relaxed">
             The Twin becomes your always-on front door—answering, orienting, and signposting before someone reaches your team.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              { t: "Website Widget", d: "Works with Webflow, WordPress, Squarespace, & custom stacks." },
-              { t: "Shareable Link", d: "Use in LinkedIn bios, email footers, or direct messages." },
-              { t: "QR Code", d: "Perfect for clinic receptions, printed guides, or keynote slides." }
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-10 rounded-sm shadow-sm border border-gray-100">
-                <h4 className="text-xl serif text-navy-900 mb-4">{item.t}</h4>
-                <p className="text-xs text-gray-500 leading-relaxed font-light">{item.d}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+            {/* Card 1: Website Widget */}
+            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
-            ))}
+              <h4 className="text-2xl serif text-navy-900 mb-4">Website Widget</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-light">
+                Primary placement. Works with Webflow, WordPress, Squarespace, and custom sites.
+              </p>
+            </div>
+
+            {/* Card 2: Shareable Link */}
+            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-2.46-4.743l5.353-5.353" />
+                </svg>
+              </div>
+              <h4 className="text-2xl serif text-navy-900 mb-4">Shareable Link</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-light">
+                Use in LinkedIn bios, email footers, WhatsApp, or direct messages.
+              </p>
+            </div>
+
+            {/* Card 3: QR Code */}
+            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                </svg>
+              </div>
+              <h4 className="text-2xl serif text-navy-900 mb-4">QR Code</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-light">
+                Perfect for clinics, events, printed guides, and physical touchpoints.
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link to="/free-trial" className="bg-navy-800 text-gold-500 px-10 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-950 transition-all shadow-xl">Start free trial</Link>
-            <Link to="/demo" className="bg-white border border-gray-200 text-navy-800 px-10 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-all">Request demo</Link>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-8">
+            <Link to="/free-trial" className="bg-navy-900 text-gold-500 px-12 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-800 transition-all shadow-xl hover:shadow-2xl">Start free trial</Link>
+            <Link to="/demo" className="bg-white border border-gray-200 text-navy-800 px-12 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-all">Request demo</Link>
           </div>
         </div>
       </section>
@@ -237,7 +255,7 @@ const Product: React.FC = () => {
               ].map((item, i) => (
                 <div key={i} className="p-6 border border-gray-100 rounded-sm hover:border-gold-500 transition-colors">
                   <h4 className="text-sm font-bold text-navy-900 mb-2 uppercase tracking-widest">{item.t}</h4>
-                  <p className="text-[10px] text-gray-500 leading-relaxed font-light">{item.d}</p>
+                  <p className="text--[10px] text-gray-500 leading-relaxed font-light">{item.d}</p>
                 </div>
               ))}
             </div>

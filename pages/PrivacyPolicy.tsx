@@ -1,14 +1,7 @@
 
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 
 const PrivacyPolicy: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location]);
-
   return (
     <div className="animate-in fade-in duration-700 bg-warm-white min-h-screen py-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-12">

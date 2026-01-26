@@ -55,10 +55,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Platform</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/platform" className="hover:text-white transition-colors">Digital Twin</Link></li>
-              <li><Link to="/how-it-works" className="hover:text-white transition-colors">The Protocol</Link></li>
-              <li><Link to="/examples" className="hover:text-white transition-colors">Case Examples</Link></li>
-              <li><Link to="/pricing" className="hover:text-white transition-colors">Plans & Fees</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-white transition-colors">Digital Twin Protocol</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-white transition-colors">How it works</Link></li>
               <li><Link to="/safety" className="hover:text-white transition-colors">Safety Promise</Link></li>
             </ul>
           </div>
