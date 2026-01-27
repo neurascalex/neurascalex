@@ -44,6 +44,18 @@ const FreeTrial: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: val }));
   };
 
+  const isStep1Valid = () => {
+    return (
+      formData.firstName.trim() !== '' &&
+      formData.lastName.trim() !== '' &&
+      formData.email.trim() !== '' &&
+      formData.role.trim() !== '' &&
+      formData.country.trim() !== '' &&
+      formData.website.trim() !== '' &&
+      formData.linkedin.trim() !== ''
+    );
+  };
+
   const handleNext = () => setStep(2);
   const handleBack = () => setStep(1);
 
@@ -209,15 +221,15 @@ const FreeTrial: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Website / clinic page</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Website / clinic page*</label>
                   <p className="text-[10px] text-gray-400 mb-1">Used to verify identity and plan your embed.</p>
-                  <input name="website" value={formData.website} onChange={handleInputChange} type="url" placeholder="https://yourclinic.com" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                  <input required name="website" value={formData.website} onChange={handleInputChange} type="url" placeholder="https://yourclinic.com" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">LinkedIn profile URL</label>
-                    <input name="linkedin" value={formData.linkedin} onChange={handleInputChange} type="url" placeholder="https://linkedin.com/in/…" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">LinkedIn profile URL*</label>
+                    <input required name="linkedin" value={formData.linkedin} onChange={handleInputChange} type="url" placeholder="https://linkedin.com/in/…" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Phone number (optional)</label>
@@ -226,7 +238,16 @@ const FreeTrial: React.FC = () => {
                 </div>
 
                 <div className="pt-6">
-                  <button type="button" onClick={handleNext} className="w-full bg-teal-800 text-gold-500 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-teal-900 transition-all shadow-lg">
+                  <button 
+                    type="button" 
+                    onClick={handleNext} 
+                    disabled={!isStep1Valid()}
+                    className={`w-full py-5 rounded-sm text-sm font-bold uppercase tracking-widest transition-all shadow-lg ${
+                      isStep1Valid() 
+                        ? 'bg-teal-800 text-gold-500 hover:bg-teal-900 cursor-pointer' 
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed opacity-60'
+                    }`}
+                  >
                     Continue to Goals
                   </button>
                 </div>
