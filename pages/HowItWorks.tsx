@@ -59,27 +59,6 @@ const HowItWorks: React.FC = () => {
               <p className="text-lg text-gray-600 font-light leading-relaxed mb-10">
                 Most AI tools scrape the web, leading to hallucinations. NeuraScaleX is "containerized"—it only knows what you upload. We unify your scattered assets into a single, searchable Knowledge Vault.
               </p>
-              
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-2">Supported Formats:</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    "Clinical Guidelines (PDF)",
-                    "Patient Leaflets (DOCX)",
-                    "Website URLs (Scraped)",
-                    "Video Transcripts (MP4)",
-                    "Lecture Slides (PPT)",
-                    "FAQ Lists (CSV)"
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center text-sm text-gray-500 font-medium">
-                      <svg className="w-4 h-4 mr-3 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
             
             {/* Visual: Document Funnel */}

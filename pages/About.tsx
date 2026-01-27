@@ -22,18 +22,6 @@ const About: React.FC = () => {
       role: "Strategic Partner",
       bio: "Supports market learning and clinician adoption—helping shape what “trust and usability” means in practice for education, programmes, and patient-facing orientation."
     },
-    {
-      category: "GOVERNANCE",
-      name: "Vikas Arora",
-      role: "Business Mentor",
-      bio: "Provides strategic mentorship and commercial counsel, ensuring NeuraScaleX remains disciplined in its standards, positioning, and long-term defensibility."
-    },
-    {
-      category: "TECHNOLOGY",
-      name: "Anil",
-      role: "Head of Engineering",
-      bio: "Leads engineering delivery, deployment reliability, and security foundations—ensuring the platform is production-ready, auditable, and scalable across multiple clinician deployments."
-    }
   ];
 
   return (
