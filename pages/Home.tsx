@@ -451,7 +451,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Where it lives (Placement) */}
-      <section className="py-32 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl lg:text-5xl serif text-navy-800 mb-8">It lives where patients already look.</h2>
           <p className="text-lg text-gray-500 font-light mb-20 max-w-3xl mx-auto leading-relaxed">
@@ -505,7 +505,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* NEW PRICING SECTION (Replacing separate Pricing Page) */}
-      <section id="pricing" className="py-24 bg-white relative">
+      <section id="pricing" className="py-12 bg-white relative">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-navy-900 rounded-[2rem] p-8 md:p-16 text-white relative shadow-2xl overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
