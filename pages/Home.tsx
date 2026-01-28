@@ -416,20 +416,25 @@ const Home: React.FC = () => {
                  <p className="text-sm font-bold text-gold-500">White-glove build & calibration included during onboarding.</p>
               </div>
 
-              <div className="flex-1 w-full md:w-auto text-center md:text-right">
-                 <div className="mb-8">
-                    <p className="text-sm text-gray-400 line-through decoration-red-500/70 mb-1">Setup Fee: £3,000</p>
-                    <p className="text-sm font-bold text-gold-500 uppercase tracking-widest mb-4">Waived for the first 50 customers</p>
-                    <p className="text-6xl font-serif text-white mb-2">£99<span className="text-xl text-gray-500 font-sans">/mo</span></p>
-                    <p className="text-xs text-gray-500">thereafter</p>
+              <div className="flex-1 w-full md:w-auto flex flex-col items-center md:items-end">
+                 <div className="mb-10 text-center md:text-right w-full">
+                    <div className="mb-8">
+                       <p className="text-sm text-gray-400 line-through decoration-red-500/70 mb-3">Setup Fee: £3,000</p>
+                       <p className="text-sm font-bold text-gold-500 uppercase tracking-widest">Waived for the first 50 customers</p>
+                    </div>
+                    
+                    <div>
+                       <p className="text-6xl md:text-7xl font-serif text-white leading-none mb-3">£149<span className="text-2xl text-gray-500 font-sans">/month</span></p>
+                       <p className="text-sm text-gray-500">thereafter</p>
+                    </div>
                  </div>
                  
-                 <div className="flex flex-col gap-4">
-                    <Link to="/free-trial" className="w-full bg-gold-500 text-navy-950 py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-gold-600 transition-all shadow-lg">Start Free Trial</Link>
-                    <Link to="/demo" className="w-full border border-white/20 text-white py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all">Request a Walkthrough</Link>
+                 <div className="flex flex-col gap-4 w-full max-w-xs">
+                    <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-8 py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-gold-600 transition-all shadow-lg text-center">Start Free Trial</Link>
+                    <Link to="/demo" className="border border-white/20 text-white px-8 py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all text-center">Request a Walkthrough</Link>
                  </div>
 
-                 <div className="mt-8 bg-white/5 p-4 rounded-lg border border-white/5 text-left">
+                 <div className="mt-8 bg-white/5 p-4 rounded-lg border border-white/5 text-left w-full max-w-xs">
                     <p className="text-[10px] text-orange-300 font-bold uppercase tracking-widest mb-1">Capacity note:</p>
                     <p className="text-xs text-gray-400 leading-relaxed">Limited onboarding capacity: we onboard every practitioner personally to ensure safety. Currently accepting 10 this quarter.</p>
                  </div>

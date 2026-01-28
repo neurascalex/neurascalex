@@ -10,7 +10,7 @@ const About: React.FC = () => {
       bio: "Operator-founder building NeuraScaleX as a governed platform: Digital Twin + Intelligence, clinician onboarding, and product-led deployment."
     },
     {
-      name: "Prof. Dr. Deepak Ravindran",
+      name: "Dr. Deepak Ravindran",
       role: "Chief Medical Advisor",
       bio: "Consultant in Pain Medicine and founder of Berkshire Pain Clinic. Guides scope boundaries, safe refusal patterns, and clinical realism across deployments."
     },
