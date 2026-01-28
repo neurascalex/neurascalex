@@ -147,8 +147,8 @@ const Demo: React.FC = () => {
           {step === 'submitting' && (
             <div className="absolute inset-0 bg-white/90 backdrop-blur-sm z-50 flex flex-col items-center justify-center">
               <div className="w-12 h-12 border-4 border-teal-800 border-t-transparent rounded-full animate-spin mb-4"></div>
-              <p className="text-sm font-bold uppercase tracking-widest text-teal-800">Processing Request...</p>
-              <p className="text-[10px] text-gray-400 mt-2 uppercase tracking-widest">Routing to shyam@hrdigitalmedia.com</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-teal-800">Relaying Request Context...</p>
+              <p className="text-[10px] text-gray-400 mt-2 uppercase tracking-widest italic">Securing Clinical Data Transmission</p>
             </div>
           )}
           <div className="max-w-3xl mx-auto px-6">

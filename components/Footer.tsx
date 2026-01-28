@@ -55,9 +55,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Platform</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/how-it-works" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">Digital Twin Protocol</Link></li>
-              <li><Link to="/how-it-works" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">How it works</Link></li>
-              <li><Link to="/safety" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">Safety Promise</Link></li>
+              <li><Link to="/how-it-works" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Digital Twin Protocol</Link></li>
+              <li><Link to="/how-it-works" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">How it works</Link></li>
             </ul>
           </div>
 
@@ -65,10 +64,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Resources</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/about" className="hover:text-white transition-colors">Our Mission</Link></li>
-              <li><Link to="/demo" className="hover:text-white transition-colors">Request Demo</Link></li>
-              <li><Link to="/free-trial" className="hover:text-white transition-colors">Free Trial</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/about" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Our Mission</Link></li>
+              <li><Link to="/demo" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Request Demo</Link></li>
+              <li><Link to="/free-trial" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Free Trial</Link></li>
+              <li><Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -76,8 +75,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Governance</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/privacy" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">Privacy & GDPR</Link></li>
-              <li><Link to="/terms" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/safety" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Safety Promise</Link></li>
+              <li><Link to="/privacy" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Privacy & GDPR</Link></li>
+              <li><Link to="/terms" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Terms of Service</Link></li>
               <li><span className="text-gray-600 block pt-2">ISO 27001 Ready</span></li>
             </ul>
           </div>

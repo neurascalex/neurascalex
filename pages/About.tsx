@@ -3,196 +3,174 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
-  const teamMembers = [
+  const leadership = [
     {
-      category: "STRATEGY",
       name: "Shyam Pitla",
-      role: "Founder | Product & Strategy",
-      bio: "Operator and product strategist building the Clinician Digital Twin category—governance-first, workflow-true, and adoption-led. Leads product direction, pilots, and go-to-market."
+      role: "Founder, Product & Strategy",
+      bio: "Operator-founder building NeuraScaleX as a governed platform: Digital Twin + Intelligence, clinician onboarding, and product-led deployment."
     },
     {
-      category: "CLINICAL",
-      name: "Dr. Deepak Ravindran",
-      role: "Clinical Advisor & Pioneer",
-      bio: "Practicing pain specialist and pilot partner. Guides scope boundaries, safe refusals, and clinical realism—ensuring the Twin reflects how clinicians communicate without drifting into advice."
+      name: "Prof. Dr. Deepak Ravindran",
+      role: "Chief Medical Advisor",
+      bio: "Consultant in Pain Medicine and founder of Berkshire Pain Clinic. Guides scope boundaries, safe refusal patterns, and clinical realism across deployments."
     },
     {
-      category: "PARTNERSHIPS",
       name: "Dr. Sunil Kumar",
-      role: "Strategic Partner",
-      bio: "Supports market learning and clinician adoption—helping shape what “trust and usability” means in practice for education, programmes, and patient-facing orientation."
-    },
+      role: "Strategic Partner (Education & Adoption)",
+      bio: "Supports patient education and clinician adoption—helping shape what “trust and usability” means in practice across orientation, programmes, and patient-facing content."
+    }
   ];
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white">
-      {/* HERO */}
-      <section className="bg-navy-900 py-24 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
-          <h1 className="text-5xl md:text-7xl serif mb-10 leading-tight">Trust infrastructure for clinician expertise.</h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-14 font-light leading-relaxed max-w-4xl mx-auto">
-            NeuraScaleX builds governed Clinician Digital Twins—created only from clinician-approved material, expressed in their voice, and designed to know where to stop.
+    <div className="animate-in fade-in duration-1000 bg-warm-white font-sans">
+      
+      {/* 1. HERO */}
+      <section className="bg-navy-900 py-24 lg:py-32 text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+          <h1 className="text-5xl md:text-7xl serif mb-8 leading-tight">Trust infrastructure for clinician expertise.</h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 font-light leading-relaxed font-serif">
+            NeuraScaleX builds governed Digital Twins from clinician-approved materials—expressed in their voice, designed to stay within scope, and verified before launch.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-gray-400 text-xs font-semibold uppercase tracking-widest mb-16">
-            <div>Approved sources only</div>
-            <div className="text-gold-500">•</div>
-            <div>Non-clinical by design</div>
-            <div className="text-gold-500">•</div>
-            <div>Designed to know where to stop</div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-            <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-xl">
-              Start Free Trial
-            </Link>
-            <Link to="/demo" className="text-white border-b border-white/50 pb-1 text-sm font-bold uppercase tracking-widest">
-              Request a Demo
-            </Link>
-          </div>
-          <p className="mt-8 text-[10px] text-gray-500 uppercase tracking-widest">Not medical advice.</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-500">Non-clinical by design. Not medical advice.</p>
         </div>
       </section>
 
-      {/* FOUNDER'S NOTE (Mission) */}
-      <section className="py-32 bg-navy-950 text-white relative overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
-        
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <div className="flex items-center justify-center gap-4 mb-12 opacity-50">
-             <div className="h-px w-16 bg-gray-400"></div>
-             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-300">A Note From The Founder</span>
-             <div className="h-px w-16 bg-gray-400"></div>
-          </div>
-
-          <h2 className="text-4xl md:text-6xl serif mb-16 leading-tight">
-            Our Mission: <br/>
-            <span className="text-gold-500">1 Million Clinical Hours Reclaimed.</span>
-          </h2>
-
-          <div className="space-y-10 text-xl md:text-2xl font-light text-gray-300 leading-relaxed max-w-3xl mx-auto font-serif">
-            <p>
-              "I founded NeuraScaleX because I saw the world’s most brilliant clinical minds trapped behind a wall of repetitive administration.
-            </p>
-            <p>
-              My vision is to decouple clinical expertise from biological time. We aren’t building 'chatbots'; we are building <span className="text-white underline decoration-gold-500/50 underline-offset-4 decoration-1">Infrastructure for Human Wisdom.</span>
-            </p>
-            <p>
-              By digitizing the 'first mile' of the patient journey, we allow clinicians like Dr. Abrar and Dr. Deepak to focus on what they do best: high-level clinical judgment. We are here to ensure that your legacy isn't limited by your calendar."
-            </p>
-          </div>
-
-          <div className="mt-20">
-            <h3 className="text-5xl serif text-gold-500 italic mb-4">Shyam Pitla</h3>
-            <div className="w-16 h-0.5 bg-gold-500/30 mx-auto mb-4"></div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">Founder, NeuraScaleX</p>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY WE EXIST */}
-      <section className="py-24 bg-softgreen border-y border-teal-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl serif text-navy-800 mb-8">Healthcare doesn’t need more generic AI.</h2>
-            <p className="text-lg text-gray-600 font-light leading-relaxed">
-              Clinicians are under pressure to be digitally present, but their expertise is fragmented across platforms—and generic AI can mimic tone without standards. The result is reputational risk, inconsistency, and more time spent correcting misunderstandings.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              "Knowledge scattered across PDFs, videos, posts, and talks",
-              "Patients arrive misinformed and anxious",
-              "Generic AI hallucinates and blurs scope",
-              "Clinicians need governed scale that keeps boundaries intact"
-            ].map((text, i) => (
-              <div key={i} className="flex items-start">
-                <span className="text-teal-800 mr-4 font-bold">/</span>
-                <p className="text-sm font-medium text-navy-800 leading-tight">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT WE BELIEVE */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl serif text-teal-800 mb-16">Identity before features. Governance before scale.</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-left">
-            {[
-              { title: "Approved sources only", desc: "The Twin does not guess." },
-              { title: "Voice-matched by design", desc: "Preserves your standards and tone." },
-              { title: "Clear boundaries", desc: "Refuses clinical advice and routes safely." },
-              { title: "Clinician control", desc: "Nothing goes live without approval." }
-            ].map((belief, i) => (
-              <div key={i} className="p-8 border border-gray-100 rounded-sm">
-                <h4 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-4">{belief.title}</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">{belief.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* THE TEAM */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-16">
-            <h2 className="text-4xl serif text-navy-800 mb-4">Built with clinicians. Shipped by operators.</h2>
-            <p className="text-lg text-gray-500 font-light">NeuraScaleX is developed with practicing clinician input and delivered through a guided onboarding process designed for real-world workflows.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, i) => (
-              <div key={i} className="bg-white p-10 border border-gray-100 rounded-sm flex flex-col h-full group hover:border-gold-500 transition-all">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800 mb-6">{member.category}</span>
-                <h3 className="text-2xl serif text-navy-900 mb-1">{member.name}</h3>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-6">{member.role}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed font-light">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-          
-          <p className="mt-12 text-center text-[10px] text-gray-400 uppercase tracking-widest italic">
-            We collaborate with additional clinicians across specialties during pilots to validate boundaries, language, and workflow fit.
-          </p>
-        </div>
-      </section>
-
-      {/* SAFETY */}
+      {/* 2. OUR MISSION */}
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl serif text-teal-800 mb-8">Safety is the product.</h2>
-          <p className="text-lg text-gray-600 mb-12 font-light leading-relaxed">
-            NeuraScaleX is non-clinical by design, built from approved sources only, and engineered to refuse diagnosis/treatment advice. Every Twin is tested privately before launch.
+          <h2 className="text-4xl md:text-5xl serif text-navy-900 mb-8">Bring clarity to the first mile of care.</h2>
+          <p className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl mx-auto">
+            Before patients book, they look for answers: fees, pathways, suitability, what to expect. When that clarity is missing, they arrive anxious—or they don’t arrive at all.
+            <br/><br/>
+            NeuraScaleX helps clinicians provide trusted orientation at scale, while protecting time for clinical judgement.
           </p>
-          <Link to="/safety" className="text-sm font-bold uppercase tracking-widest text-teal-800 border-b border-teal-800/30 pb-1 hover:text-navy-900 transition-colors">
-            Read our Safety Approach →
+        </div>
+      </section>
+
+      {/* 3. WHAT WE BUILD */}
+      <section className="py-24 bg-softgreen border-y border-teal-100/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl serif text-navy-900 mb-4">A Digital Twin for patients. <br/>An Intelligence layer for clinicians.</h2>
+            <p className="text-gray-600">NeuraScaleX is built as two practical layers:</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white p-10 rounded-sm shadow-sm border border-teal-100">
+               <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800 mb-4 block">Patient-Facing</span>
+               <h3 className="text-2xl serif text-navy-900 mb-4">Digital Twin</h3>
+               <p className="text-gray-600 font-light leading-relaxed">
+                 A 24/7 website assistant that answers routine questions using clinician-approved sources—fees, pathways, services, programmes, booking—expressed in the clinician’s voice.
+               </p>
+            </div>
+            <div className="bg-white p-10 rounded-sm shadow-sm border border-teal-100">
+               <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 mb-4 block">Clinician-Facing</span>
+               <h3 className="text-2xl serif text-navy-900 mb-4">Intelligence</h3>
+               <p className="text-gray-600 font-light leading-relaxed">
+                 A dashboard that shows what patients are actually asking, where confusion happens, and what to clarify next—so teams improve the right page, the right FAQ, the right pathway.
+               </p>
+            </div>
+          </div>
+
+          <div className="bg-navy-900 text-white p-8 rounded-sm max-w-3xl mx-auto text-center border border-white/10">
+             <h4 className="text-gold-500 font-serif text-xl italic mb-3">What “knows where to stop” means:</h4>
+             <p className="text-gray-300 text-sm font-light leading-relaxed">
+               It does not diagnose, prescribe, or give personalised treatment advice. When a question crosses into clinical advice, it declines and signposts to the clinician’s preferred next step.
+             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. HOW WE BUILD */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+           <div className="text-center mb-16">
+             <h2 className="text-4xl serif text-navy-900 mb-6">Governance before scale.</h2>
+             <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+               We’re not building generic healthcare AI. We’re building clinician-owned, governed digital experiences.
+             </p>
+           </div>
+
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+             {[
+               { title: "Approved sources only", desc: "Answers come from materials the clinician has verified." },
+               { title: "Clear boundaries", desc: "Scope is defined up front; refusal + signposting is built in." },
+               { title: "Clinician control", desc: "Nothing goes live without clinician review and sign-off." },
+               { title: "Workflow-true onboarding", desc: "Designed for busy clinicians; live in days, not months." }
+             ].map((item, i) => (
+               <div key={i} className="p-8 border border-gray-100 rounded-sm hover:border-gold-500 transition-colors">
+                 <h3 className="text-sm font-bold uppercase tracking-widest text-navy-900 mb-3">{item.title}</h3>
+                 <p className="text-sm text-gray-500 leading-relaxed font-light">{item.desc}</p>
+               </div>
+             ))}
+           </div>
+        </div>
+      </section>
+
+      {/* 5. BUILT WITH CLINICIANS */}
+      <section className="py-24 bg-gray-50 border-y border-gray-100 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl serif text-navy-900 mb-6">Developed alongside practising clinicians.</h2>
+          <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
+            NeuraScaleX is shaped through real deployments with clinicians who care deeply about standards. We use clinician feedback to refine tone, refusal patterns, and the Intelligence signals that are genuinely useful—then standardise what works into the platform.
+          </p>
+          <Link to="/#pilots" className="text-teal-800 font-bold uppercase tracking-widest text-xs border-b border-teal-800 pb-1 hover:text-navy-900 transition-colors">
+            Explore pilots →
           </Link>
         </div>
       </section>
 
-      {/* JOIN THE COHORT */}
-      <section className="py-24 bg-gold-500 text-navy-950 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl serif mb-10">We’re onboarding a UK clinician cohort.</h2>
-          <p className="text-lg mb-12 font-medium opacity-80">
-            If you’re reputation-sensitive and time-poor, we’ll help you deploy a governed Digital Twin and go live in 7 days.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-10">
-            <Link to="/free-trial" className="w-full sm:w-auto bg-navy-950 text-gold-500 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl">
-              Start Free Trial
-            </Link>
-            <Link to="/demo" className="w-full sm:w-auto border-2 border-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest">
-              Request a Demo
-            </Link>
-          </div>
-          <p className="text-xs uppercase tracking-widest font-bold opacity-70">
-            30 days free. No credit card.
-          </p>
+      {/* 6. LEADERSHIP */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+           <h2 className="text-4xl serif text-navy-900 mb-16 text-center">Leadership</h2>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+             {leadership.map((person, i) => (
+               <div key={i} className="flex flex-col items-center text-center">
+                 {/* Placeholder for Photo - Initials */}
+                 <div className="w-24 h-24 bg-navy-50 rounded-full flex items-center justify-center text-2xl font-serif font-bold text-navy-900 mb-6 border border-gray-100 shadow-sm">
+                   {person.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                 </div>
+                 <h3 className="text-xl serif text-navy-900 font-bold mb-2">{person.name}</h3>
+                 <p className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-4">{person.role}</p>
+                 <p className="text-sm text-gray-600 leading-relaxed font-light">{person.bio}</p>
+               </div>
+             ))}
+           </div>
         </div>
       </section>
+
+      {/* 7. SAFETY IS THE PRODUCT */}
+      <section className="py-24 bg-softgreen">
+         <div className="max-w-4xl mx-auto px-6 text-center">
+           <h2 className="text-4xl serif text-teal-800 mb-6">Designed to protect trust.</h2>
+           <p className="text-lg text-gray-600 font-light leading-relaxed mb-0">
+             NeuraScaleX is non-clinical by design and built from approved sources only. Every Twin is verified privately before launch, and clinicians can review conversations and update approved materials over time—so behaviour stays aligned as practice needs evolve.
+           </p>
+         </div>
+      </section>
+
+      {/* 8. BOTTOM CTA */}
+      <section className="py-32 bg-navy-950 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
+           <h2 className="text-5xl md:text-6xl serif mb-6">Want to see how NeuraScaleX works in practice?</h2>
+           <p className="text-xl text-gray-300 font-light mb-12">
+             Explore live pilot examples or request a walkthrough of the Digital Twin + Intelligence layer.
+           </p>
+           
+           <div className="flex justify-center mb-10">
+              <Link to="/demo" className="bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">
+                Request a Walkthrough
+              </Link>
+           </div>
+           
+           <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+             No hard sell. We’ll show the product, the boundaries, and what the Intelligence looks like.
+           </p>
+        </div>
+      </section>
+
     </div>
   );
 };
