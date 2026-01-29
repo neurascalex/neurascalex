@@ -320,7 +320,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. LIVE PILOTS */}
+      {/* 6. LIVE PILOTS 
       <section className="py-24 bg-warm-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
            <div className="text-center mb-16">
@@ -345,6 +345,7 @@ const Home: React.FC = () => {
            </div>
         </div>
       </section>
+      */}
 
       {/* 7. LIVE IN 7 DAYS */}
       <section className="py-24 bg-white border-y border-gray-100">
