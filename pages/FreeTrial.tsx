@@ -146,9 +146,6 @@ const FreeTrial: React.FC = () => {
             </ul>
           </div>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link to="/demo" className="bg-navy-800 text-gold-500 px-8 py-4 rounded-sm text-sm font-bold uppercase tracking-widest shadow-lg">
-              Book a 15-min onboarding call
-            </Link>
             <Link to="/" className="text-navy-800 font-bold uppercase tracking-widest text-sm border-b-2 border-navy-800 pb-1">
               Return to Home
             </Link>
