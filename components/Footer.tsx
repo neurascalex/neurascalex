@@ -55,7 +55,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Platform</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/how-it-works" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Digital Twin Protocol</Link></li>
+              <li><Link to="/platform" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">Platform Overview</Link></li>
+              <li><Link to="/experts" className="hover:text-white transition-colors">Live Deployments</Link></li>
               <li><Link to="/how-it-works" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors">How it works</Link></li>
             </ul>
           </div>

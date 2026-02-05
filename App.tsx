@@ -13,6 +13,7 @@ import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
+import Experts from './pages/Experts';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Route path="/safety" element={<Safety />} />
             <Route path="/free-trial" element={<FreeTrial />} />
             <Route path="/demo" element={<Demo />} />
+            <Route path="/experts" element={<Experts />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
