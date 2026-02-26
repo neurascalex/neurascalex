@@ -1,0 +1,17 @@
+<svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="rotate(90 50 50)">
+    <circle cx="50" cy="50" r="8" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="50" y2="15" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="50" cy="15" r="6" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="80.31" y2="27.5" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="80.31" cy="27.5" r="6" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="80.31" y2="72.5" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="80.31" cy="72.5" r="6" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="50" y2="85" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="50" cy="85" r="6" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="19.69" y2="72.5" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="19.69" cy="72.5" r="6" fill="#00D2FF"/>
+    <line x1="50" y1="50" x2="19.69" y2="27.5" stroke="#00D2FF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="19.69" cy="27.5" r="6" fill="#00D2FF"/>
+  </g>
+</svg>

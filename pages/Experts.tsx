@@ -24,6 +24,16 @@ const Experts: React.FC = () => {
       tags: ["Digital Twin", "Routing"],
       imageInitials: "BP",
       url: "https://www.berkshirepainclinic.co.uk/"
+    },
+    {
+      name: "Berkshire Psychiatrist Dr Abrar",
+      role: "Specialist Clinic",
+      location: "Reading, UK",
+      status: "Live",
+      desc: "A governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
+      tags: ["Digital Twin", "Psychiatry"],
+      imageInitials: "BP",
+      url: "https://www.berkshirepsychiatrist.co.uk/"
     }
   ];
 
@@ -57,16 +67,6 @@ const Experts: React.FC = () => {
       tags: ["Digital Twin", "Mental Health"],
       imageInitials: "AA",
       url: "https://drarokia.com/"
-    },
-    {
-      name: "Dr. Abrar Hussain",
-      role: "Consultant Psychiatrist",
-      location: "UK",
-      status: "Launching Feb 9",
-      desc: "Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
-      tags: ["Waitlist", "Psychiatry"],
-      imageInitials: "AH",
-      url: ""
     },
     {
       name: "Private Practice Cohort",
