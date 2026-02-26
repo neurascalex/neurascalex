@@ -31,7 +31,7 @@ const Experts: React.FC = () => {
       location: "Reading, UK",
       status: "Live",
       desc: "A governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
-      tags: ["Digital Twin", "Psychiatry"],
+      tags: ["Digital Twin", "Routing"],
       imageInitials: "BP",
       url: "https://www.berkshirepsychiatrist.co.uk/"
     }
