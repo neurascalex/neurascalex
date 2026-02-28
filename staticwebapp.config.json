@@ -1,9 +1,15 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif,ico}", "/css/*", "/js/*"]
+    "exclude": ["/images/*.{png,jpg,gif,ico}", "/css/*", "/js/*", "/assets/*", "*.js", "*.css", "*.mjs", "*.map"]
   },
   "routes": [
+    {
+      "route": "/assets/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
     {
       "route": "/*",
       "allowedRoles": ["anonymous"]
@@ -16,7 +22,7 @@
     }
   },
   "globalHeaders": {
-    "content-security-policy": "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://fonts.googleapis.com https://generativelanguage.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://generativelanguage.googleapis.com https://*.googleapis.com https://neurax-python-be-emhfejathhhpe6h3.uksouth-01.azurewebsites.net https://neurax-net-f2cwbugzh4gqd8hg.uksouth-01.azurewebsites.net https://api.ipify.org https://*.azurewebsites.net;",
+    "content-security-policy": "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://fonts.googleapis.com https://generativelanguage.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://generativelanguage.googleapis.com https://*.googleapis.com https://neurax-python-be-emhfejathhhpe6h3.uksouth-01.azurewebsites.net https://neurax-net-f2cwbugzh4gqd8hg.uksouth-01.azurewebsites.net https://api.ipify.org https://*.azurewebsites.net https://www.google-analytics.com https://www.googletagmanager.com;",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
     "Referrer-Policy": "strict-origin-when-cross-origin"
@@ -24,6 +30,7 @@
   "mimeTypes": {
     ".json": "application/json",
     ".js": "text/javascript",
+    ".mjs": "text/javascript",
     ".css": "text/css",
     ".html": "text/html"
   },
