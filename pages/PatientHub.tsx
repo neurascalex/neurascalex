@@ -12,7 +12,8 @@ const specialists = [
     description: "Orienting patients on pain management pathways and 'Long Covid' recovery, reducing repetitive questions before consultation.",
     badges: ['Digital Twin', 'Intelligence'],
     image: 'https://picsum.photos/seed/deepak/400/400',
-    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84'
+    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
+    website: 'https://deepakravindran.co.uk/'
   },
   {
     tag: 'LIVE',
@@ -21,7 +22,8 @@ const specialists = [
     description: 'Educating patients on metabolic health programmes and qualifying suitability before they book a discovery call.',
     badges: ['Digital Twin', 'Education'],
     image: 'https://picsum.photos/seed/sunil/400/400',
-    widgetId: 'd53e170c-6283-4fdd-8d53-03cb51083c81'
+    widgetId: 'd53e170c-6283-4fdd-8d53-03cb51083c81',
+    website: 'https://drsunilkumar.co.uk/'
   },
   {
     tag: 'LIVE',
@@ -30,7 +32,8 @@ const specialists = [
     description: 'Providing clear guidance on ADHD assessments and psychiatric pathways, managing patient expectations safely up front.',
     badges: ['Digital Twin', 'Mental Health'],
     image: 'https://picsum.photos/seed/arokia/400/400',
-    widgetId: 'b4692909-c2e8-4ccc-b819-a3571d705e3e'
+    widgetId: 'b4692909-c2e8-4ccc-b819-a3571d705e3e',
+    website: 'https://drarokia.com/'
   },
   {
     tag: 'LIVE',
@@ -39,7 +42,8 @@ const specialists = [
     description: 'Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.',
     badges: ['Digital Twin', 'Routing'],
     image: 'https://picsum.photos/seed/abrar/400/400',
-    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006'
+    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
+    website: 'https://drabrarhussain.co.uk/'
   },
   {
     tag: 'LIVE',
@@ -48,7 +52,8 @@ const specialists = [
     description: 'A multi-disciplinary clinic using the Twin to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.',
     badges: ['Digital Twin', 'Routing'],
     image: 'https://picsum.photos/seed/berkshire-pain/400/400',
-    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84'
+    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
+    website: 'https://www.berkshirepainclinic.co.uk/'
   },
   {
     tag: 'LIVE',
@@ -57,7 +62,8 @@ const specialists = [
     description: 'Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.',
     badges: ['Digital Twin', 'Routing'],
     image: 'https://picsum.photos/seed/berkshire-psych/400/400',
-    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006'
+    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
+    website: 'https://www.berkshirepsychiatrist.co.uk/'
   }
 ];
 
@@ -106,10 +112,15 @@ const PatientHub: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-              <a href="#specialists" className="bg-navy-900 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-navy-800 transition-all flex items-center gap-2 group">
+              <button 
+                onClick={() => {
+                  document.getElementById('specialists')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-navy-900 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-navy-800 transition-all flex items-center gap-2 group cursor-pointer border-none"
+              >
                 Find Your Specialist
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
               <div className="flex items-center gap-2 text-gray-400 text-xs font-medium uppercase tracking-widest">
                 <CheckCircle2 className="w-4 h-4 text-teal-600" />
                 24/7 Availability
@@ -131,7 +142,7 @@ const PatientHub: React.FC = () => {
             {specialists.map((specialist, idx) => (
               <div 
                 key={idx} 
-                className="group bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-2xl hover:border-teal-100 transition-all duration-500 flex flex-col"
+                className="group bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg hover:border-teal-100 transition-all duration-500 flex flex-col"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="relative">
@@ -169,16 +180,21 @@ const PatientHub: React.FC = () => {
                 <div className="mt-auto space-y-4">
                   <button 
                     onClick={() => openChat(specialist)}
-                    className="block w-full bg-navy-900 text-white py-4 rounded-xl font-bold text-sm uppercase tracking-widest text-center hover:bg-teal-800 hover:shadow-lg hover:shadow-teal-900/20 transition-all transform group-hover:-translate-y-1"
+                    className="w-full bg-navy-900 text-white py-4 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-teal-800 hover:shadow-lg hover:shadow-teal-900/20 transition-all transform group-hover:-translate-y-1"
                   >
-                    💬 Chat with AI Assistant
+                    <MessageSquare className="w-4 h-4" />
+                    Chat with AI Assistant
                   </button>
-                  <a 
-                    href="#" 
-                    className="flex items-center justify-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest hover:text-navy-900 transition-colors"
-                  >
-                    Visit Clinic Website <ExternalLink className="w-3 h-3" />
-                  </a>
+                  {specialist.website && (
+                    <a 
+                      href={specialist.website}
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest hover:text-navy-900 transition-colors"
+                    >
+                      Visit Clinic Website <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
