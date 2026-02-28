@@ -10,6 +10,7 @@ interface Deployment {
   tags: string[];
   imageInitials: string;
   url: string;
+  imageUrl?: string;
 }
 
 const Experts: React.FC = () => {
@@ -23,7 +24,8 @@ const Experts: React.FC = () => {
       desc: "A multi-disciplinary clinic using the Twin to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.",
       tags: ["Digital Twin", "Routing"],
       imageInitials: "BP",
-      url: "https://www.berkshirepainclinic.co.uk/"
+      url: "https://www.berkshirepainclinic.co.uk/",
+      imageUrl: "/images/berkshire-pain-clinic.png"
     },
     {
       name: "Berkshire Psychiatrist Dr Abrar",
@@ -33,7 +35,8 @@ const Experts: React.FC = () => {
       desc: "A governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
       tags: ["Digital Twin", "Routing"],
       imageInitials: "BP",
-      url: "https://www.berkshirepsychiatrist.co.uk/"
+      url: "https://www.berkshirepsychiatrist.co.uk/",
+      imageUrl: "/images/berkshire-psychiatrist.png"
     }
   ];
 
@@ -46,7 +49,8 @@ const Experts: React.FC = () => {
       desc: "Uses his Twin to orient patients on pain management pathways and 'Long Covid' recovery, reducing repetitive questions before consultation.",
       tags: ["Digital Twin", "Intelligence"],
       imageInitials: "DR",
-      url: "https://deepakravindran.co.uk/"
+      url: "https://deepakravindran.co.uk/",
+      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstdr3/assets/Deepak%20Profile%20pic.jpg?sv=2025-07-05&se=2035-11-22T17%3A53%3A51Z&sr=b&sp=r&sig=PSgWDM2uF04wNXvK85Ujy6SpvO10LKWxtofIqVO7bxQ%3D"
     },
     {
       name: "Dr. Sunil Kumar",
@@ -56,7 +60,8 @@ const Experts: React.FC = () => {
       desc: "Educates patients on metabolic health programmes and qualifies suitability before they book a discovery call.",
       tags: ["Digital Twin", "Education"],
       imageInitials: "SK",
-      url: "https://drsunilkumar.co.uk/"
+      url: "https://drsunilkumar.co.uk/",
+      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstsk13/assets/IMG_9435.jpg?sv=2025-07-05&se=2035-11-09T07%3A18%3A13Z&sr=b&sp=r&sig=X5JekyGQUwmkfiLYuxwXygzHx8pvQ3wkQZG3w1UXlFQ%3D"
     },
     {
       name: "Dr. Arokia Antonysamy",
@@ -66,7 +71,19 @@ const Experts: React.FC = () => {
       desc: "Provides clear guidance on ADHD assessments and psychiatric pathways, managing patient expectations safely up front.",
       tags: ["Digital Twin", "Mental Health"],
       imageInitials: "AA",
-      url: "https://drarokia.com/"
+      url: "https://drarokia.com/",
+      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstaa83/assets/Arokia-MindKonnect.png?sv=2025-07-05&se=2035-12-09T14%3A20%3A40Z&sr=b&sp=r&sig=0KN0Jv4OZf5NkpRK7L4xLTkfsV6Ve1a0erKbO%2B3WeXY%3D"
+    },
+    {
+      name: "Dr. Abrar Hussain",
+      role: "Consultant Psychiatrist",
+      location: "UK",
+      status: "Live",
+      desc: "Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
+      tags: ["Digital Twin", "Routing"],
+      imageInitials: "AH",
+      url: "https://drabrarhussain.co.uk/",
+      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstah88/assets/AbrarAI.avif?sv=2025-07-05&se=2036-01-14T15%3A59%3A33Z&sr=b&sp=r&sig=%2B5jOafWH2GI%2FyS9qaJVG0qLx95bOwkIqyTDm7kAK0Kk%3D"
     },
     {
       name: "Private Practice Cohort",
@@ -101,7 +118,11 @@ const Experts: React.FC = () => {
 
       <div className="mb-6">
           <div className="w-20 h-20 bg-gray-100 rounded-full overflow-hidden mb-4 border border-gray-200 group-hover:border-gold-500 transition-colors flex items-center justify-center relative">
-            <span className="text-2xl font-serif text-teal-900 font-bold">{expert.imageInitials}</span>
+            {expert.imageUrl ? (
+              <img src={expert.imageUrl} alt={expert.name} className="w-full h-full object-cover" />
+            ) : (
+              <span className="text-2xl font-serif text-teal-900 font-bold">{expert.imageInitials}</span>
+            )}
           </div>
           <h3 className="text-xl serif text-navy-900 font-bold">{expert.name}</h3>
           <p className="text-[11px] font-bold uppercase tracking-widest text-teal-800 mt-1">

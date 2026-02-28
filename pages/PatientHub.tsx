@@ -11,7 +11,7 @@ const specialists = [
     title: 'Pain Medicine Consultant · UK',
     description: "Orienting patients on pain management pathways and 'Long Covid' recovery, reducing repetitive questions before consultation.",
     badges: ['Digital Twin', 'Intelligence'],
-    image: 'https://picsum.photos/seed/deepak/400/400',
+    image: 'https://storagfd.blob.core.windows.net/fdablbstdr3/assets/Deepak%20Profile%20pic.jpg?sv=2025-07-05&se=2035-11-22T17%3A53%3A51Z&sr=b&sp=r&sig=PSgWDM2uF04wNXvK85Ujy6SpvO10LKWxtofIqVO7bxQ%3D',
     widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
     website: 'https://deepakravindran.co.uk/'
   },
@@ -21,7 +21,7 @@ const specialists = [
     title: 'Lifestyle Medicine Physician · UK',
     description: 'Educating patients on metabolic health programmes and qualifying suitability before they book a discovery call.',
     badges: ['Digital Twin', 'Education'],
-    image: 'https://picsum.photos/seed/sunil/400/400',
+    image: 'https://storagfd.blob.core.windows.net/fdablbstsk13/assets/IMG_9435.jpg?sv=2025-07-05&se=2035-11-09T07%3A18%3A13Z&sr=b&sp=r&sig=X5JekyGQUwmkfiLYuxwXygzHx8pvQ3wkQZG3w1UXlFQ%3D',
     widgetId: 'd53e170c-6283-4fdd-8d53-03cb51083c81',
     website: 'https://drsunilkumar.co.uk/'
   },
@@ -31,7 +31,7 @@ const specialists = [
     title: 'Consultant Psychiatrist · UK',
     description: 'Providing clear guidance on ADHD assessments and psychiatric pathways, managing patient expectations safely up front.',
     badges: ['Digital Twin', 'Mental Health'],
-    image: 'https://picsum.photos/seed/arokia/400/400',
+    image: 'https://storagfd.blob.core.windows.net/fdablbstaa83/assets/Arokia-MindKonnect.png?sv=2025-07-05&se=2035-12-09T14%3A20%3A40Z&sr=b&sp=r&sig=0KN0Jv4OZf5NkpRK7L4xLTkfsV6Ve1a0erKbO%2B3WeXY%3D',
     widgetId: 'b4692909-c2e8-4ccc-b819-a3571d705e3e',
     website: 'https://drarokia.com/'
   },
@@ -41,7 +41,7 @@ const specialists = [
     title: 'Consultant Psychiatrist · UK',
     description: 'Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.',
     badges: ['Digital Twin', 'Routing'],
-    image: 'https://picsum.photos/seed/abrar/400/400',
+    image: 'https://storagfd.blob.core.windows.net/fdablbstah88/assets/AbrarAI.avif?sv=2025-07-05&se=2036-01-14T15%3A59%3A33Z&sr=b&sp=r&sig=%2B5jOafWH2GI%2FyS9qaJVG0qLx95bOwkIqyTDm7kAK0Kk%3D',
     widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
     website: 'https://drabrarhussain.co.uk/'
   },
@@ -51,7 +51,7 @@ const specialists = [
     title: 'Specialist Clinic · Reading, UK',
     description: 'A multi-disciplinary clinic using the Twin to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.',
     badges: ['Digital Twin', 'Routing'],
-    image: 'https://picsum.photos/seed/berkshire-pain/400/400',
+    image: '/images/berkshire-pain-clinic.png',
     widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
     website: 'https://www.berkshirepainclinic.co.uk/'
   },
@@ -61,7 +61,7 @@ const specialists = [
     title: 'Consultant Psychiatrist · UK',
     description: 'Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.',
     badges: ['Digital Twin', 'Routing'],
-    image: 'https://picsum.photos/seed/berkshire-psych/400/400',
+    image: '/images/berkshire-psychiatrist.png',
     widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
     website: 'https://www.berkshirepsychiatrist.co.uk/'
   }
@@ -98,17 +98,17 @@ const PatientHub: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-100 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <Shield className="w-4 h-4 text-green-600" />
               <span className="text-xs font-bold uppercase tracking-wider text-green-700">
-                DCB 0129 Compliant & Governed Clinical AI
+                GOVERNED • APPROVED SOURCES ONLY • NON-CLINICAL BY DESIGN
               </span>
             </div>
 
             <h1 className="text-5xl md:text-7xl serif text-navy-900 leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-              Instant Access to <br />
+              Instant Orientation with <br />
               <span className="text-teal-800 italic">Leading UK Specialists.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-              Don't wait on hold or fill out blind forms. Interact with our secure, specialist-trained AI assistants to get instantly triaged, understand your treatment pathways, and book your consultation 24/7.
+              Don't wait on hold or fill out blind forms. Interact with secure, specialist-trained AI assistants to get instant orientation on fees, eligibility, booking pathways and next steps — 24/7.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
@@ -149,7 +149,7 @@ const PatientHub: React.FC = () => {
                     <img 
                       src={specialist.image} 
                       alt={specialist.name}
-                      className="w-20 h-20 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="w-20 h-20 rounded-2xl object-cover transition-all duration-500"
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute -bottom-2 -right-2 bg-white p-1 rounded-lg shadow-sm border border-gray-50">
@@ -214,10 +214,10 @@ const PatientHub: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl md:text-6xl serif text-white mb-6 leading-tight">
-                Clinicians: Stop losing patients to website bounce rates.
+                Clinicians: Stop losing high-intent enquiries to website bounce.
               </h2>
               <p className="text-xl text-teal-100/70 font-light leading-relaxed mb-10">
-                We don't just build your governed AI; we drive the traffic. The NeuraScaleX Hub actively routes pre-triaged patients directly to your front desk.
+                We don't just deploy your Digital Avatar — we help convert website visitors into qualified enquiries. The NeuraScaleX Hub actively routes people to the right next step and reduces repetitive admin load.
               </p>
               
               <div className="space-y-6 mb-12">
@@ -227,7 +227,7 @@ const PatientHub: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-1">Rapid Deployment</h4>
-                    <p className="text-gray-400 text-sm font-light">We do the build and calibration. You approve the scope. Go live in 7 days.</p>
+                    <p className="text-gray-400 text-sm font-light">We do the build + calibration. You approve the scope and boundaries. Go live in 7 days.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -236,7 +236,7 @@ const PatientHub: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-1">Governed Intelligence</h4>
-                    <p className="text-gray-400 text-sm font-light">Built on DCB 0129 standards to ensure clinical safety and brand protection.</p>
+                    <p className="text-gray-400 text-sm font-light">Built on approved sources only, with clear refusals and safe routing — designed to protect clinical standards and brand integrity.</p>
                   </div>
                 </div>
               </div>
@@ -253,16 +253,16 @@ const PatientHub: React.FC = () => {
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] p-8 md:p-12">
                 <div className="mb-8">
                   <div className="text-gold-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">B2B Value Proposition</div>
-                  <h3 className="text-2xl serif text-white mb-4 italic">"The Hub routes high-intent, pre-triaged patients directly to your front desk, ready for consultation."</h3>
+                  <h3 className="text-2xl serif text-white mb-4 italic">"The Hub routes high-intent visitors to the right next step — booking, enquiry, waitlist or resources — ready for your team."</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <div className="text-3xl font-serif text-white mb-1">40%</div>
+                    <div className="text-3xl font-serif text-white mb-1">25–40%</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Admin Reduction</div>
                   </div>
                   <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                     <div className="text-3xl font-serif text-white mb-1">24/7</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Patient Triage</div>
+                    <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">ORIENTATION</div>
                   </div>
                 </div>
               </div>

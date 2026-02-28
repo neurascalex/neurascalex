@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Platform', path: '/platform' },
-    { name: 'Patient Hub', path: '/patient-hub' },
+    { name: 'Network', path: '/patient-hub' },
     { name: 'Live Deployments', path: '/experts' },
     { name: 'How it works', path: '/how-it-works' },
     { name: 'About', path: '/about' },
