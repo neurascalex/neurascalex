@@ -51,7 +51,7 @@ const specialists = [
     title: 'Specialist Clinic · Reading, UK',
     description: 'A multi-disciplinary clinic using the Twin to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.',
     badges: ['Digital Twin', 'Routing'],
-    image: '/images/berkshire-pain-clinic.png',
+    image: '/images/Berkshire-Pain-Clinic.png',
     widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
     website: 'https://www.berkshirepainclinic.co.uk/'
   },
@@ -61,7 +61,7 @@ const specialists = [
     title: 'Consultant Psychiatrist · UK',
     description: 'Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.',
     badges: ['Digital Twin', 'Routing'],
-    image: '/images/berkshire-psychiatrist.png',
+    image: '/images/Psychiatry-Dr-Abrar.png',
     widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
     website: 'https://www.berkshirepsychiatrist.co.uk/'
   }
