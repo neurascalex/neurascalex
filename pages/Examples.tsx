@@ -91,53 +91,54 @@ const Examples: React.FC = () => {
   ];
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen pb-20">
+    <div className="animate-in fade-in duration-1000 bg-paper min-h-screen pb-20">
       {/* HERO */}
-      <section className="bg-navy-900 py-24 text-white relative overflow-hidden">
+      <section className="bg-paper py-24 text-ink relative overflow-hidden border-b border-ink/5">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
           <h1 className="text-5xl md:text-7xl serif mb-10 leading-tight">Experience a Clinician Digital Twin.</h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-14 font-light leading-relaxed max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-ink/60 mb-14 font-light leading-relaxed max-w-4xl mx-auto font-serif italic">
             These examples show how a governed Twin answers routine questions from approved sources, stays inside boundaries, and routes safely—without giving clinical advice.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-gray-400 text-xs font-semibold uppercase tracking-widest mb-16">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-ink/40 text-[10px] font-bold uppercase tracking-widest mb-16 label-mono">
             <div>Approved sources only</div>
-            <div className="text-gold-500">•</div>
+            <div className="text-teal-precise opacity-100">•</div>
             <div>Non-clinical by design</div>
-            <div className="text-gold-500">•</div>
+            <div className="text-teal-precise opacity-100">•</div>
             <div>Designed to know where to stop</div>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-            <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-xl">
+            <Link to="/free-trial" className="bg-teal-precise text-paper px-10 py-5 rounded-none text-xs font-bold uppercase tracking-widest shadow-xl shadow-teal-precise/20 label-mono">
               Start Free Trial
             </Link>
-            <Link to="/demo" className="text-white border-b border-white/50 pb-1 text-sm font-bold uppercase tracking-widest">
+            <Link to="/demo" className="text-ink border-b border-ink/20 pb-1 text-xs font-bold uppercase tracking-widest label-mono hover:border-teal-precise transition-colors">
               Request a Demo
             </Link>
           </div>
-          <p className="mt-8 text-[10px] text-gray-500 uppercase tracking-widest">Not medical advice.</p>
+          <p className="mt-8 text-[10px] text-ink/30 uppercase tracking-widest label-mono font-bold">Not medical advice.</p>
         </div>
       </section>
 
       {/* SECTION: What you’re about to see */}
-      <section className="py-24 bg-white border-b border-gray-100">
+      <section className="py-24 bg-paper border-b border-ink/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="max-w-3xl">
-            <h2 className="text-4xl serif text-teal-800 mb-8">The point isn’t “smart AI.” It’s governed identity.</h2>
-            <p className="text-lg text-gray-600 mb-12 font-light">Each example is designed to demonstrate three things:</p>
+            <h2 className="text-4xl serif text-teal-precise mb-8">The point isn’t “smart AI.” <br/><span className="italic italic-moment text-ink">It’s governed identity.</span></h2>
+            <p className="text-lg text-ink/60 mb-12 font-serif italic">Each example is designed to demonstrate three things:</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-4">Voice</h3>
-                <p className="text-sm text-gray-500">It sounds like the clinician—mirroring professional tone and specific vocabulary.</p>
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-ink mb-4 label-mono opacity-100">Voice</h3>
+                <p className="text-sm text-ink/50 leading-relaxed font-serif italic">It sounds like the clinician—mirroring professional tone and specific vocabulary.</p>
               </div>
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-4">Boundaries</h3>
-                <p className="text-sm text-gray-500">It refuses diagnosis/treatment advice the moment a conversation drifts out of scope.</p>
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-ink mb-4 label-mono opacity-100">Boundaries</h3>
+                <p className="text-sm text-ink/50 leading-relaxed font-serif italic">It refuses diagnosis/treatment advice the moment a conversation drifts out of scope.</p>
               </div>
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-4">Routing</h3>
-                <p className="text-sm text-gray-500">It guides users to the right next step—booking, programmes, or resources.</p>
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-ink mb-4 label-mono opacity-100">Routing</h3>
+                <p className="text-sm text-ink/50 leading-relaxed font-serif italic">It guides users to the right next step—booking, programmes, or resources.</p>
               </div>
             </div>
           </div>
@@ -147,25 +148,25 @@ const Examples: React.FC = () => {
       {/* SECTION: Choose an example to try */}
       <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="mb-16">
-          <h2 className="text-4xl serif text-navy-800 mb-6">Pick a specialty. Ask 2–3 real questions.</h2>
-          <p className="text-lg text-gray-500 font-light">Try one of the prompts below, then push it outside scope to see how it refuses safely.</p>
+          <h2 className="text-4xl serif text-ink mb-6 italic italic-moment">Pick a specialty. Ask 2–3 real questions.</h2>
+          <p className="text-lg text-ink/60 font-serif italic">Try one of the prompts below, then push it outside scope to see how it refuses safely.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {exampleTwins.map((twin, i) => (
-            <div key={i} className="bg-white border border-gray-100 p-10 flex flex-col h-full rounded-sm hover:shadow-2xl transition-all group relative">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 mb-2">{twin.specialty}</span>
-              <h3 className="text-2xl serif text-navy-900 mb-6">{twin.title}</h3>
+            <div key={i} className="bg-paper border border-ink/5 p-10 flex flex-col h-full rounded-none hover:shadow-2xl hover:shadow-teal-precise/5 transition-all group relative">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-teal-precise mb-2 label-mono opacity-100">{twin.specialty}</span>
+              <h3 className="text-2xl serif text-ink mb-6">{twin.title}</h3>
               
               <div className="mb-8">
-                <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Best for:</h4>
-                <p className="text-sm text-navy-900/70 italic leading-relaxed">{twin.goodAt}</p>
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-3 label-mono">Best for:</h4>
+                <p className="text-sm text-ink/70 italic leading-relaxed font-serif">{twin.goodAt}</p>
               </div>
 
               <div className="space-y-4 mb-10 flex-grow">
-                <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Try asking:</h4>
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/30 label-mono">Try asking:</h4>
                 {twin.prompts.map((p, idx) => (
-                  <div key={idx} className="text-xs bg-gray-50 p-3 rounded-sm text-navy-800 border-l-2 border-teal-800/10">
+                  <div key={idx} className="text-xs bg-teal-precise/5 p-3 rounded-none text-ink/80 border-l-2 border-teal-precise/20 font-serif italic">
                     "{p}"
                   </div>
                 ))}
@@ -174,13 +175,13 @@ const Examples: React.FC = () => {
               <div className="flex flex-col space-y-4">
                 <button 
                   onClick={() => setSelectedTwin(twin)}
-                  className="w-full bg-teal-800 text-gold-500 py-4 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-teal-900 transition-all"
+                  className="w-full bg-teal-precise text-paper py-5 text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all label-mono shadow-lg shadow-teal-precise/10"
                 >
                   Try this Twin
                 </button>
                 <button 
                   onClick={() => setShowRefusal(twin.boundaryTest)}
-                  className="w-full border border-navy-800/20 text-navy-800 py-4 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-50 transition-all"
+                  className="w-full border border-ink/20 text-ink py-4 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all label-mono"
                 >
                   See what it can't do
                 </button>
@@ -190,39 +191,39 @@ const Examples: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION: What to notice */}
-      <section className="py-24 bg-softgreen border-y border-teal-100">
+      {/* SECTION: Watch for three signals. */}
+      <section className="py-24 bg-teal-precise/5 border-y border-teal-precise/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl serif text-navy-800 mb-16 text-center">Watch for three signals.</h2>
+          <h2 className="text-4xl serif text-ink mb-16 text-center italic italic-moment">Watch for three signals.</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="bg-white p-12 rounded-sm shadow-sm border border-teal-800/5">
-              <h3 className="text-xl serif text-teal-800 mb-6 italic">Accuracy from approved sources</h3>
-              <p className="text-sm text-gray-600 leading-relaxed font-light">It cites your material, not guesses from the public web. If you haven't written about it, the Twin won't speak on it.</p>
+            <div className="bg-paper p-12 rounded-none shadow-sm border border-teal-precise/10">
+              <h3 className="text-xl serif text-teal-precise mb-6 italic">Accuracy from approved sources</h3>
+              <p className="text-sm text-ink/60 leading-relaxed font-serif italic">It cites your material, not guesses from the public web. If you haven't written about it, the Twin won't speak on it.</p>
             </div>
-            <div className="bg-white p-12 rounded-sm shadow-sm border border-teal-800/5">
-              <h3 className="text-xl serif text-teal-800 mb-6 italic">Safe refusals</h3>
-              <p className="text-sm text-gray-600 leading-relaxed font-light">It clearly says what it can’t do. No "confident hallucination"—just disciplined, non-clinical boundaries.</p>
+            <div className="bg-paper p-12 rounded-none shadow-sm border border-teal-precise/10">
+              <h3 className="text-xl serif text-teal-precise mb-6 italic">Safe refusals</h3>
+              <p className="text-sm text-ink/60 leading-relaxed font-serif italic">It clearly says what it can’t do. No "confident hallucination"—just disciplined, non-clinical boundaries.</p>
             </div>
-            <div className="bg-white p-12 rounded-sm shadow-sm border border-teal-800/5">
-              <h3 className="text-xl serif text-teal-800 mb-6 italic">Helpful routing</h3>
-              <p className="text-sm text-gray-600 leading-relaxed font-light">It moves people forward without “salesy” behaviour—guiding them toward the professional help they need.</p>
+            <div className="bg-paper p-12 rounded-none shadow-sm border border-teal-precise/10">
+              <h3 className="text-xl serif text-teal-precise mb-6 italic">Helpful routing</h3>
+              <p className="text-sm text-ink/60 leading-relaxed font-serif italic">It moves people forward without “salesy” behaviour—guiding them toward the professional help they need.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION: Want yours to look like this? */}
-      <section className="py-24 bg-white">
+      {/* SECTION: Your Twin is built... */}
+      <section className="py-24 bg-paper">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl serif text-teal-800 mb-10">Your Twin is built from your material—nothing else.</h2>
-          <p className="text-lg text-gray-600 mb-12 font-light leading-relaxed">
+          <h2 className="text-4xl serif text-teal-precise mb-10 italic italic-moment">Your Twin is built from your material—nothing else.</h2>
+          <p className="text-lg text-ink/60 mb-12 font-serif italic leading-relaxed">
             Start a free trial and upload approved sources in your dashboard. Our onboarding team works with you to make it live in 7 days.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-            <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-xl">
+            <Link to="/free-trial" className="bg-teal-precise text-paper px-10 py-5 rounded-none text-xs font-bold uppercase tracking-widest shadow-xl shadow-teal-precise/20 label-mono">
               Start Free Trial (30 days, no card)
             </Link>
-            <Link to="/demo" className="text-navy-800 font-bold uppercase tracking-widest text-sm border-b-2 border-navy-800 pb-1">
+            <Link to="/demo" className="text-ink font-bold uppercase tracking-widest text-xs border-b border-ink/20 pb-1 hover:border-teal-precise transition-colors label-mono">
               Request a Demo
             </Link>
           </div>
@@ -243,49 +244,45 @@ const Examples: React.FC = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 bg-navy-950 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-             <path d="M0,0 L100,100 M50,0 L100,50" stroke="white" strokeWidth="0.05" fill="none" />
-          </svg>
-        </div>
+      <section className="py-32 bg-paper text-ink text-center relative overflow-hidden border-t border-ink/5">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         <div className="max-w-3xl mx-auto px-6 relative z-10">
-          <h2 className="text-5xl md:text-6xl serif mb-12">Experience it. Then decide.</h2>
+          <h2 className="text-5xl md:text-6xl serif mb-12 italic italic-moment">Experience it. Then decide.</h2>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-10">
-            <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl">
+            <Link to="/free-trial" className="w-full sm:w-auto bg-teal-precise text-paper px-12 py-6 rounded-none text-xs font-bold uppercase tracking-widest shadow-2xl shadow-teal-precise/20 label-mono">
               Start Free Trial
             </Link>
-            <Link to="/demo" className="w-full sm:w-auto border border-white/30 text-white px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest">
+            <Link to="/demo" className="w-full sm:w-auto border border-ink/20 text-ink px-12 py-6 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all label-mono">
               Request a Demo
             </Link>
           </div>
-          <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500">
+          <p className="text-[10px] uppercase tracking-widest font-bold text-ink/40 label-mono">
             Live in 7 days. Approved sources only. Designed to know where to stop.
           </p>
         </div>
       </section>
 
-      {/* MODALS / OVERLAYS (Simulated Interactive Features) */}
+      {/* MODALS / OVERLAYS */}
       {selectedTwin && (
-        <div className="fixed inset-0 bg-navy-950/90 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
-          <div className="bg-white w-full max-w-lg rounded-sm p-12 relative">
-            <button onClick={() => setSelectedTwin(null)} className="absolute top-6 right-6 text-navy-900/30 hover:text-navy-900">
+        <div className="fixed inset-0 bg-ink/90 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
+          <div className="bg-paper w-full max-w-lg rounded-none p-12 relative border border-teal-precise/20">
+            <button onClick={() => setSelectedTwin(null)} className="absolute top-6 right-6 text-ink/30 hover:text-ink transition-colors">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <h3 className="text-3xl serif text-teal-800 mb-6">{selectedTwin.title} Assistant</h3>
-            <div className="bg-gray-50 p-6 rounded-sm mb-8">
-              <p className="text-sm text-gray-400 italic mb-4">"Try sending one of the prompts below..."</p>
+            <h3 className="text-3xl serif text-teal-precise mb-6 font-bold">{selectedTwin.title} Assistant</h3>
+            <div className="bg-teal-precise/5 p-6 rounded-none mb-8 border border-teal-precise/10">
+              <p className="text-xs text-teal-precise opacity-70 italic mb-4 font-serif">"Try sending one of the prompts below..."</p>
               <div className="space-y-3">
                 {selectedTwin.prompts.map((p, i) => (
-                  <button key={i} className="block w-full text-left text-xs bg-white p-3 border border-gray-100 rounded-sm hover:border-gold-500 transition-all text-navy-800">
+                  <button key={i} className="block w-full text-left text-xs bg-paper p-3 border border-ink/5 rounded-none hover:border-teal-precise transition-all text-ink font-serif italic">
                     {p}
                   </button>
                 ))}
               </div>
             </div>
-            <p className="text-xs text-gray-500 leading-relaxed italic">
+            <p className="text-[10px] text-ink/40 leading-relaxed italic font-serif">
               * This interactive sandbox is fueled by real clinical knowledge repositories. 
               The actual deployment will be embedded directly on your site.
             </p>
@@ -294,21 +291,21 @@ const Examples: React.FC = () => {
       )}
 
       {showRefusal && (
-        <div className="fixed inset-0 bg-navy-950/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in zoom-in-95 duration-200">
-          <div className="bg-white w-full max-w-md rounded-sm p-10 relative border-t-4 border-red-500">
-            <button onClick={() => setShowRefusal(null)} className="absolute top-6 right-6 text-gray-400">
+        <div className="fixed inset-0 bg-ink/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in zoom-in-95 duration-200">
+          <div className="bg-paper w-full max-w-md rounded-none p-10 relative border-t-4 border-teal-precise">
+            <button onClick={() => setShowRefusal(null)} className="absolute top-6 right-6 text-ink/30 hover:text-ink">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-red-600 mb-6">Safe Refusal Example</h3>
-            <div className="bg-gray-50 p-6 rounded-sm border border-gray-100 font-mono text-xs text-navy-900 mb-6">
-              <span className="text-gray-400 block mb-2">Patient Query:</span>
-              <p className="mb-4">{showRefusal.split('(')[0]}</p>
-              <span className="text-gold-600 block mb-2">Digital Twin Response:</span>
-              <p className="italic">"I cannot provide clinical diagnosis or treatment advice. As a governed Digital Twin, my role is to provide education and orientation. To address this specific clinical concern, please book a direct consultation with Dr. [Name] here: [Link]"</p>
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-teal-precise mb-6 label-mono opacity-100">Safe Refusal Example</h3>
+            <div className="bg-teal-precise/5 p-6 rounded-none border border-teal-precise/10 font-mono text-[10px] text-ink mb-6">
+              <span className="text-ink/30 block mb-2 label-mono">Patient Query:</span>
+              <p className="mb-4 font-serif italic">"{showRefusal.split('(')[0].trim()}"</p>
+              <span className="text-teal-precise block mb-2 label-mono opacity-100">Digital Twin Response:</span>
+              <p className="italic font-serif">"I cannot provide clinical diagnosis or treatment advice. As a governed Digital Twin, my role is to provide education and orientation. To address this specific clinical concern, please book a direct consultation with Dr. [Name] here: [Link]"</p>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-[10px] text-ink/40 font-serif italic">
               The Twin detects the clinical liability and immediately switches to its refusal protocol.
             </p>
           </div>

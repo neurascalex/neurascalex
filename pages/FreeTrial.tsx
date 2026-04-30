@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const FreeTrial: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -22,21 +22,6 @@ const FreeTrial: React.FC = () => {
     consentContact: false,
     consentPublicVerification: false
   });
-  const location = useLocation();
-
-  useEffect(() => {
-    // Scroll to form section when component mounts or hash changes
-    if (location.hash === '#form') {
-      const formSection = document.getElementById('trial-form');
-      if (formSection) {
-        setTimeout(() => {
-          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [location]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -44,109 +29,54 @@ const FreeTrial: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: val }));
   };
 
-  const isStep1Valid = () => {
-    return (
-      formData.firstName.trim() !== '' &&
-      formData.lastName.trim() !== '' &&
-      formData.email.trim() !== '' &&
-      formData.role.trim() !== '' &&
-      formData.country.trim() !== '' &&
-      formData.website.trim() !== '' &&
-      formData.linkedin.trim() !== ''
-    );
-  };
-
   const handleNext = () => setStep(2);
   const handleBack = () => setStep(1);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      // Consent fields are used for validation only, not sent to API
-      const requestBody = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        personalEmailId: formData.email,
-        speciality: formData.role,
-        country: formData.country,
-        personalWebsiteUrl: formData.website || '',
-        linkedInUrl: formData.linkedin || '',
-        phoneNumber: formData.phone || '',
-        primaryGoal: formData.primaryGoal,
-        deploymentPreference: formData.deployment,
-        message: formData.message || ''
-      };
-
-      console.log('Submitting trial request with payload:', requestBody);
-
-      // Submit to NeuraScaleX API
-      const response = await fetch('https://neurax-net-test-eqgxdcf9ayhdazfe.uksouth-01.azurewebsites.net/Registration_NoKey/RequestTrial', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(requestBody)
-      });
-
-      console.log('Response status:', response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('API Error Response:', errorText);
-        throw new Error(`Failed to submit trial request: ${response.status} - ${errorText}`);
-      }
-
-      const responseData = await response.json();
-      console.log('API Response:', responseData);
-      console.log('Free trial request successfully submitted');
-      
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (error) {
-      console.error('Error submitting trial request:', error);
-      // Still show success page even if API fails
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    setIsSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (isSubmitted) {
     return (
-      <div className="animate-in fade-in duration-700 bg-white min-h-[80vh] flex items-center justify-center py-24">
+      <div className="animate-in fade-in duration-700 bg-paper min-h-[80vh] flex items-center justify-center py-16">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="mb-8 flex justify-center">
-            <div className="w-16 h-16 bg-softgreen rounded-full flex items-center justify-center border border-teal-100">
-              <svg className="w-8 h-8 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="w-16 h-16 bg-teal-precise/10 rounded-full flex items-center justify-center border border-teal-precise/20">
+              <svg className="w-8 h-8 text-teal-precise" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl serif text-teal-800 mb-6">You’re in. Next step: Verification + setup</h1>
-          <div className="text-left bg-gray-50 p-8 rounded-sm border border-gray-100 mb-10">
-            <ul className="space-y-4 text-gray-600 font-light">
+          <h1 className="text-4xl md:text-5xl serif text-ink mb-6">You’re in. <br/><span className="text-teal-precise italic">Next step: Verification + setup</span></h1>
+          <div className="text-left bg-paper p-8 rounded-none border border-ink/5 mb-10">
+            <ul className="space-y-4 text-ink/60 font-serif italic">
               <li className="flex items-start">
-                <span className="text-gold-500 mr-3 font-bold">/</span>
+                <span className="text-teal-precise mr-3 font-bold font-mono">/</span>
                 Within 24 hours, our onboarding team will confirm your trial eligibility.
               </li>
               <li className="flex items-start">
-                <span className="text-gold-500 mr-3 font-bold">/</span>
-                If we have enough information, you’ll receive your private Twin URL, dashboard login, and onboarding checklist.
+                <span className="text-teal-precise mr-3 font-bold font-mono">/</span>
+                If we have enough information, you’ll receive your private AI Assistant URL, dashboard login, and onboarding checklist.
               </li>
               <li className="flex items-start">
-                <span className="text-gold-500 mr-3 font-bold">/</span>
+                <span className="text-teal-precise mr-3 font-bold font-mono">/</span>
                 If we need anything, we’ll email you a short “missing details” request.
               </li>
               <li className="flex items-start">
-                <span className="text-gold-500 mr-3 font-bold font-semibold text-teal-800 italic">
+                <span className="text-teal-precise mr-3 font-bold font-mono">/</span>
+                <span className="font-bold text-ink italic not-italic font-sans text-sm">
                   Target go-live: 7 days (after you approve boundaries + routing).
                 </span>
               </li>
             </ul>
           </div>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link to="/" className="text-navy-800 font-bold uppercase tracking-widest text-sm border-b-2 border-navy-800 pb-1">
+            <Link to="/demo" className="bg-ink text-paper px-10 py-5 rounded-lg text-xs font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-teal-precise transition-all">
+              Book a 15-min onboarding call
+            </Link>
+            <Link to="/" className="text-ink font-bold uppercase tracking-[0.2em] text-[10px] border-b border-ink/20 pb-2 hover:border-teal-precise transition-colors">
               Return to Home
             </Link>
           </div>
@@ -156,26 +86,41 @@ const FreeTrial: React.FC = () => {
   }
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen py-24">
-      <div id="trial-form" className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl serif text-teal-800 mb-4">Start your 30-Day Clinician Digital Twin Trial</h1>
-          <p className="text-gray-500 font-light text-lg mb-2">We verify clinician identity, create your private testing environment, and share your Twin + dashboard access.</p>
-          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
-            Approved sources only. Non-clinical by design. You control what gets published.
+    <div className="animate-in fade-in duration-1000 bg-paper min-h-screen py-16">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <span className="label-mono text-teal-precise mb-8 block font-bold uppercase text-[10px] tracking-[0.4em] opacity-100">FREE TRIAL · 30 DAYS · NO CARD REQUIRED</span>
+          <h1 className="text-5xl md:text-7xl font-serif text-ink mb-10 leading-[1.1] tracking-tight">
+            Start the trial that <br />
+            <span className="italic text-teal-precise">fills your calendar.</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-ink/60 font-serif italic italic-moment leading-relaxed max-w-2xl mx-auto mb-12">
+            30 days free. Live in 14 days. Cancel any time in the first month. We build your AI Clinic Page, you approve every word, and your Knowledge Center starts converting patients from day one.
           </p>
+          
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 pt-10 border-t border-ink/5 max-w-2xl mx-auto">
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+                <span className="text-teal-precise text-sm">✓</span> APPROVED SOURCES ONLY
+             </div>
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+                <span className="text-teal-precise text-sm">✓</span> NON-CLINICAL BY DESIGN
+             </div>
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+                <span className="text-teal-precise text-sm">✓</span> NO COMMITMENT BEYOND DAY 30
+             </div>
+          </div>
         </div>
 
         {/* Progress Indicator */}
         <div className="flex items-center justify-center mb-12 space-x-4">
           <div className="flex items-center">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 1 ? 'bg-teal-800 text-gold-500' : 'bg-gray-200 text-gray-400'}`}>1</div>
-            <span className={`ml-2 text-[10px] font-bold uppercase tracking-widest ${step >= 1 ? 'text-teal-800' : 'text-gray-400'}`}>Your details</span>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 1 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/20'}`}>1</div>
+            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 1 ? 'text-teal-precise' : 'text-ink/20'}`}>Your details</span>
           </div>
-          <div className={`w-12 h-px ${step >= 2 ? 'bg-teal-800' : 'bg-gray-200'}`}></div>
+          <div className={`w-12 h-px ${step >= 2 ? 'bg-teal-precise/30' : 'bg-ink/5'}`}></div>
           <div className="flex items-center">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 2 ? 'bg-teal-800 text-gold-500' : 'bg-gray-200 text-gray-400'}`}>2</div>
-            <span className={`ml-2 text-[10px] font-bold uppercase tracking-widest ${step >= 2 ? 'text-teal-800' : 'text-gray-400'}`}>Goals + Deployment</span>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 2 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/20'}`}>2</div>
+            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 2 ? 'text-teal-precise' : 'text-ink/20'}`}>Goals + Deployment</span>
           </div>
         </div>
 
@@ -185,29 +130,29 @@ const FreeTrial: React.FC = () => {
               <div className="animate-in slide-in-from-right-4 duration-300 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">First name*</label>
-                    <input required name="firstName" value={formData.firstName} onChange={handleInputChange} type="text" placeholder="e.g., Sarah" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">First name*</label>
+                    <input required name="firstName" value={formData.firstName} onChange={handleInputChange} type="text" placeholder="e.g., Sarah" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Last name*</label>
-                    <input required name="lastName" value={formData.lastName} onChange={handleInputChange} type="text" placeholder="e.g., Chen" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Last name*</label>
+                    <input required name="lastName" value={formData.lastName} onChange={handleInputChange} type="text" placeholder="e.g., Chen" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Work email*</label>
-                  <p className="text-[10px] text-gray-400 mb-1">If you don’t have a work email, use personal email and add your GMC/NMC/HCPC or clinic link below.</p>
-                  <input required name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="name@nhs.net / name@clinic.com" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Work email*</label>
+                  <p className="text-[10px] text-ink/40 mb-1">If you don’t have a work email, use personal email and add your GMC/NMC/HCPC or clinic link below.</p>
+                  <input required name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="name@nhs.net / name@clinic.com" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Role / Specialty*</label>
-                    <input required name="role" value={formData.role} onChange={handleInputChange} type="text" placeholder="e.g., GP / Therapist" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Role / Specialty*</label>
+                    <input required name="role" value={formData.role} onChange={handleInputChange} type="text" placeholder="e.g., GP / Therapist" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Country / Primary location*</label>
-                    <select name="country" value={formData.country} onChange={handleInputChange} className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm appearance-none transition-all">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Country / Primary location*</label>
+                    <select name="country" value={formData.country} onChange={handleInputChange} className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm appearance-none transition-all">
                       <option value="UK">United Kingdom</option>
                       <option value="Ireland">Ireland</option>
                       <option value="EU">European Union</option>
@@ -218,33 +163,24 @@ const FreeTrial: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Website / clinic page*</label>
-                  <p className="text-[10px] text-gray-400 mb-1">Used to verify identity and plan your embed.</p>
-                  <input required name="website" value={formData.website} onChange={handleInputChange} type="url" placeholder="https://yourclinic.com" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Website / clinic page</label>
+                  <p className="text-[10px] text-ink/40 mb-1">Used to verify identity and plan your embed.</p>
+                  <input name="website" value={formData.website} onChange={handleInputChange} type="url" placeholder="https://yourclinic.com" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">LinkedIn profile URL*</label>
-                    <input required name="linkedin" value={formData.linkedin} onChange={handleInputChange} type="url" placeholder="https://linkedin.com/in/…" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">LinkedIn profile URL</label>
+                    <input name="linkedin" value={formData.linkedin} onChange={handleInputChange} type="url" placeholder="https://linkedin.com/in/…" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-navy-900">Phone number (optional)</label>
-                    <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:ring-1 focus:ring-teal-800 text-sm transition-all" />
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Phone number (optional)</label>
+                    <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                   </div>
                 </div>
 
                 <div className="pt-6">
-                  <button 
-                    type="button" 
-                    onClick={handleNext} 
-                    disabled={!isStep1Valid()}
-                    className={`w-full py-5 rounded-sm text-sm font-bold uppercase tracking-widest transition-all shadow-lg ${
-                      isStep1Valid() 
-                        ? 'bg-teal-800 text-gold-500 hover:bg-teal-900 cursor-pointer' 
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed opacity-60'
-                    }`}
-                  >
+                  <button type="button" onClick={handleNext} className="w-full bg-teal-precise text-paper py-5 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-ink transition-all shadow-xl shadow-teal-precise/10">
                     Continue to Goals
                   </button>
                 </div>
@@ -292,7 +228,7 @@ const FreeTrial: React.FC = () => {
                     </label>
                     <label className="flex items-start group cursor-pointer">
                       <input required type="checkbox" name="consentNonClinical" checked={formData.consentNonClinical} onChange={handleInputChange} className="mt-1 w-4 h-4 text-teal-800 rounded focus:ring-teal-800" />
-                      <span className="ml-3 text-xs text-gray-600 leading-relaxed group-hover:text-navy-900 transition-colors">I understand the Digital Twin is non-clinical and does not provide diagnosis, prescriptions, or individual treatment plans.</span>
+                      <span className="ml-3 text-xs text-gray-600 leading-relaxed group-hover:text-navy-900 transition-colors">I understand the AI Assistant is non-clinical and does not provide diagnosis, prescriptions, or individual treatment plans.</span>
                     </label>
                     <label className="flex items-start group cursor-pointer">
                       <input required type="checkbox" name="consentContact" checked={formData.consentContact} onChange={handleInputChange} className="mt-1 w-4 h-4 text-teal-800 rounded focus:ring-teal-800" />
@@ -306,10 +242,10 @@ const FreeTrial: React.FC = () => {
                 </div>
 
                 <div className="pt-8 flex flex-col items-center">
-                  <button type="submit" className="w-full bg-navy-800 text-gold-500 py-6 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-navy-950 transition-all shadow-2xl mb-6">
-                    Start Free Trial
+                  <button type="submit" className="w-full bg-ink text-paper py-6 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-2xl mb-8">
+                    SEND APPLICATION
                   </button>
-                  <button type="button" onClick={handleBack} className="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-navy-900 transition-colors">
+                  <button type="button" onClick={handleBack} className="label-mono font-bold opacity-40 hover:opacity-100 transition-opacity">
                     ← Back to step 1
                   </button>
                   <p className="mt-8 text-[10px] font-bold text-gray-400 uppercase tracking-widest text-center">

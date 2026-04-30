@@ -1,254 +1,196 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 const Pricing: React.FC = () => {
+  const plans = [
+    {
+      name: "Essentials",
+      price: "399",
+      description: "For individual clinicians starting private practice",
+      features: [
+        "AI Clinic Page with custom URL",
+        "Website widget option",
+        "Lead capture & basic analytics",
+        "Knowledge Center setup",
+        "Email support",
+        "Up to 500 conversations/month"
+      ],
+      cta: "Choose plan",
+      highlight: false
+    },
+    {
+      name: "Professional",
+      price: "799",
+      description: "For established single-practitioner practices. Most popular.",
+      features: [
+        "Everything in Essentials",
+        "Full Intelligence Dashboard",
+        "Weekly intelligence reports",
+        "Content gap analysis",
+        "Booking intent signals",
+        "Priority support",
+        "Up to 2,000 conversations/month",
+        "Quarterly business review"
+      ],
+      cta: "Choose plan",
+      highlight: true
+    },
+    {
+      name: "Practice",
+      price: "1,499",
+      description: "For multi-practitioner clinics",
+      features: [
+        "Everything in Professional",
+        "Multi-clinician deployment",
+        "White-label options",
+        "EHR integration advisory",
+        "Practice manager dashboard",
+        "Dedicated success manager",
+        "Unlimited conversations",
+        "Monthly strategy session"
+      ],
+      cta: "Choose plan",
+      highlight: false
+    }
+  ];
+
+  const enterpriseFeatures = [
+    "Multi-region deployment",
+    "Single sign-on (SSO)",
+    "Custom intelligence models",
+    "API access",
+    "Dedicated partner manager"
+  ];
+
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen">
-      {/* HERO */}
-      <section className="bg-navy-900 py-24 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
-          <h1 className="text-5xl md:text-7xl serif mb-10 leading-tight">Simple pricing for governed clinical scale.</h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-14 font-light leading-relaxed max-w-4xl mx-auto">
-            Start with a 30-day free trial (no card). If it’s a fit, move to a monthly plan that keeps your Clinician Digital Twin live, safe, and continuously improved.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-gray-400 text-xs font-semibold uppercase tracking-widest mb-16">
-            <div>Approved sources only</div>
-            <div className="text-gold-500">•</div>
-            <div>Non-clinical by design</div>
-            <div className="text-gold-500">•</div>
-            <div>Designed to know where to stop</div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-            <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-xl">
-              Start Free Trial
-            </Link>
-            <Link to="/demo" className="text-white border-b border-white/50 pb-1 text-sm font-bold uppercase tracking-widest">
-              Request a Demo
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 30-Day Free Trial Section */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div>
-            <h2 className="text-4xl serif text-teal-800 mb-8">Start free. Go live in 7 days.</h2>
-            <p className="text-lg text-gray-600 mb-10 font-light leading-relaxed">
-              Your free trial includes guided onboarding so you can test your Twin privately, confirm boundaries, and deploy confidently.
+    <div className="bg-paper min-h-screen pt-24 font-sans selection:bg-teal-precise selection:text-paper">
+      
+      {/* Hero Section */}
+      <section className="py-16 bg-paper text-ink relative overflow-hidden border-b border-ink/5">
+        {/* Background texture */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-[0.3em] opacity-100">Pricing</span>
+            <h1 className="text-6xl md:text-8xl font-serif mb-10 leading-[1.05] tracking-tight">
+              One platform. <br />
+              <span className="text-teal-precise italic">Four ways to engage.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-ink/60 font-light max-w-3xl mx-auto leading-relaxed font-serif italic italic-moment">
+              Pricing scales with your practice. Setup fee £1,500, waived for annual prepay or Founder's Cohort members.
             </p>
-            <Link to="/free-trial" className="inline-block bg-teal-800 text-gold-500 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest">
-              Start Free Trial
-            </Link>
-            <p className="mt-6 text-xs text-gray-400 font-bold uppercase tracking-widest italic">No credit card required.</p>
-          </div>
-          <div className="bg-softgreen p-12 rounded-sm border border-teal-100">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-navy-900 mb-8">Included in the trial:</h3>
-            <ul className="space-y-6">
-              {[
-                "Dashboard access + private Twin link",
-                "Approved-source ingestion (you upload, we guide)",
-                "Voice + boundaries + refusal behaviour setup",
-                "Safe routing (booking, enquiry, programmes/resources)",
-                "Website deployment support (embed/link/QR)"
-              ].map((item, i) => (
-                <li key={i} className="flex items-start text-sm font-medium text-navy-800">
-                  <span className="text-gold-500 mr-4 font-bold">/</span> {item}
-                </li>
-              ))}
-              {/* Added to match Home page consistency */}
-              <li className="flex items-start text-sm font-medium text-navy-800">
-                <span className="text-gold-500 mr-4 font-bold">/</span> 
-                <span>
-                   <strong className="font-bold text-teal-900">White-Glove Build:</strong> Personal setup & calibration <span className="text-gold-600 font-bold">(£3,000 Waived)</span>
-                </span>
-              </li>
-            </ul>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* PLANS (3 cards) */}
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Plan 1 - Solo */}
-          <div className="bg-white border border-gray-100 p-12 flex flex-col h-full rounded-sm hover:shadow-2xl transition-all group">
-            <h3 className="text-3xl serif text-navy-900 mb-2">Solo</h3>
-            <p className="text-gold-600 text-2xl font-serif mb-6 italic">£99 <span className="text-sm text-gray-400 not-italic">/ month</span></p>
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Best for: Individual clinician / single specialist</p>
-            <div className="space-y-4 mb-12 flex-grow">
-              <p className="text-xs font-bold uppercase tracking-widest text-navy-900">Includes:</p>
-              {[
-                "1 Clinician Digital Twin (live)",
-                "Approved sources knowledge base",
-                "Boundaries + refusal controls",
-                "Safe routing to your next steps",
-                "Standard support"
-              ].map((f, i) => (
-                <div key={i} className="flex items-start text-sm text-gray-500">
-                  <span className="text-teal-800 mr-3">✔</span> {f}
+      {/* Pricing Grid */}
+      <section className="py-20 bg-paper">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {plans.map((plan, i) => (
+              <div 
+                key={i} 
+                className={`flex flex-col h-full border ${plan.highlight ? 'border-teal-precise bg-teal-precise/5 text-ink shadow-2xl relative scale-[1.02] z-10' : 'border-ink/10 bg-paper text-ink'} p-10 md:p-12 transition-all duration-500`}
+              >
+                {plan.highlight && (
+                   <div className="absolute top-0 right-10 -translate-y-1/2 bg-teal-precise text-paper px-4 py-1.5 label-mono text-[9px] font-bold uppercase tracking-widest opacity-100">MOST POPULAR</div>
+                )}
+                
+                <h3 className={`text-2xl font-serif font-bold mb-2 ${plan.highlight ? 'text-teal-precise' : 'text-ink'}`}>{plan.name}</h3>
+                <p className={`text-sm mb-10 font-serif italic min-h-[40px] ${plan.highlight ? 'text-ink/60' : 'text-ink/50'}`}>{plan.description}</p>
+                
+                <div className="mb-12">
+                   <div className="flex items-baseline">
+                      <span className="text-5xl font-serif font-bold tracking-tighter">£{plan.price}</span>
+                      <span className={`text-sm ml-2 label-mono opacity-40 uppercase font-bold`}>/month</span>
+                   </div>
                 </div>
-              ))}
-            </div>
-            <Link to="/free-trial" className="w-full text-center bg-navy-800 text-white py-4 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-950 transition-all">
-              Start Free Trial
-            </Link>
-          </div>
 
-          {/* Plan 2 - Pro */}
-          <div className="bg-navy-900 border border-navy-800 p-12 flex flex-col h-full rounded-sm shadow-xl transform scale-105 relative z-10 text-white">
-            <div className="absolute top-0 right-12 bg-gold-500 text-navy-950 px-4 py-1 text-[10px] font-bold uppercase tracking-widest rounded-b-sm">Most Popular</div>
-            <h3 className="text-3xl serif mb-2 text-gold-500">Pro</h3>
-            <p className="text-white text-2xl font-serif mb-6 italic">£299 <span className="text-sm text-gray-400 not-italic">/ month</span></p>
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Best for: Clinician with programmes / high inbound volume</p>
-            <div className="space-y-4 mb-12 flex-grow">
-              <p className="text-xs font-bold uppercase tracking-widest text-gold-500">Everything in Solo, plus:</p>
-              {[
-                "Programme / membership orientation module",
-                "Enhanced routing paths (multiple CTAs)",
-                "Quarterly optimisation review (analysis of patient needs)"
-              ].map((f, i) => (
-                <div key={i} className="flex items-start text-sm text-gray-300">
-                  <span className="text-gold-500 mr-3">✔</span> {f}
+                 <div className="flex-grow space-y-5 mb-12">
+                  {plan.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start">
+                       <span className={`w-5 h-5 mr-4 flex-shrink-0 flex items-center justify-center text-[10px] ${plan.highlight ? 'bg-teal-precise text-paper' : 'bg-teal-precise/10 text-teal-precise'}`}>✓</span>
+                       <span className={`text-sm font-serif italic opacity-80 leading-relaxed`}>{feature}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <Link to="/demo" className="w-full text-center bg-gold-500 text-navy-950 py-4 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-gold-600 transition-all">
-              Request a Demo
-            </Link>
-          </div>
 
-          {/* Plan 3 - Clinic */}
-          <div className="bg-white border border-gray-100 p-12 flex flex-col h-full rounded-sm hover:shadow-2xl transition-all group">
-            <h3 className="text-3xl serif text-navy-900 mb-2">Clinic</h3>
-            <p className="text-teal-800 text-2xl font-serif mb-6 italic">From £499 <span className="text-sm text-gray-400 not-italic">/ month</span></p>
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Best for: Multi-service clinics / centres</p>
-            <div className="space-y-4 mb-12 flex-grow">
-              <p className="text-xs font-bold uppercase tracking-widest text-navy-900">Includes:</p>
-              {[
-                "Multi-service routing",
-                "Multiple team stakeholders (admin + clinician)",
-                "Deployment support across multiple pages",
-                "Custom governance configuration"
-              ].map((f, i) => (
-                <div key={i} className="flex items-start text-sm text-gray-500">
-                  <span className="text-teal-800 mr-3">✔</span> {f}
-                </div>
-              ))}
-            </div>
-            <Link to="/demo" className="w-full text-center border border-navy-800 text-navy-800 py-4 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-50 transition-all">
-              Request a Demo
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: Setup */}
-      <section className="py-24 bg-softgreen border-y border-teal-100">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl serif text-navy-800 mb-10">Setup is included during early rollout.</h2>
-          <p className="text-lg text-gray-600 mb-12 font-light leading-relaxed">
-            For the first cohort, we include onboarding and deployment support to ensure the Twin goes live safely and accurately.
-          </p>
-          <div className="bg-white p-6 inline-block rounded-sm border border-teal-800/10 shadow-sm">
-             <p className="text-sm font-bold uppercase tracking-widest text-navy-900">Setup: <span className="text-teal-800">Included for early adopters (limited cohort)</span></p>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: What’s included in every paid plan */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-20">
-          <div>
-            <h2 className="text-3xl serif text-teal-800 mb-12">The non-negotiables (included).</h2>
-            <ul className="space-y-6">
-              {[
-                "Built only from your approved sources",
-                "Non-clinical by design (no diagnosis/treatment advice)",
-                "Voice + boundaries + refusal behaviour maintained",
-                "Safe routing to booking/programmes/resources",
-                "Secure hosting + continuous improvements"
-              ].map((item, i) => (
-                <li key={i} className="flex items-start text-sm font-medium text-navy-800">
-                  <span className="text-gold-500 mr-4 font-bold">/</span> {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-12 text-[10px] text-gray-400 font-bold uppercase tracking-widest italic">
-              This is governance-first, not “AI features-first.”
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-3xl serif text-red-800 mb-12">What we don’t do.</h2>
-            <ul className="space-y-6">
-              {[
-                "No diagnosis or prescribing",
-                "No individual treatment plans",
-                "No EHR integration in Phase 1",
-                "No open-internet answering"
-              ].map((item, i) => (
-                <li key={i} className="flex items-start text-sm font-medium text-gray-600">
-                  <span className="text-red-500 mr-4 font-bold">×</span> {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-12 text-[10px] text-gray-400 font-bold uppercase tracking-widest italic">
-              Clear scope protects trust.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: FAQ */}
-      <section className="py-24 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl serif text-navy-800 mb-16 text-center">Pricing & Governance FAQ</h2>
-          <div className="space-y-12">
-            {[
-              {
-                q: "Why is there a monthly fee?",
-                a: "You’re paying for secure hosting, governance controls, and ongoing safety maintenance—so the Twin remains trustworthy and up-to-date with your latest material."
-              },
-              {
-                q: "Can I cancel anytime?",
-                a: "Yes. Cancel anytime. Your Twin will be taken offline immediately and your content remains under your control at all times."
-              },
-              {
-                q: "Do you offer annual pricing?",
-                a: "Yes, available after the trial period. Annual plans include a 20% reduction in monthly costs."
-              },
-              {
-                q: "Can my assistant manage this?",
-                a: "Yes. We can onboard your assistant or practice manager to handle material uploads and routing updates while you maintain oversight of the boundaries."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="border-b border-gray-200 pb-10">
-                <h4 className="text-lg serif text-navy-900 mb-4">{faq.q}</h4>
-                <p className="text-sm text-gray-600 font-light leading-relaxed">{faq.a}</p>
+                <Link 
+                  to="/free-trial" 
+                  className={`w-full py-5 text-center text-xs font-bold uppercase tracking-[0.2em] transition-all label-mono opacity-100 ${
+                    plan.highlight 
+                      ? 'bg-teal-precise text-paper hover:brightness-110 shadow-lg shadow-teal-precise/20' 
+                      : 'bg-ink text-paper hover:bg-teal-precise'
+                  }`}
+                >
+                  {plan.cta}
+                </Link>
               </div>
             ))}
           </div>
+
+          {/* Enterprise Option */}
+          <div className="mt-20 border border-ink/10 bg-paper p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group shadow-sm">
+              <div className="max-w-2xl">
+                 <span className="label-mono text-teal-precise mb-4 block font-bold uppercase text-[10px] tracking-[0.3em] opacity-100">The Ultimate Scale</span>
+                 <h3 className="text-4xl font-serif text-ink mb-6">Enterprise</h3>
+                 <p className="text-xl text-ink/60 font-serif italic leading-relaxed mb-10">
+                   For clinic groups, platforms, and health systems. Custom deployment, intelligence licensing, and strategic partnership terms.
+                 </p>
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
+                    {enterpriseFeatures.map((feature, idx) => (
+                      <div key={idx} className="flex items-center">
+                        <span className="w-5 h-5 bg-teal-precise text-paper flex items-center justify-center text-[10px] mr-3 flex-shrink-0">✓</span>
+                        <span className="text-xs label-mono font-bold uppercase tracking-widest text-ink/40">{feature}</span>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+              <div className="text-center lg:text-right w-full lg:w-auto p-10 bg-teal-precise/5 border border-teal-precise/10">
+                 <div className="mb-10">
+                    <span className="text-sm label-mono opacity-40 uppercase font-bold block mb-4">Pricing</span>
+                    <span className="text-7xl font-serif font-bold text-ink tracking-tighter italic">Custom</span>
+                 </div>
+                 <Link to="/contact" className="inline-block w-full bg-teal-precise text-paper px-12 py-6 text-xs font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all label-mono opacity-100 shadow-xl shadow-teal-precise/20 group-hover:translate-y-[-4px]">
+                    Contact sales
+                 </Link>
+              </div>
+          </div>
         </div>
       </section>
 
+      {/* Trust Quote */}
+      <section className="py-16 border-y border-ink/5 italic font-serif text-center bg-paper relative">
+         <div className="max-w-4xl mx-auto px-6">
+            <span className="text-6xl text-teal-precise opacity-20 block mb-6 leading-none">“</span>
+            <p className="text-2xl md:text-3xl text-ink/80 leading-relaxed italic-moment font-light">
+              We aren't just buying another software tool; we're investing in the <span className="text-ink font-bold">clinical intelligence</span> that will define the next decade of our practice.
+            </p>
+            <div className="mt-10">
+               <p className="label-mono text-ink font-bold uppercase tracking-[0.2em] text-[11px]">Founding Partner, Harley Street Practice</p>
+            </div>
+         </div>
+      </section>
+
       {/* FINAL CTA */}
-      <section className="py-32 bg-gold-500 text-navy-950 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-5xl md:text-6xl serif mb-12">Start free. Prove it safely. Then scale.</h2>
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-10">
-            <Link to="/free-trial" className="w-full sm:w-auto bg-navy-950 text-gold-500 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl">
-              Start Free Trial (30 days, no card)
-            </Link>
-            <Link to="/demo" className="w-full sm:w-auto border-2 border-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest">
-              Request a Demo
+      <section className="py-20 bg-paper text-ink text-center border-t border-ink/5 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
+          <h2 className="text-5xl md:text-6xl font-serif mb-12">Start your pilot today.</h2>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
+            <Link to="/free-trial" className="w-full sm:w-auto bg-teal-precise text-paper px-12 py-6 font-bold uppercase tracking-widest shadow-2xl shadow-teal-precise/20 hover:brightness-110 transition-all label-mono opacity-100 text-xs">
+              Apply for 30-Day Pilot
             </Link>
           </div>
-          <p className="text-xs uppercase tracking-widest font-bold opacity-70">
-            Live in 7 days. Approved sources only. Designed to know where to stop.
+          <p className="label-mono text-ink/40 opacity-100 text-[10px] tracking-[0.3em] font-bold uppercase">
+            No credit card required. Live in 14 days. Clinician-led governance.
           </p>
         </div>
       </section>
@@ -257,3 +199,4 @@ const Pricing: React.FC = () => {
 };
 
 export default Pricing;
+

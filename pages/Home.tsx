@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -11,360 +12,545 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen font-sans">
+    <div className="animate-in fade-in duration-1000 bg-paper min-h-screen font-sans">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-navy-900 text-white">
+      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-paper text-ink">
         {/* Background texture */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #d4af37 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-900/30 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-precise/5 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
           
-          {/* Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-3 duration-700">
-             <span className="relative flex h-2 w-2">
-               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-             </span>
-             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-200">Accepting New Pilots</span>
+          {/* Pill / Target Audience */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none border border-teal-precise/20 mb-8 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-3 duration-700 bg-paper">
+             <span className="label-mono font-bold text-teal-precise uppercase tracking-[0.4em] text-[10px]">FOR UK SPECIALIST CLINICS</span>
           </div>
 
           {/* H1 */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl serif leading-[1.05] mb-8 tracking-tight text-white">
-            Your Expertise. Scaled.<br />
-            Your Authority. Elevated.<br />
-            <span className="text-gold-500 italic">Your Digital Twin.</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.05] mb-8 tracking-tight text-ink transition-all">
+            Your AI front door<br />
+            <span className="text-teal-precise italic">for specialist care.</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl font-light text-gray-200 mb-6 leading-relaxed max-w-4xl mx-auto font-serif">
-            A 24/7 website assistant that answers routine questions safely—plus an Intelligence dashboard showing what patients need and what to do next.
+          <p className="text-xl md:text-2xl font-light text-ink/70 mb-10 leading-relaxed max-w-3xl mx-auto font-serif italic">
+            Answer every patient enquiry in your voice, day or night. Turn every conversation into bookings on your calendar.
           </p>
           
           {/* Value Prop */}
-          <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
-            NeuraScaleX reduces repetitive admin, protects boundaries, and guides people to the right next step—so you can focus on care, not your inbox.
-          </p>
+          {/* Removed as per request */}
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:bg-gold-400 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all transform hover:-translate-y-1">
-              Start Free Trial
+            <Link to="/free-trial" className="w-full sm:w-auto bg-teal-precise text-paper px-10 py-5 font-bold uppercase tracking-widest hover:bg-teal-precise/90 transition-all transform hover:-translate-y-1 shadow-xl shadow-teal-precise/20">
+              START FREE TRIAL
             </Link>
-            <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all hover:border-white/40">
-              Request a Walkthrough
+            <Link to="/demo" className="w-full sm:w-auto border border-ink/20 text-ink px-10 py-5 font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all">
+              BOOK A DEMO
             </Link>
           </div>
 
           {/* Trust Chips */}
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3 label-mono text-[10px] font-bold opacity-60">
              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                Approved sources only
+                <span className="text-teal-precise">✓</span> APPROVED SOURCES ONLY
              </div>
-             <div className="hidden sm:block text-white/20">•</div>
              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                Non-clinical by design
+                <span className="text-teal-precise">✓</span> NON-CLINICAL BY DESIGN
              </div>
-             <div className="hidden sm:block text-white/20">•</div>
              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                Live in 7 days
+                <span className="text-teal-precise">✓</span> LIVE IN 14 DAYS
              </div>
           </div>
         </div>
       </section>
 
-      {/* 2. LIVE EXAMPLE WIDGET (UPDATED: REAL TIME PILOT SIMULATION) */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-16">
-               <h2 className="text-4xl serif text-navy-900 mb-6">See a Digital Twin in action.</h2>
-               <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed max-w-2xl mx-auto">
-                 The Twin lives on your website, ready to orient patients 24/7. It looks like you, speaks like you, but knows its boundaries.
-               </p>
-            </div>
-
-            {/* Browser Simulation Container */}
-            <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-200 bg-white relative mx-auto max-w-5xl">
-                {/* Browser Toolbar */}
-                <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2 border-b border-gray-200">
-                    <div className="flex space-x-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                    </div>
-                    <div className="ml-4 bg-white px-3 py-1.5 rounded-sm text-[10px] text-gray-400 flex-grow max-w-xs font-mono border border-gray-200 shadow-sm flex items-center">
-                        <svg className="w-3 h-3 mr-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                        chen-integrative-health.com
-                    </div>
-                </div>
-
-                {/* Mock Website Content Area */}
-                <div className="relative bg-[#faf9f6] min-h-[550px] lg:min-h-[650px] flex flex-col font-sans">
-                    
-                    {/* Mock Nav */}
-                    <div className="flex justify-between items-center px-6 md:px-12 py-8">
-                        <span className="text-xl md:text-2xl font-serif font-bold text-stone-800 tracking-tight">DR. SARAH CHEN</span>
-                        <div className="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-stone-600">
-                            <span className="hover:text-stone-900 cursor-pointer">Specialties</span>
-                            <span className="hover:text-stone-900 cursor-pointer">About</span>
-                            <span className="hover:text-stone-900 cursor-pointer">Patients</span>
-                            <span className="px-6 py-3 bg-teal-900 text-white rounded-sm hover:bg-teal-800 cursor-pointer transition-colors">Book Consultation</span>
-                        </div>
-                    </div>
-
-                    {/* Mock Hero Content */}
-                    <div className="flex-grow flex flex-col justify-center px-6 md:px-16 max-w-3xl pb-32">
-                         <h3 className="text-5xl md:text-7xl font-serif text-stone-900 mb-8 leading-[1.1]">
-                            Personalised care for <br/>
-                            <span className="text-teal-800 italic">hormonal health.</span>
-                         </h3>
-                         <p className="text-lg md:text-xl text-stone-600 mb-10 leading-relaxed max-w-xl font-light">
-                            A compassionate, evidence-based approach to endocrinology and lifestyle medicine. Specialising in recovery from complex hormonal imbalances.
-                         </p>
-                         <div className="flex gap-4">
-                            <button className="bg-teal-900 text-white px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm shadow-lg hover:bg-teal-800 transition-colors">
-                                Begin Your Journey
-                            </button>
-                            <button className="hidden sm:block border border-stone-300 text-stone-600 px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm hover:bg-stone-200 transition-colors">
-                                Learn More
-                            </button>
-                         </div>
-                    </div>
-                    
-                    {/* Abstract visual element */}
-                    <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-stone-200/40 hidden lg:block" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}></div>
-
-                    {/* THE WIDGET OVERLAY */}
-                    <div className="absolute bottom-4 right-4 md:bottom-12 md:right-12 w-[340px] sm:w-[380px] flex flex-col shadow-2xl rounded-2xl overflow-hidden animate-in slide-in-from-bottom-10 duration-1000 z-20">
-                        {/* Widget Header */}
-                        <div className="bg-teal-900 p-5 text-white flex justify-between items-start">
-                             <div className="flex items-center gap-3">
-                                <div className="relative">
-                                     {/* Avatar Image Placeholder */}
-                                     <div className="w-12 h-12 rounded-full bg-white border-2 border-white/20 overflow-hidden flex items-center justify-center text-teal-900 font-bold text-lg">
-                                        SC
-                                     </div>
-                                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-teal-900 rounded-full"></div>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-sm">Dr. Sarah Chen AI</h4>
-                                    <p className="text-[10px] uppercase tracking-wider opacity-80 font-medium">Digital Twin • Non-Clinical</p>
-                                </div>
-                             </div>
-                             <button className="text-white/60 hover:text-white transition-colors">
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                             </button>
-                        </div>
-
-                        {/* Widget Body */}
-                        <div className="bg-white p-5 h-[340px] flex flex-col overflow-y-auto">
-                            <div className="text-center text-[10px] text-gray-400 mb-6 font-bold uppercase tracking-widest">Today 09:41</div>
-                            
-                            {/* Message 1 */}
-                            <div className="flex gap-3 mb-6 animate-in slide-in-from-bottom-2 duration-500">
-                                <div className="w-8 h-8 rounded-full bg-teal-50 flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-teal-900 border border-teal-100">SC</div>
-                                <div className="bg-gray-100 p-4 rounded-2xl rounded-tl-none text-sm text-gray-700 leading-relaxed shadow-sm">
-                                    Welcome to Chen Integrative Health.<br/>
-                                    You are speaking with the Digital Twin of Dr. Sarah Chen.
-                                </div>
-                            </div>
-
-                            {/* Message 2 */}
-                            <div className="flex gap-3 mb-4 animate-in slide-in-from-bottom-2 duration-500 delay-300">
-                                <div className="w-8 h-8 rounded-full bg-teal-50 flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-teal-900 border border-teal-100">SC</div>
-                                <div className="bg-gray-100 p-4 rounded-2xl rounded-tl-none text-sm text-gray-700 leading-relaxed shadow-sm">
-                                    I can help you understand our services, fees, and insurance coverage using Dr. Chen's approved materials. I cannot provide medical diagnosis.<br/><br/>
-                                    How can I help you today?
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Widget Footer / Actions */}
-                        <div className="bg-white px-5 pt-2 pb-6 border-t border-gray-50">
-                            <p className="text-[10px] text-gray-400 mb-3 font-medium ml-1">Choose a topic to get started:</p>
-                            <div className="flex flex-col gap-2 mb-4">
-                                <button className="w-full text-left px-4 py-3 rounded-xl border border-teal-800 text-teal-800 text-sm font-medium hover:bg-teal-50 transition-colors bg-white">
-                                    What conditions do you treat?
-                                </button>
-                                <button className="w-full text-left px-4 py-3 rounded-xl border border-teal-800 text-teal-800 text-sm font-medium hover:bg-teal-50 transition-colors bg-white">
-                                    How do I book an appointment?
-                                </button>
-                                <button className="w-full text-left px-4 py-3 rounded-xl border border-teal-800 text-teal-800 text-sm font-medium hover:bg-teal-50 transition-colors bg-white">
-                                    What are the fees & insurance?
-                                </button>
-                            </div>
-                             <div className="flex items-center gap-2">
-                                <input type="text" placeholder="Type your question..." className="flex-grow bg-gray-50 border border-gray-200 rounded-full px-4 py-3 text-sm focus:outline-none focus:border-teal-800 transition-colors" disabled />
-                                <button className="w-10 h-10 bg-teal-800 rounded-full flex items-center justify-center text-white shadow-md hover:bg-teal-900 transition-colors">
-                                    <svg className="w-4 h-4 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-                                </button>
-                             </div>
-                             <div className="text-center mt-3">
-                                <span className="text-[9px] text-gray-300 font-medium">Powered by NeuraScaleX</span>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* 3. WHY IT MATTERS */}
-      <section className="py-24 bg-warm-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl md:text-5xl serif text-navy-900 mb-8">Protect your time for clinical judgement.</h2>
-          <p className="text-xl text-gray-600 font-light leading-relaxed">
-            Most inbound enquiries are routine: fees, insurance, suitability, pathways, booking, and what to expect. When these are answered consistently up front, patients arrive clearer—and your team spends less time repeating the same information. NeuraScaleX supports the first mile of the patient journey safely, without crossing into clinical advice.
-          </p>
-        </div>
-      </section>
-
-      {/* 4. COMPARISON */}
-      <section className="py-24 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-12 border border-gray-100 rounded-2xl overflow-hidden shadow-lg">
+      {/* 1.5. CONTENT GAP SECTION */}
+      <section className="py-16 lg:py-24 bg-paper border-b border-ink/5 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.01] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             
-            {/* Left: Problem */}
-            <div className="bg-red-50/50 p-12">
-               <h3 className="text-2xl serif text-red-900 mb-8 flex items-center gap-3">
-                 <span className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-sm font-bold">?</span>
-                 What patients ask every day
-               </h3>
-               <ul className="space-y-6">
-                 {[
-                   "“How much is a consultation?”",
-                   "“Do you treat children?”",
-                   "“Are you covered by AXA / Bupa?”",
-                   "“What’s your approach to [condition]?”",
-                   "“Can I book for next week?”"
-                 ].map((item, i) => (
-                   <li key={i} className="flex items-start text-red-900/70 font-medium italic">
-                     <span className="mr-3 text-red-300">•</span> {item}
-                   </li>
-                 ))}
-               </ul>
+            {/* Left Column: Copy */}
+            <div className="lg:col-span-6">
+              <h2 className="text-5xl md:text-7xl font-sans font-bold leading-[1.1] mb-12 tracking-tight">
+                <span className="text-ink">Your content has been working</span> <br />
+                <span className="text-ink/20">for the wrong audience.</span>
+              </h2>
+              
+              <div className="space-y-8 text-lg md:text-xl text-ink/70 leading-relaxed font-sans">
+                <p>
+                  You made the videos. Wrote the articles. Published the book. Recorded the podcasts. Years of unbilled time, hoping it would fill your calendar.
+                </p>
+                
+                <p className="text-ink font-bold">
+                  The views came. The bookings didn't.
+                </p>
+                
+                <p>
+                  Most patients don't watch a 20-minute video, navigate to your website, fill in a contact form, and wait 48 hours for a reply. They watch halfway. They get distracted. They book someone else next week.
+                </p>
+                
+                <p>
+                  NeuraScaleX closes that gap. We unify your existing content into one Knowledge Center, and your AI Clinic Page answers patients using your own materials — at the exact moment they're ready to book.
+                </p>
+                
+                <p className="text-teal-precise italic font-serif text-xl border-l-2 border-teal-precise pl-6 py-2">
+                  The content you've already paid for, finally paying you back.
+                </p>
+              </div>
             </div>
-
-            {/* Right: Solution */}
-            <div className="bg-teal-50/50 p-12 relative">
-               <div className="absolute top-0 bottom-0 left-0 w-px bg-gray-200 hidden md:block"></div>
-               <h3 className="text-2xl serif text-teal-900 mb-8 flex items-center gap-3">
-                 <span className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 text-sm font-bold">✓</span>
-                 What your Digital Twin delivers
-               </h3>
-               <ul className="space-y-6">
-                 {[
-                   "Your expertise—organised and accessible",
-                   "Patients arrive informed (fees, pathways, expectations)",
-                   "Answers from your approved materials only",
-                   "Better-qualified enquiries reach your team",
-                   "You focus on judgement; the Twin handles repetition"
-                 ].map((item, i) => (
-                   <li key={i} className="flex items-start text-teal-900 font-medium">
-                     <svg className="w-5 h-5 mr-3 text-teal-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                     {item}
-                   </li>
-                 ))}
-               </ul>
+            
+            {/* Right Column: Visual Component */}
+            <div className="lg:col-span-6 flex flex-col pt-4 font-sans">
+              <div className="text-center mb-12">
+                <span className="label-mono text-[10px] tracking-[0.4em] text-ink/30 uppercase font-bold mb-4 block">CENTRALIZED SOURCE</span>
+                <h3 className="text-3xl font-serif font-bold text-ink">One Knowledge Center</h3>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 border-t border-ink/5 pt-12">
+                <div>
+                  <h4 className="label-mono text-[9px] tracking-[0.2em] text-ink/30 uppercase font-bold mb-6">VIDEO LIBRARY</h4>
+                  <ul className="space-y-3 text-sm text-ink/60 font-medium">
+                    <li>YouTube</li>
+                    <li>Webinars</li>
+                    <li>Podcasts</li>
+                    <li>Conference talks</li>
+                  </ul>
+                </div>
+                
+                <div className="border-l border-ink/5 pl-8">
+                  <h4 className="label-mono text-[9px] tracking-[0.2em] text-ink/30 uppercase font-bold mb-6">WRITTEN WORK</h4>
+                  <ul className="space-y-3 text-sm text-ink/60 font-medium">
+                    <li>Articles</li>
+                    <li>Book chapters</li>
+                    <li>Journal papers</li>
+                    <li>FAQs</li>
+                  </ul>
+                </div>
+                
+                <div className="border-l border-ink/5 pl-8">
+                  <h4 className="label-mono text-[9px] tracking-[0.2em] text-ink/30 uppercase font-bold mb-6">CLINIC KNOWLEDGE</h4>
+                  <ul className="space-y-3 text-sm text-ink/60 font-medium">
+                    <li>Intake scripts</li>
+                    <li>Pricing</li>
+                    <li>Service descriptions</li>
+                    <li>Insurance pathways</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="bg-teal-precise/5 border border-teal-precise/10 p-10 text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-teal-precise/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <p className="text-xl font-bold text-ink mb-2">Every answer routed to a booking.</p>
+                  <p className="text-sm text-ink/40 font-serif italic italic-moment">Grounded strictly in your expertise.</p>
+                </div>
+                
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-teal-precise/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-teal-precise/10 rounded-full -ml-10 -mb-10 blur-2xl"></div>
+              </div>
             </div>
-          </div>
-          
-          <div className="text-center mt-12">
-            <p className="text-sm font-bold uppercase tracking-widest text-navy-800">NeuraScaleX delivers this with two layers—one for patients, one for you.</p>
+            
           </div>
         </div>
       </section>
 
-      {/* 5. ONE SYSTEM. TWO LAYERS. */}
-      <section className="py-24 bg-navy-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl serif mb-4">One System. Two Layers.</h2>
-            <p className="text-lg text-gray-400 font-light">Patient-facing clarity, plus clinician-facing Intelligence.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Layer 1 */}
-            <div className="bg-white text-navy-900 p-10 rounded-sm border-t-4 border-teal-500">
-               <span className="text-[10px] font-bold uppercase tracking-widest text-teal-600 mb-2 block">LAYER 1: DIGITAL TWIN</span>
-               <h3 className="text-3xl serif mb-6">Answer & guide (patient-facing)</h3>
-               <p className="text-gray-600 leading-relaxed mb-8 h-24">
-                 Embedded on your website, your Digital Twin answers routine questions using approved materials—fees, insurance, pathways, programmes, booking, and policies.
-               </p>
-               <div className="pt-8 border-t border-gray-100">
-                 <p className="text-sm font-bold text-navy-900">Result: Patients arrive informed. Your team handles fewer repeat enquiries.</p>
+      {/* 2. THE COST OF DOING NOTHING */}
+      <section className="py-16 lg:py-24 bg-paper border-b border-ink/5 overflow-hidden relative">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="mb-20 text-center lg:text-left max-w-4xl">
+               <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-[0.4em] opacity-100">THE COST OF DOING NOTHING</span>
+               <h2 className="text-5xl md:text-7xl font-serif text-ink mb-10 leading-[1.1] tracking-tight">
+                Every night, patient intent peaks <br/>
+                <span className="italic text-teal-precise">and your practice goes silent.</span>
+               </h2>
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                  <div className="space-y-6 text-lg md:text-xl text-ink/70 font-serif italic italic-moment leading-relaxed">
+                     <p>
+                        Patients don't make decisions at 11am. They make them at 8pm. At midnight. On weekends. On bank holidays. When your team is unavailable.
+                     </p>
+                     <p>
+                        They arrive with questions. They hit the contact form. They abandon it. They book elsewhere.
+                     </p>
+                  </div>
+                  <div className="space-y-6 text-lg md:text-xl text-ink/70 font-serif italic italic-moment leading-relaxed">
+                     <p>
+                        This isn't a marketing problem. It's an availability problem — the gap between patient intent and practice response.
+                     </p>
+                     <p className="text-ink font-bold not-italic">
+                        The first specialist to answer safely and consistently — wins.
+                     </p>
+                  </div>
                </div>
             </div>
 
-            {/* Layer 2 */}
-            <div className="bg-navy-800 text-white p-10 rounded-sm border-t-4 border-gold-500">
-               <span className="text-[10px] font-bold uppercase tracking-widest text-gold-500 mb-2 block">LAYER 2: INTELLIGENCE</span>
-               <h3 className="text-3xl serif mb-6">See what patients need (clinician-facing)</h3>
-               <p className="text-gray-300 leading-relaxed mb-8 h-24">
-                 The Intelligence dashboard shows what patients are asking, where they get stuck, and what needs follow-up—so you know what to clarify, publish, or route next.
-               </p>
-               <div className="pt-8 border-t border-white/10">
-                 <p className="text-sm font-bold text-white">Result: Clear priorities. Less guesswork. Better enquiry quality.</p>
-               </div>
-            </div>
-          </div>
+            {/* Stats Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Card 1 */}
+                <div className="bg-white p-10 border border-ink/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[300px] group">
+                    <div className="w-12 h-1 px-0 bg-ink/10 mb-8 overflow-hidden">
+                        <div className="w-0 group-hover:w-full h-full bg-ink transition-all duration-700"></div>
+                    </div>
+                    <div>
+                        <div className="text-7xl font-serif font-bold text-ink mb-6 tracking-tighter">67%</div>
+                        <p className="label-mono uppercase tracking-widest text-[11px] text-ink/40 font-bold leading-relaxed">
+                            of enquiries happen <br/>outside business hours
+                        </p>
+                    </div>
+                </div>
 
-          <div className="text-center space-y-4">
-             <p className="text-sm text-gray-400">Built-in next steps: booking links, forms, resources, and boundary-safe signposting—configured to your pathways.</p>
-             <p className="text-xs text-gold-500/80 italic">Optional: weekly Practice Brief delivered to your inbox (so you don’t have to check a dashboard).</p>
-          </div>
+                {/* Card 2 */}
+                <div className="bg-white p-10 border border-ink/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[300px] group">
+                    <div className="w-12 h-1 px-0 bg-teal-precise/10 mb-8 overflow-hidden">
+                        <div className="w-0 group-hover:w-full h-full bg-teal-precise transition-all duration-700"></div>
+                    </div>
+                    <div>
+                        <div className="text-7xl font-serif font-bold text-teal-precise mb-6 tracking-tighter">92%</div>
+                        <p className="label-mono uppercase tracking-widest text-[11px] text-ink/40 font-bold leading-relaxed">
+                            of patients who reach <br/>a contact form abandon it
+                        </p>
+                    </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="bg-white p-10 border border-ink/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[300px] group">
+                    <div className="w-12 h-1 px-0 bg-teal-precise/10 mb-8 overflow-hidden">
+                        <div className="w-0 group-hover:w-full h-full bg-teal-precise transition-all duration-700"></div>
+                    </div>
+                    <div>
+                        <div className="text-7xl font-serif font-bold text-ink/20 mb-6 tracking-tighter">£0</div>
+                        <p className="label-mono uppercase tracking-widest text-[11px] text-ink/40 font-bold leading-relaxed">
+                            return from voicemail once <br/>the patient has moved on
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="label-mono opacity-30 uppercase tracking-[0.5em] text-[10px] font-bold italic font-serif italic-moment">The first one to answer wins.</p>
+            </div>
         </div>
       </section>
 
-      {/* 6. LIVE PILOTS 
-      <section className="py-24 bg-warm-white">
+      {/* 3. THE PRODUCT */}
+      <section className="py-20 bg-paper text-ink overflow-hidden border-y border-ink/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-           <div className="text-center mb-16">
-              <h2 className="text-4xl serif text-navy-900 mb-4">Live pilots with health professionals.</h2>
-              <p className="text-gray-600 font-light">Built for real practice workflows. Refined through clinician feedback.</p>
+            <div className="mb-20 text-center">
+               <span className="label-mono text-teal-precise mb-6 block opacity-100 font-bold uppercase text-[10px] tracking-[0.4em]">TWO PRODUCTS · ONE PLATFORM</span>
+               <h2 className="text-5xl md:text-8xl font-serif text-ink mb-2 leading-tight tracking-tight">
+                One front door.
+               </h2>
+               <h2 className="text-5xl md:text-8xl font-serif text-teal-precise italic mb-10 leading-tight tracking-tight">
+                One intelligence layer.
+               </h2>
+               <p className="text-xl text-ink/60 font-serif italic italic-moment max-w-3xl mx-auto">
+                 The first works on your patients. The second works on you.
+               </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* FOR PATIENTS - The AI Clinic Page */}
+                <div className="bg-white text-ink p-10 md:p-16 rounded-none relative flex flex-col h-full shadow-2xl border border-ink/5">
+                    <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-widest opacity-100">For Patients</span>
+                    <h3 className="text-4xl font-serif mb-6 leading-tight">The AI Clinic Page</h3>
+                    <p className="text-ink/70 leading-relaxed mb-10 font-serif italic italic-moment text-lg">
+                        A dedicated, shareable URL that becomes your patient's entry point. Not a website. Not a chatbot widget. A standalone front door that answers in your voice, signposts to bookings, and captures every conversation.
+                    </p>
+                    
+                    <ul className="space-y-6 mb-12 flex-grow">
+                        {[
+                            { label: "Custom URL — ask.yourname.co.uk", bold: true },
+                            { label: "Trained on your approved content only" },
+                            { label: "Answers patient questions 24/7 in your voice" },
+                            { label: "Signposts to bookings, services, and resources" },
+                            { label: "Every conversation captured as a lead" },
+                            { label: "Live in 14 days from sign-up" }
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-start text-sm font-medium border-b border-ink/5 pb-4 last:border-0 group">
+                                <span className="w-6 h-6 rounded-none bg-teal-precise text-paper flex items-center justify-center text-[10px] mr-4 flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-teal-precise/20">✓</span>
+                                <span className={item.bold ? "font-bold text-ink" : "text-ink/60 font-serif italic"}>{item.label}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="pt-8 mt-auto border-t border-ink/5">
+                        <p className="label-mono text-[9px] uppercase tracking-widest font-bold text-ink/30">Your digital reputation, secured.</p>
+                    </div>
+                </div>
+
+                {/* FOR YOU - The Intelligence Dashboard */}
+                <div className="bg-teal-precise/5 text-ink p-10 md:p-16 border border-teal-precise/10 rounded-none relative flex flex-col h-full">
+                    <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-widest opacity-100">For You</span>
+                    <h3 className="text-4xl font-serif mb-6 leading-tight text-teal-precise">The Intelligence Dashboard</h3>
+                    <p className="text-ink/60 leading-relaxed mb-10 font-serif italic text-lg">
+                        The clinician-facing intelligence layer. Not a reporting tool. The strategic asset that tells you exactly what your patients want — before they ask, before they book, before they leave.
+                    </p>
+                    
+                    <ul className="space-y-6 mb-12 flex-grow">
+                        {[
+                            { label: "Top patient questions, ranked by frequency" },
+                            { label: "Peak hours analysis — when patients need you" },
+                            { label: "Lead capture with full conversation context" },
+                            { label: "Content gaps — topics patients ask but you haven't covered" },
+                            { label: "Booking intent signals from conversation patterns" },
+                            { label: "Weekly intelligence report delivered automatically" }
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-start text-sm font-medium border-b border-ink/5 pb-4 last:border-0 group">
+                                <span className="w-6 h-6 rounded-none bg-teal-precise text-paper flex items-center justify-center text-[10px] mr-4 flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-teal-precise/20">✓</span>
+                                <span className="text-ink/60 font-serif italic">{item.label}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="pt-8 mt-auto border-t border-ink/10">
+                        <p className="label-mono text-[9px] uppercase tracking-widest font-bold text-ink/20">Actionable signals, zero noise.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div className="mt-20 text-center">
+                <p className="label-mono opacity-20 uppercase tracking-[0.5em] text-[10px] font-bold">The clinician-led platform.</p>
+            </div>
+        </div>
+      </section>
+
+      {/* 6. LIVE PILOTS */}
+      <section className="py-20 bg-paper relative overflow-hidden border-b border-ink/5">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+           <div className="text-center mb-24">
+              <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-[0.4em] opacity-100">LIVE PILOTS</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-ink mb-8 leading-tight tracking-tight">
+                Specialist clinics already live <br />
+                <span className="text-teal-precise italic">on NeuraScaleX.</span>
+              </h2>
+              <p className="text-xl text-ink/60 font-serif italic max-w-3xl mx-auto leading-relaxed">
+                Interact with secure, specialist-trained AI assistants from our early pilot partners. See exactly what your patients will experience.
+              </p>
            </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { name: "Dr. Deepak Ravindran", role: "Pain Medicine (Pilot)" },
-                { name: "Dr. Abrar Hussain", role: "Psychiatry (Pilot)" },
-                { name: "Dr. Arokia Antonysamy", role: "Psychiatry (Pilot)" },
-              ].map((doc, i) => (
-                <div key={i} className="bg-white p-8 rounded-sm shadow-sm border border-gray-100 text-center">
-                   <div className="w-16 h-16 bg-navy-50 rounded-full mx-auto mb-4 flex items-center justify-center text-navy-900 font-serif font-bold text-xl">
-                      {doc.name.split(' ').map(n => n[0]).join('').substring(0,2)}
-                   </div>
-                   <h3 className="text-lg font-bold text-navy-900 serif mb-1">{doc.name}</h3>
-                   <p className="text-xs uppercase tracking-widest text-teal-800">{doc.role}</p>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              {/* Card 1: Berkshire Pain Clinic */}
+              <div className="bg-white rounded-none p-10 shadow-2xl border border-ink/5 flex flex-col h-full hover:shadow-3xl transition-all group scale-100 hover:scale-[1.02] duration-500">
+                <div className="flex justify-between items-start mb-10">
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center text-3xl font-bold text-ink border border-ink/10 overflow-hidden shadow-inner font-serif">
+                      BP
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-3.5 h-3.5 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-none border border-green-100">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-[11px] font-bold tracking-widest text-green-700 uppercase label-mono">LIVE PILOT</span>
+                  </div>
                 </div>
-              ))}
+
+                <div className="mb-8">
+                  <h3 className="text-4xl font-serif font-bold text-ink mb-3 leading-tight text-teal-precise">Berkshire Pain Clinic</h3>
+                  <p className="text-[12px] font-bold tracking-[0.2em] text-ink/30 uppercase label-mono">
+                    SPECIALIST CLINIC <span className="mx-3 text-ink/10">•</span> READING, UK
+                  </p>
+                </div>
+
+                <p className="text-xl text-ink/60 leading-relaxed mb-10 flex-grow font-serif italic italic-moment">
+                  "A multi-disciplinary clinic using the AI Clinic Page to triage complex referrals, explain insurance pathways, and answer admin queries 24/7."
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-12">
+                  <span className="text-[10px] font-bold tracking-widest text-teal-precise px-4 py-2 border border-teal-precise/20 rounded-none uppercase bg-teal-precise/5 label-mono">AI ASSISTANT</span>
+                  <span className="text-[10px] font-bold tracking-widest text-teal-precise px-4 py-2 border border-teal-precise/20 rounded-none uppercase bg-teal-precise/5 label-mono">TRIAGE</span>
+                  <span className="text-[10px] font-bold tracking-widest text-teal-precise px-4 py-2 border border-teal-precise/20 rounded-none uppercase bg-teal-precise/5 label-mono">INTAKE</span>
+                </div>
+
+                <div className="space-y-4">
+                  <button className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
+                    Visit the live page
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 2: Berkshire Psychiatrist Clinic */}
+              <div className="bg-white rounded-none p-10 shadow-2xl border border-ink/5 flex flex-col h-full hover:shadow-3xl transition-all group scale-100 hover:scale-[1.02] duration-500">
+                <div className="flex justify-between items-start mb-10">
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center text-3xl font-bold text-ink border border-ink/10 overflow-hidden shadow-inner font-serif">
+                      BP
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-3.5 h-3.5 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-none border border-green-100">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-[11px] font-bold tracking-widest text-green-700 uppercase label-mono">LIVE PILOT</span>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-4xl font-serif font-bold text-ink mb-3 leading-tight text-teal-precise">Berkshire Psychiatrist Clinic</h3>
+                  <p className="text-[12px] font-bold tracking-[0.2em] text-ink/30 uppercase label-mono">
+                    CONSULTANT PSYCHIATRIST <span className="mx-3 text-ink/10">•</span> UK
+                  </p>
+                </div>
+
+                <p className="text-xl text-ink/60 leading-relaxed mb-10 flex-grow font-serif italic italic-moment">
+                  "Deploying the AI Clinic Page to manage intake for private psychiatry practice and streamline new patient onboarding."
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-12">
+                  <span className="text-[10px] font-bold tracking-widest text-teal-precise px-4 py-2 border border-teal-precise/20 rounded-none uppercase bg-teal-precise/5 label-mono">INTAKE</span>
+                  <span className="text-[10px] font-bold tracking-widest text-teal-precise px-4 py-2 border border-teal-precise/20 rounded-none uppercase bg-teal-precise/5 label-mono">ONBOARDING</span>
+                </div>
+
+                <div className="space-y-4">
+                  <button className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
+                    Visit the live page
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+           </div>
+
+           <div className="mt-24 text-center border-t border-ink/5 pt-24">
+              <div className="flex flex-col items-center gap-8">
+                <Link to="/specialist-hub" className="bg-paper border border-ink/10 text-ink px-12 py-5 font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all shadow-xl label-mono flex items-center gap-4 group">
+                   See all pilots & specialists
+                   <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                   </svg>
+                </Link>
+                <p className="label-mono text-[10px] text-ink/30 uppercase tracking-[0.3em] font-bold">New pilot partners added weekly</p>
+              </div>
            </div>
         </div>
       </section>
-      */}
 
-      {/* 7. LIVE IN 7 DAYS */}
-      <section className="py-24 bg-white border-y border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12">
+      {/* 6.5. WHERE THIS LEADS - TRANSFORMATION */}
+      <section className="py-20 lg:py-24 bg-paper border-b border-ink/5 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+          
+          <div className="text-center mb-24">
+            <span className="label-mono text-teal-precise mb-6 block font-bold uppercase text-[10px] tracking-[0.4em] opacity-100">WHERE THIS LEADS</span>
+            <h2 className="text-5xl md:text-7xl font-serif text-ink mb-10 leading-[1.1] tracking-tight">
+              The specialist who built the system, <br />
+              <span className="italic text-teal-precise">not just the content.</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-ink/60 font-serif italic max-w-3xl mx-auto leading-relaxed">
+              In 90 days, the clinicians who deploy <br className="hidden md:block" /> NeuraScaleX go from fragmented to systemic.
+            </p>
+          </div>
+
+          {/* Transformation Table */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink/5 border border-ink/5 mb-24">
+            {/* Headers */}
+            <div className="bg-ink/2 pr-12 pl-4 py-6 border-b border-ink/5 hidden md:block">
+              <span className="label-mono text-[10px] tracking-[0.5em] text-ink/30 uppercase font-bold">BEFORE</span>
+            </div>
+            <div className="bg-teal-precise/2 pr-12 pl-12 py-6 border-b border-ink/5 hidden md:block">
+              <span className="label-mono text-[10px] tracking-[0.5em] text-teal-precise/50 uppercase font-bold">AFTER</span>
+            </div>
+
+            {/* Row 1 */}
+            <div className="bg-white p-10 md:p-12">
+              <div className="md:hidden label-mono text-[9px] text-ink/20 mb-4 tracking-widest">BEFORE</div>
+              <p className="text-xl text-ink/40 font-serif italic">Content scattered <br className="hidden sm:block" /> across channels</p>
+            </div>
+            <div className="bg-white p-10 md:p-12 md:pl-12 border-l border-ink/5">
+              <div className="md:hidden label-mono text-[9px] text-teal-precise/40 mb-4 tracking-widest">AFTER</div>
+              <p className="text-xl text-ink font-bold font-sans">Content unified <br className="hidden sm:block" /> in one Knowledge Center</p>
+            </div>
+
+            {/* Row 2 */}
+            <div className="bg-white p-10 md:p-12">
+              <div className="md:hidden label-mono text-[9px] text-ink/20 mb-4 tracking-widest">BEFORE</div>
+              <p className="text-xl text-ink/40 font-serif italic">Patients leaving the <br className="hidden sm:block" /> contact form unanswered</p>
+            </div>
+            <div className="bg-white p-10 md:p-12 md:pl-12 border-l border-ink/5">
+              <div className="md:hidden label-mono text-[9px] text-teal-precise/40 mb-4 tracking-widest">AFTER</div>
+              <p className="text-xl text-ink font-bold font-sans">Patients booked through <br className="hidden sm:block" /> a 24/7 AI front door</p>
+            </div>
+
+            {/* Row 3 */}
+            <div className="bg-white p-10 md:p-12">
+              <div className="md:hidden label-mono text-[9px] text-ink/20 mb-4 tracking-widest">BEFORE</div>
+              <p className="text-xl text-ink/40 font-serif italic">Secretary stuck answering <br className="hidden sm:block" /> the same five questions</p>
+            </div>
+            <div className="bg-white p-10 md:p-12 md:pl-12 border-l border-ink/5">
+              <div className="md:hidden label-mono text-[9px] text-teal-precise/40 mb-4 tracking-widest">AFTER</div>
+              <p className="text-xl text-ink font-bold font-sans">Secretary freed for the <br className="hidden sm:block" /> work that needs a human</p>
+            </div>
+
+            {/* Row 4 */}
+            <div className="bg-white p-10 md:p-12">
+              <div className="md:hidden label-mono text-[9px] text-ink/20 mb-4 tracking-widest">BEFORE</div>
+              <p className="text-xl text-ink/40 font-serif italic">No idea which content <br className="hidden sm:block" /> converts a patient</p>
+            </div>
+            <div className="bg-white p-10 md:p-12 md:pl-12 border-l border-ink/5">
+              <div className="md:hidden label-mono text-[9px] text-teal-precise/40 mb-4 tracking-widest">AFTER</div>
+              <p className="text-xl text-ink font-bold font-sans">Every conversation tracked, <br className="hidden sm:block" /> every booking attributed</p>
+            </div>
+          </div>
+
+          {/* Closing Line */}
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-block h-px w-12 bg-teal-precise/20 mb-12"></div>
+            <p className="text-2xl md:text-4xl text-ink font-serif italic leading-snug">
+              You stop being a clinician with a content problem. <br className="hidden md:block" />
+              <span className="text-teal-precise font-bold not-italic">You become a clinician with a growth system.</span>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 7. HOW IT WORKS */}
+      <section className="py-16 bg-[#F9F7F2] border-y border-ink/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
            <div className="text-center mb-16">
-              <h2 className="text-4xl serif text-navy-900 mb-4">Live in 7 days—with minimal effort from you.</h2>
-              <p className="text-lg text-gray-500 font-light">Setup call → build → verify → deploy.</p>
+              <span className="label-mono text-teal-precise mb-4 block opacity-100 font-bold uppercase text-[10px] tracking-[0.3em]">How It Works</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-ink mb-4">From application to live<br /><span className="italic text-teal-precise text-3xl md:text-4xl">in fourteen days.</span></h2>
            </div>
 
-           <div className="relative border-l-2 border-gray-200 ml-4 md:ml-0 md:pl-0 space-y-12">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { step: "Step 1 — Setup (Day 1)", desc: "45-minute call to capture scope, boundaries, tone, and pathways." },
-                { step: "Step 2 — Build & calibration (Days 2–5)", desc: "We assemble your approved knowledge base from your website, documents, FAQs, and content." },
-                { step: "Step 3 — Verify & go live (Day 7)", desc: "15-minute verification call. You sign off. We deploy." }
+                { 
+                  num: "01", 
+                  title: "Apply", 
+                  desc: "Complete the 12-field Free Trial application. Takes under 3 minutes." 
+                },
+                { 
+                  num: "02", 
+                  title: "Discovery call", 
+                  desc: "30-minute call to understand your practice, your patients, your goals." 
+                },
+                { 
+                  num: "03", 
+                  title: "Build & approve", 
+                  desc: "We build your AI Clinic Page in 7 days. You review and approve every word." 
+                },
+                { 
+                  num: "04", 
+                  title: "Live", 
+                  desc: "Page goes live with your custom URL. Conversations start day one. Dashboard populates immediately." 
+                }
               ].map((s, i) => (
-                <div key={i} className="relative pl-12 md:pl-24 group">
-                   <div className="absolute -left-[9px] top-0 w-5 h-5 rounded-full bg-white border-4 border-gold-500 group-hover:scale-110 transition-transform"></div>
-                   <h3 className="text-xl serif text-navy-900 mb-2">{s.step}</h3>
-                   <p className="text-gray-600 font-light max-w-lg">{s.desc}</p>
+                <div key={i} className="bg-paper p-10 rounded-none border border-ink/10 flex flex-col min-h-[380px] shadow-sm hover:shadow-md transition-shadow">
+                   <span className="label-mono text-teal-precise mb-12 block opacity-100 font-bold tracking-[0.4em] text-xs transition-transform group-hover:translate-x-1">{s.num}</span>
+                   <h3 className="text-3xl font-serif text-ink mb-6 tracking-tight pr-4">{s.title}</h3>
+                   <p className="text-ink/70 font-light leading-relaxed font-serif text-lg">{s.desc}</p>
                 </div>
               ))}
            </div>
@@ -372,112 +558,121 @@ const Home: React.FC = () => {
       </section>
 
       {/* 8. SAFETY */}
-      <section className="py-24 bg-softgreen">
+      <section className="py-16 bg-teal-precise/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
            <div className="text-center mb-16">
-              <h2 className="text-4xl serif text-navy-900 mb-4">Designed to protect trust.</h2>
-              <p className="text-lg text-teal-900 font-light">Approved sources. Clear boundaries. Controlled behaviour.</p>
+              <h2 className="text-4xl font-serif text-ink mb-4">Designed to protect trust.</h2>
+              <p className="text-lg text-teal-precise font-light italic-moment font-serif italic">Approved sources. Clear boundaries. Controlled behaviour.</p>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { title: "Approved Sources Only", text: "Only the materials you approve—website pages, FAQs, documents, and vetted content." },
                 { title: "Scope Boundaries You Control", text: "Non-clinical by design. No diagnosis or medication advice. Clear limits defined per clinician and practice." },
-                { title: "Safe Refusal & Signposting", text: "If a query crosses into clinical advice or urgent risk, the Twin declines and signposts appropriately." },
+                { title: "Safe Refusal & Signposting", text: "If a query crosses into clinical advice or urgent risk, the AI Assistant declines and signposts appropriately." },
                 { title: "Conversation Logs & Improvement", text: "Review conversations, refine boundaries, and update approved sources as your practice evolves." },
               ].map((card, i) => (
-                <div key={i} className="bg-white p-8 rounded-sm shadow-sm border border-teal-100/50">
-                   <h3 className="text-sm font-bold uppercase tracking-widest text-navy-900 mb-4 min-h-[40px]">{card.title}</h3>
-                   <p className="text-sm text-gray-600 leading-relaxed">{card.text}</p>
+                <div key={i} className="bg-paper p-8 rounded-none border border-teal-precise/10 shadow-sm hover:border-teal-precise transition-all">
+                   <h3 className="label-mono text-ink mb-4 min-h-[40px] opacity-100 font-bold uppercase">{card.title}</h3>
+                   <p className="text-sm text-ink/70 leading-relaxed font-light font-serif italic italic-moment">{card.text}</p>
                 </div>
               ))}
            </div>
            
-           <div className="text-center mt-12 pt-8 border-t border-teal-800/10">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Non-clinical. Not medical advice. Not a medical device.</p>
+           <div className="text-center mt-12 pt-8 border-t border-ink/5">
+              <p className="label-mono opacity-100 font-bold uppercase text-[9px] tracking-[0.4em] text-ink/20">Non-clinical. Not medical advice. Not a medical device.</p>
            </div>
         </div>
       </section>
 
-      {/* 9. PRICING & PILOT OFFER */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 lg:px-12 relative z-10">
-           <div className="bg-navy-900 text-white rounded-[2rem] p-10 md:p-16 shadow-2xl flex flex-col md:flex-row gap-16 items-center">
-              <div className="flex-1">
-                 <h2 className="text-4xl md:text-5xl serif mb-6">Start with a 30-day pilot.</h2>
-                 <p className="text-gray-300 font-light mb-8">Full access for 30 days. No credit card required. Cancel anytime.</p>
-                 <ul className="space-y-4 mb-8">
-                    {["Full platform access for 30 days", "Built from your content (45-minute setup call)", "Live on your website in 7 days", "Cancel anytime"].map((item, i) => (
-                      <li key={i} className="flex items-center text-sm">
-                        <svg className="w-5 h-5 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                        {item}
-                      </li>
-                    ))}
-                 </ul>
-                 <p className="text-sm font-bold text-gold-500">White-glove build & calibration included during onboarding.</p>
-              </div>
+      {/* 9. THE OFFER */}
+      <section className="py-20 bg-paper text-ink overflow-hidden border-y border-ink/5" id="offer">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-col lg:flex-row gap-16 items-start">
+                
+                {/* Left: The Offer Details */}
+                <div className="lg:w-2/3">
+                    <span className="label-mono text-teal-precise mb-4 block font-bold uppercase text-[10px] tracking-[0.3em] opacity-100">The Offer</span>
+                    <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
+                        Start the trial that <br/>
+                        <span className="text-teal-precise italic">fills your calendar.</span>
+                    </h2>
+                    <p className="text-xl text-teal-precise font-serif mb-8 italic italic-moment">
+                        30 days free. No credit card required.
+                    </p>
+                    <p className="text-ink/60 text-lg leading-relaxed mb-12 max-w-2xl font-serif">
+                        30 days free. Live in 14 days. Cancel any time in the first month. We build your AI Clinic Page, you approve every word, and your Knowledge Center starts converting patients from day one.
+                    </p>
 
-              <div className="flex-1 w-full md:w-auto flex flex-col items-center md:items-end">
-                 <div className="mb-10 text-center md:text-right w-full">
-                    <div className="mb-8">
-                       <p className="text-sm text-gray-400 line-through decoration-red-500/70 mb-3">Setup Fee: £3,000</p>
-                       <p className="text-sm font-bold text-gold-500 uppercase tracking-widest">Waived for the first 50 customers</p>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                        {[
+                            "✓ APPROVED SOURCES ONLY",
+                            "✓ NON-CLINICAL BY DESIGN",
+                            "✓ NO COMMITMENT BEYOND DAY 30",
+                            "Full deployment within 14 days",
+                            "Direct access to strategy team",
+                            "Locked-in pricing for the first year"
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-start text-sm group">
+                                <span className={item.startsWith('✓') ? "hidden" : "w-5 h-5 rounded-none bg-teal-precise text-paper flex items-center justify-center text-[10px] mr-4 flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-teal-precise/20"}>
+                                  {item.startsWith('✓') ? "" : "✓"}
+                                </span>
+                                <span className="text-ink/80 font-serif italic">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Right: The CTA Card */}
+                <div className="lg:w-1/3 w-full">
+                    <div className="bg-white text-ink p-10 md:p-12 rounded-none shadow-2xl relative border-t-8 border-teal-precise border-x border-b border-ink/5">
+                        <span className="label-mono text-teal-precise mb-10 block font-bold uppercase text-[10px] tracking-[0.3em] opacity-100">Free Pilot</span>
+                        
+                        <div className="mb-12">
+                            <div className="text-6xl md:text-7xl font-serif font-bold text-ink mb-2 tracking-tighter">£0</div>
+                            <p className="label-mono uppercase tracking-[0.2em] text-[11px] text-ink font-bold mb-4">First 30 days</p>
+                            <div className="h-px w-full bg-ink/5 mb-6"></div>
+                            <p className="text-ink/60 text-sm leading-relaxed font-serif italic">
+                                Then £299/month from day 31. <br/>
+                                <span className="font-bold text-ink mt-1 block">Cancel anytime in the first 30 days.</span>
+                            </p>
+                        </div>
+
+                        <Link to="/free-trial" className="block w-full bg-ink text-paper py-6 text-center text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-teal-precise transition-all shadow-xl mb-8 label-mono opacity-100">
+                            Apply now
+                        </Link>
+
+                        <div className="space-y-4 pt-6 border-t border-ink/5">
+                            <p className="text-[10px] label-mono uppercase text-ink/30 tracking-[0.15em] leading-relaxed font-bold">
+                                Application takes under 5 minutes. <br/>
+                                We respond within 24 hours.
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div>
-                       <p className="text-6xl md:text-7xl font-serif text-white leading-none mb-3">£149<span className="text-2xl text-gray-500 font-sans">/month</span></p>
-                       <p className="text-sm text-gray-500">thereafter</p>
+
+                    <div className="mt-8 text-center lg:text-left">
+                        <p className="label-mono text-[9px] uppercase tracking-[0.5em] text-ink/20 font-bold">Pilot cohort now open.</p>
                     </div>
-                 </div>
-                 
-                 <div className="flex flex-col gap-4 w-full max-w-xs">
-                    <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-8 py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-gold-600 transition-all shadow-lg text-center">Start Free Trial</Link>
-                    <Link to="/demo" className="border border-white/20 text-white px-8 py-4 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all text-center">Request a Walkthrough</Link>
-                 </div>
+                </div>
 
-                 <div className="mt-8 bg-white/5 p-4 rounded-lg border border-white/5 text-left w-full max-w-xs">
-                    <p className="text-[10px] text-orange-300 font-bold uppercase tracking-widest mb-1">Capacity note:</p>
-                    <p className="text-xs text-gray-400 leading-relaxed">Limited onboarding capacity: we onboard every practitioner personally to ensure safety. Currently accepting 10 this quarter.</p>
-                 </div>
-              </div>
-           </div>
-        </div>
-      </section>
-
-      {/* 10. FAQ */}
-      <section className="py-24 bg-gray-50 border-t border-gray-100">
-         <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <h2 className="text-4xl serif text-navy-900 mb-12 text-center">Common questions. Clear answers.</h2>
-            <div className="space-y-12">
-               {[
-                 { q: "Is this training on my data?", a: "No. The Twin is built from clinician-approved materials you provide. We do not use your proprietary knowledge to train public models." },
-                 { q: "Does it give medical advice?", a: "No. It is non-clinical by design. It provides orientation, education from approved sources, and signposting to your pathways." },
-                 { q: "What if someone asks diagnostic or medication questions?", a: "The Twin refuses politely and routes the user to your preferred clinical process." },
-                 { q: "How long to go live?", a: "Typically 7 days with guided onboarding, depending on content readiness and routing complexity." },
-                 { q: "Can I update content later?", a: "Yes. Add or remove approved sources via your dashboard at any time." }
-               ].map((item, i) => (
-                 <div key={i} className="border-b border-gray-200 pb-8">
-                    <h3 className="text-lg font-serif font-bold text-navy-900 mb-3">{item.q}</h3>
-                    <p className="text-gray-600 font-light leading-relaxed">{item.a}</p>
-                 </div>
-               ))}
             </div>
-         </div>
+        </div>
       </section>
-
       {/* 11. FINAL CTA */}
-      <section className="py-32 bg-navy-950 text-white text-center relative overflow-hidden">
-         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-         <div className="max-w-3xl mx-auto px-6 relative z-10">
-            <h2 className="text-5xl md:text-6xl serif mb-6">Ready to install your Digital Twin?</h2>
-            <p className="text-xl text-gray-300 font-light mb-12">Start your pilot today—go live in 7 days.</p>
+      <section className="py-20 bg-paper text-ink text-center relative overflow-hidden border-t border-ink/5">
+         <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+         <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 className="text-5xl md:text-8xl font-serif mb-8 text-ink leading-tight tracking-tight">Get started with NeuraScaleX today.</h2>
+            <p className="text-xl md:text-2xl text-ink/60 font-serif italic mb-16 max-w-2xl mx-auto leading-relaxed">
+              Join the UK specialist clinics turning every patient question into a booking on the calendar.
+            </p>
             
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-10">
-               <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">Start Free Trial</Link>
-               <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">Request a Walkthrough</Link>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
+               <Link to="/demo" className="w-full sm:w-auto bg-ink text-paper px-12 py-6 rounded-none font-bold uppercase tracking-widest shadow-2xl hover:bg-teal-precise transition-all label-mono opacity-100">BOOK A DEMO</Link>
+               <Link to="/free-trial" className="w-full sm:w-auto border border-ink/20 text-ink px-12 py-6 rounded-none font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all label-mono opacity-100">START FREE TRIAL</Link>
             </div>
             
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Onboarding reach-out within 24 hours. No credit card required.</p>
+            <p className="label-mono lowercase opacity-20 font-bold tracking-widest">Onboarding reach-out within 24 hours. No credit card required.</p>
          </div>
       </section>
 

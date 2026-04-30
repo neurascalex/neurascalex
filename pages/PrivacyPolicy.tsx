@@ -3,13 +3,13 @@ import React from 'react';
 
 const PrivacyPolicy: React.FC = () => {
   return (
-    <div className="animate-in fade-in duration-700 bg-warm-white min-h-screen py-24">
+    <div className="animate-in fade-in duration-700 bg-paper min-h-screen py-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-12">
-        <h1 className="text-5xl md:text-6xl serif text-teal-800 mb-12">Privacy & Cookie Policy</h1>
+        <h1 className="text-5xl md:text-6xl serif text-teal-precise mb-12">Privacy & Cookie Policy</h1>
         
-        <div className="prose prose-slate max-w-none space-y-12 text-gray-700 font-light leading-relaxed">
+        <div className="prose prose-slate max-w-none space-y-12 text-ink/70 font-light leading-relaxed">
           <section>
-            <h2 className="text-2xl serif text-navy-900 mb-6">1. Introduction</h2>
+            <h2 className="text-2xl serif text-ink mb-6">1. Introduction</h2>
             <p>
               NeuraScaleX ("we", "our", or "us") is committed to protecting and respecting your privacy. This policy sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. 
             </p>
@@ -19,7 +19,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl serif text-navy-900 mb-6">2. Information We Collect</h2>
+            <h2 className="text-2xl serif text-ink mb-6">2. Information We Collect</h2>
             <p>We may collect and process the following data about you:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Information you give us:</strong> Information you provide by filling in forms on our site (e.g., demo requests, free trial applications). This includes name, clinical email, role, specialty, and clinical verification links (LinkedIn/Website).</li>
@@ -29,7 +29,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl serif text-navy-900 mb-6">3. Use of Information</h2>
+            <h2 className="text-2xl serif text-ink mb-6">3. Use of Information</h2>
             <p>We use information held about you in the following ways:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>To verify your clinical identity and eligibility for our services.</li>
@@ -39,29 +39,29 @@ const PrivacyPolicy: React.FC = () => {
             </ul>
           </section>
 
-          <section className="bg-softgreen p-8 rounded-sm border border-teal-100">
-            <h2 className="text-2xl serif text-teal-800 mb-6">4. Cookie Policy (GDPR Compliant)</h2>
+          <section className="bg-teal-precise/5 p-8 rounded-none border border-teal-precise/10">
+            <h2 className="text-2xl serif text-teal-precise mb-6">4. Cookie Policy (GDPR Compliant)</h2>
             <p className="mb-4">
               Our website uses cookies to distinguish you from other users. This helps us to provide you with a good experience when you browse our website and also allows us to improve our site.
             </p>
             <div className="space-y-4">
               <div>
-                <h4 className="font-bold text-navy-900 text-sm uppercase tracking-wider">Essential Cookies</h4>
+                <h4 className="font-bold text-ink text-sm uppercase tracking-wider">Essential Cookies</h4>
                 <p className="text-sm">Necessary for the website to function. These cannot be switched off.</p>
               </div>
               <div>
-                <h4 className="font-bold text-navy-900 text-sm uppercase tracking-wider">Performance Cookies</h4>
+                <h4 className="font-bold text-ink text-sm uppercase tracking-wider">Performance Cookies</h4>
                 <p className="text-sm">Allow us to count visits and traffic sources so we can measure and improve performance.</p>
               </div>
               <div>
-                <h4 className="font-bold text-navy-900 text-sm uppercase tracking-wider">Functionality Cookies</h4>
+                <h4 className="font-bold text-ink text-sm uppercase tracking-wider">Functionality Cookies</h4>
                 <p className="text-sm">Enable the website to provide enhanced functionality and personalisation (e.g., remembering your demo path).</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl serif text-navy-900 mb-6">5. Your Rights</h2>
+            <h2 className="text-2xl serif text-ink mb-6">5. Your Rights</h2>
             <p>Under the UK GDPR, you have the right to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Request access to your personal data.</li>
@@ -74,7 +74,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl serif text-navy-900 mb-6">6. Contact</h2>
+            <h2 className="text-2xl serif text-ink mb-6">6. Contact</h2>
             <p>
               Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to <strong>info@neurascalex.com</strong>.
             </p>

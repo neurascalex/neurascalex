@@ -5,16 +5,16 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Platform from './pages/Platform';
-import HowItWorks from './pages/HowItWorks';
+import SpecialistHub from './pages/SpecialistHub';
 import Safety from './pages/Safety';
 import FreeTrial from './pages/FreeTrial';
 import Demo from './pages/Demo';
+import Pricing from './pages/Pricing';
 import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
-import Experts from './pages/Experts';
-import PatientHub from './pages/PatientHub';
+import CaseStudies from './pages/CaseStudies';
 
 const App: React.FC = () => {
   return (
@@ -25,16 +25,16 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/platform" element={<Platform />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/specialist-hub" element={<SpecialistHub />} />
             <Route path="/safety" element={<Safety />} />
             <Route path="/free-trial" element={<FreeTrial />} />
             <Route path="/demo" element={<Demo />} />
-            <Route path="/experts" element={<Experts />} />
-            <Route path="/patient-hub" element={<PatientHub />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
           </Routes>
         </main>
         <Footer />
