@@ -19,7 +19,12 @@ export default defineConfig(({ mode }) => {
           output: {
             manualChunks(id) {
               if (id.includes('node_modules')) {
-                if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                if (
+                  id.includes('react') ||
+                  id.includes('react-dom') ||
+                  id.includes('react-router') ||
+                  id.includes('motion')
+                ) {
                   return 'vendor-react';
                 }
                 return 'vendor';
@@ -34,6 +39,7 @@ export default defineConfig(({ mode }) => {
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
       resolve: {
+        dedupe: ['react', 'react-dom'],
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
