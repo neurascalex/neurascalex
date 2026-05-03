@@ -1,10 +1,13 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_URLS } from '../services/chatApi';
 
 const FreeTrial: React.FC = () => {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -32,10 +35,40 @@ const FreeTrial: React.FC = () => {
   const handleNext = () => setStep(2);
   const handleBack = () => setStep(1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsLoading(true);
+    setSubmitError(null);
+    try {
+      const payload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        personalEmailId: formData.email,
+        speciality: formData.role,
+        personalWebsiteUrl: formData.website,
+        linkedInUrl: formData.linkedin,
+        phoneNumber: formData.phone,
+        country: formData.country,
+        primaryGoal: formData.primaryGoal,
+        deploymentPreference: formData.deployment,
+        message: formData.message,
+      };
+      const response = await fetch(`${API_URLS.dotnetApi}/Registration_NoKey/RequestTrial`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', accept: 'text/plain' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || `Request failed (${response.status})`);
+      }
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -241,9 +274,15 @@ const FreeTrial: React.FC = () => {
                   </div>
                 </div>
 
+                {submitError && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded text-sm text-red-700">
+                    {submitError}
+                  </div>
+                )}
+
                 <div className="pt-8 flex flex-col items-center">
-                  <button type="submit" className="w-full bg-ink text-paper py-6 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-2xl mb-8">
-                    SEND APPLICATION
+                  <button type="submit" disabled={isLoading} className="w-full bg-ink text-paper py-6 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-2xl mb-8 disabled:opacity-60 disabled:cursor-not-allowed">
+                    {isLoading ? 'SUBMITTING…' : 'SEND APPLICATION'}
                   </button>
                   <button type="button" onClick={handleBack} className="label-mono font-bold opacity-40 hover:opacity-100 transition-opacity">
                     ← Back to step 1

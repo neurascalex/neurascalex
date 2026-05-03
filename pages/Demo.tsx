@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { sendToInfoInbox } from '../services/emailService';
+import { API_URLS } from '../services/chatApi';
 
 type DemoStep = 'form' | 'submitting' | 'path-a-portal' | 'path-b-review' | 'final-booked';
 
@@ -31,27 +31,41 @@ const Demo: React.FC = () => {
     setStep('submitting');
 
     try {
-      // Send data to info@neurascalex.com
-      const success = await sendToInfoInbox('DEMO', formData);
-      
-      if (success) {
-        // Routing Logic: Verification Path
-        // Clinicians providing clinical verification (website/LinkedIn) get the priority booking option
-        const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
-        
-        if (isVerified) {
-          setStep('path-a-portal');
-        } else {
-          setStep('path-b-review');
-        }
-      } else {
-        setStep('path-b-review');
+      const nameParts = formData.fullName.trim().split(' ');
+      const firstName = nameParts[0] ?? '';
+      const lastName = nameParts.slice(1).join(' ') || firstName;
+
+      const payload = {
+        firstName,
+        lastName,
+        personalEmailId: formData.email,
+        speciality: formData.role,
+        personalWebsiteUrl: formData.website,
+        linkedInUrl: formData.linkedin,
+        country: formData.country,
+        primaryGoal: formData.goal,
+        message: formData.note,
+      };
+
+      const response = await fetch(`${API_URLS.dotnetApi}/Registration_NoKey/RequestDemo`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', accept: 'text/plain' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || `Request failed (${response.status})`);
       }
+
+      // Routing Logic: verified clinicians (website/LinkedIn provided) get priority booking
+      const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
+      setStep(isVerified ? 'path-a-portal' : 'path-b-review');
     } catch (error) {
-      console.error('Relay failed:', error);
+      console.error('Demo request failed:', error);
       setStep('path-b-review');
     }
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
