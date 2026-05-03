@@ -339,8 +339,8 @@ const Home: React.FC = () => {
               <div className="bg-white rounded-none p-10 shadow-2xl border border-ink/5 flex flex-col h-full hover:shadow-3xl transition-all group scale-100 hover:scale-[1.02] duration-500">
                 <div className="flex justify-between items-start mb-10">
                   <div className="relative">
-                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center text-3xl font-bold text-ink border border-ink/10 overflow-hidden shadow-inner font-serif">
-                      BP
+                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center border border-ink/10 overflow-hidden shadow-inner">
+                      <img src="/images/berkshire-pain-clinic.png" alt="Berkshire Pain Clinic" className="w-full h-full object-contain" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
                       <div className="w-3.5 h-3.5 bg-green-500 rounded-full animate-pulse"></div>
@@ -370,12 +370,12 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <button className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
+                  <a href="https://askdeepak.neurascalex.com/" target="_blank" rel="noopener noreferrer" className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
                     Visit the live page
                     <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -383,8 +383,8 @@ const Home: React.FC = () => {
               <div className="bg-white rounded-none p-10 shadow-2xl border border-ink/5 flex flex-col h-full hover:shadow-3xl transition-all group scale-100 hover:scale-[1.02] duration-500">
                 <div className="flex justify-between items-start mb-10">
                   <div className="relative">
-                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center text-3xl font-bold text-ink border border-ink/10 overflow-hidden shadow-inner font-serif">
-                      BP
+                    <div className="w-24 h-24 rounded-none bg-paper flex items-center justify-center border border-ink/10 overflow-hidden shadow-inner">
+                      <img src="/images/Psychiatry-Dr-Abrar.png" alt="Berkshire Psychiatrist Clinic" className="w-full h-full object-contain" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
                       <div className="w-3.5 h-3.5 bg-green-500 rounded-full animate-pulse"></div>
@@ -413,12 +413,12 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <button className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
+                  <a href="https://askabrar.neurascalex.com/" target="_blank" rel="noopener noreferrer" className="w-full bg-ink text-paper py-6 rounded-none text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-teal-precise transition-all shadow-2xl shadow-ink/10 group active:scale-95 label-mono">
                     Visit the live page
                     <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
            </div>

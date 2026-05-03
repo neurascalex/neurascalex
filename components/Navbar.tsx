@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link to="/" className="hover:opacity-90 transition-opacity">
+            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="hover:opacity-90 transition-opacity">
               <Logo />
             </Link>
           </div>
@@ -50,6 +50,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={() => window.scrollTo(0, 0)}
                 className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
                   location.pathname === link.path ? 'text-teal-precise' : 'hover:text-teal-precise opacity-70 hover:opacity-100'
                 }`}
@@ -60,6 +61,7 @@ const Navbar: React.FC = () => {
             <div className="flex items-center space-x-6 ml-4">
               <Link
                 to="/free-trial"
+                onClick={() => window.scrollTo(0, 0)}
                 className="btn-primary rounded-none text-xs uppercase tracking-widest"
               >
                 Start Free Trial
@@ -90,7 +92,7 @@ const Navbar: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              onClick={() => setIsOpen(false)}
+              onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
               className="block text-base font-medium text-ink"
             >
               {link.name}
@@ -99,7 +101,7 @@ const Navbar: React.FC = () => {
           <div className="pt-4 border-t border-ink/5 flex flex-col space-y-4">
             <Link
               to="/free-trial"
-              onClick={() => setIsOpen(false)}
+              onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
               className="btn-primary rounded-none text-center text-xs uppercase tracking-widest"
             >
               Start Free Trial
