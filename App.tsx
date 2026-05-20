@@ -15,6 +15,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
 import CaseStudies from './pages/CaseStudies';
+import Referral from './pages/Referral';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/referral" element={<Referral />} />
           </Routes>
         </main>
         <Footer />
