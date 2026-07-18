@@ -15,13 +15,8 @@ import Affiliate from './pages/Affiliate';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
-import { referralService } from './services/referralService';
 
 const App: React.FC = () => {
-  React.useEffect(() => {
-    referralService.init();
-  }, []);
-
   return (
     <Router>
       <div className="flex flex-col min-h-screen">

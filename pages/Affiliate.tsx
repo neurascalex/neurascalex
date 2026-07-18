@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { referralService } from '../services/referralService';
-import { leadService } from '../services/leadService';
 
 const Affiliate: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,13 +23,9 @@ const Affiliate: React.FC = () => {
     setError(null);
     
     try {
-      await leadService.submitAffiliateApplication(
-        formData.name,
-        formData.email,
-        formData.profession,
-        formData.linkSource,
-        formData.message
-      );
+      // Simulate form submission - replace with your backend API
+      console.log("Form submitted:", formData);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setIsSubmitted(true);
     } catch (err: any) {
       console.error("Submission failed:", err);
