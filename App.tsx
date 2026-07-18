@@ -11,13 +11,17 @@ import FreeTrial from './pages/FreeTrial';
 import Demo from './pages/Demo';
 import Pricing from './pages/Pricing';
 import About from './pages/About';
+import Affiliate from './pages/Affiliate';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
-import CaseStudies from './pages/CaseStudies';
-import Referral from './pages/Referral';
+import { referralService } from './services/referralService';
 
 const App: React.FC = () => {
+  React.useEffect(() => {
+    referralService.init();
+  }, []);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -32,11 +36,10 @@ const App: React.FC = () => {
             <Route path="/demo" element={<Demo />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
+            <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/referral" element={<Referral />} />
           </Routes>
         </main>
         <Footer />
