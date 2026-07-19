@@ -1,8 +1,9 @@
 {
-  "name": "Copy of NeuraScaleX - Clinician Digital Twin V1 - Final",
-  "description": "Governed, non-clinical AI representation of a clinician’s expertise, built for health professionals to scale safely.",
+  "name": "NeuraScaleX",
+  "description": "Clinician Digital Twin — Editorial-precise AI governance for scaling clinical expertise.",
   "requestFramePermissions": [
     "camera",
     "microphone"
-  ]
+  ],
+  "majorCapabilities": []
 }

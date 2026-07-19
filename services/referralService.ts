@@ -1,3 +1,4 @@
+
 /**
  * Referral Service
  * Handles capturing, persisting, and retrieving referral codes from the URL.

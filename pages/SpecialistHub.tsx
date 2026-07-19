@@ -1,134 +1,72 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import ChatModal from '../components/ChatModal';
+import SEO from '../components/SEO';
 
 interface Specialist {
   name: string;
   role: string;
-  location: string;
   desc: string;
-  tags: string[];
   imageInitials: string;
-  imageUrl?: string;
-  status: 'LIVE' | 'LAUNCHING';
+  status: 'LIVE';
+  chatUrl: string;
   websiteUrl: string;
-  widgetId: string;
-  image: string;
-  title: string;
+  buttonText: string;
+  linkText: string;
 }
 
 const specialists: Specialist[] = [
   {
-    name: "Dr. Deepak Ravindran",
-    role: "PAIN MEDICINE CONSULTANT",
-    location: "UK",
-    desc: "Orienting patients on pain management pathways and 'Long Covid' recovery, reducing repetitive questions before consultation.",
-    tags: ["AI ASSISTANT", "INTELLIGENCE"],
+    name: "Prof. Deepak Ravindran",
+    role: "Pain Medicine Consultant · Berkshire Pain Clinic",
+    desc: "Orienting patients on pain management pathways and long-covid recovery — reducing repetitive questions before consultation.",
     imageInitials: "DR",
     status: 'LIVE',
+    chatUrl: "https://askdeepak.neurascalex.com/",
     websiteUrl: "https://deepakravindran.co.uk/",
-    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
-    image: 'https://storagfd.blob.core.windows.net/fdablbstdr3/assets/Deepak%20Profile%20pic.jpg?sv=2025-07-05&se=2035-11-22T17%3A53%3A51Z&sr=b&sp=r&sig=PSgWDM2uF04wNXvK85Ujy6SpvO10LKWxtofIqVO7bxQ%3D',
-    title: 'Pain Medicine Consultant · UK'
+    buttonText: "Ask Deepak →",
+    linkText: "Visit clinic website ↗"
   },
   {
-    name: "Dr. Sunil Kumar",
-    role: "LIFESTYLE MEDICINE PHYSICIAN",
-    location: "UK",
-    desc: "Educating patients on metabolic health programmes and qualifying suitability before they book a discovery call.",
-    tags: ["AI ASSISTANT", "EDUCATION"],
-    imageInitials: "SK",
-    status: 'LIVE',
-    websiteUrl: "https://drsunilkumar.co.uk/",
-    widgetId: 'd53e170c-6283-4fdd-8d53-03cb51083c81',
-    image: 'https://storagfd.blob.core.windows.net/fdablbstsk13/assets/IMG_9435.jpg?sv=2025-07-05&se=2035-11-09T07%3A18%3A13Z&sr=b&sp=r&sig=X5JekyGQUwmkfiLYuxwXygzHx8pvQ3wkQZG3w1UXlFQ%3D',
-    title: 'Lifestyle Medicine Physician · UK'
-  },
-  {
-    name: "Dr. Arokia Antonysamy",
-    role: "CONSULTANT PSYCHIATRIST",
-    location: "UK",
-    desc: "Providing clear guidance on ADHD assessments and psychiatric pathways, managing patient expectations safely up front.",
-    tags: ["AI ASSISTANT", "MENTAL HEALTH"],
-    imageInitials: "AA",
-    status: 'LIVE',
-    websiteUrl: "https://drarokia.com/",
-    widgetId: 'b4692909-c2e8-4ccc-b819-a3571d705e3e',
-    image: 'https://storagfd.blob.core.windows.net/fdablbstaa83/assets/Arokia-MindKonnect.png?sv=2025-07-05&se=2035-12-09T14%3A20%3A40Z&sr=b&sp=r&sig=0KN0Jv4OZf5NkpRK7L4xLTkfsV6Ve1a0erKbO%2B3WeXY%3D',
-    title: 'Consultant Psychiatrist · UK'
-  },
-  {
-    name: "Dr. Abrar Hussain",
-    role: "CONSULTANT PSYCHIATRIST",
-    location: "UK",
-    desc: "Deploying a governed AI Assistant to manage intake for private psychiatry practice and streamline new patient onboarding.",
-    tags: ["AI ASSISTANT", "ROUTING"],
+    name: "Dr Abrar Hussain",
+    role: "Consultant Psychiatrist · Berkshire Psychiatrist",
+    desc: "A governed first conversation for private psychiatry — booking, fees, suitability and admin queries answered safely, around the clock.",
     imageInitials: "AH",
     status: 'LIVE',
-    websiteUrl: "#",
-    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
-    image: 'https://storagfd.blob.core.windows.net/fdablbstah88/assets/AbrarAI.avif?sv=2025-07-05&se=2036-01-14T15%3A59%3A33Z&sr=b&sp=r&sig=%2B5jOafWH2GI%2FyS9qaJVG0qLx95bOwkIqyTDm7kAK0Kk%3D',
-    title: 'Consultant Psychiatrist · UK'
-  },
-  {
-    name: "Berkshire Pain Clinic",
-    role: "SPECIALIST CLINIC",
-    location: "READING, UK",
-    desc: "A multi-disciplinary clinic using the AI Assistant to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.",
-    tags: ["AI ASSISTANT", "ROUTING"],
-    imageInitials: "BP",
-    status: 'LIVE',
+    chatUrl: "https://askabrar.neurascalex.com/",
     websiteUrl: "https://www.berkshirepainclinic.co.uk/",
-    widgetId: 'ce0e9578-e1e3-4bee-a665-cbf12fc8db84',
-    image: '/images/Berkshire-Pain-Clinic.png',
-    title: 'Specialist Clinic · Reading, UK'
+    buttonText: "Ask Dr Abrar →",
+    linkText: "Visit clinic website ↗"
   },
   {
-    name: "Berkshire Psychiatrist",
-    role: "CONSULTANT PSYCHIATRIST",
-    location: "UK",
-    desc: "Deploying a governed AI Assistant to manage intake for private psychiatry practice and streamline new patient onboarding.",
-    tags: ["AI ASSISTANT", "ROUTING"],
-    imageInitials: "BP",
+    name: "Dr Catherine Sampa Muyeba",
+    role: "Consultant Psychiatrist · REAPing Women",
+    desc: "A first conversation for a community of high-achieving women — routing burnout, clarity and programme questions to the right next step.",
+    imageInitials: "CM",
     status: 'LIVE',
-    websiteUrl: "#",
-    widgetId: '1ebbc490-8276-43d1-894f-6d5987e17006',
-    image: '/images/Psychiatry-Dr-Abrar.png',
-    title: 'Consultant Psychiatrist · UK'
+    chatUrl: "https://askcathy.neurascalex.com/",
+    websiteUrl: "https://www.berkshirepainclinic.co.uk/",
+    buttonText: "Ask Dr Cathy →",
+    linkText: "Visit community website ↗"
   }
 ];
 
-const SpecialistCard: React.FC<{ specialist: Specialist; onOpenChat: (s: Specialist) => void }> = ({ specialist, onOpenChat }) => (
+const SpecialistCard: React.FC<{ specialist: Specialist }> = ({ specialist }) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="bg-white rounded-3xl p-8 shadow-sm border border-neutral-200/60 flex flex-col h-full hover:shadow-md hover:border-[#0D6E6E]/20 transition-all duration-300 group"
+    className="bg-white rounded-3xl p-8 border border-neutral-200/60 shadow-sm flex flex-col h-full hover:shadow-md hover:border-[#0D6E6E]/20 transition-all duration-300 group text-left"
   >
     {/* Card Top: LIVE status and Avatar */}
     <div className="flex justify-between items-start mb-8">
-      <div className="w-14 h-14 rounded-full bg-[#E6F3F3] border border-[#B3D9D9] overflow-hidden flex items-center justify-center">
-        <img
-          src={specialist.image}
-          alt={specialist.name}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            const target = e.currentTarget;
-            target.style.display = 'none';
-            const fallback = target.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = 'flex';
-          }}
-        />
-        <div className="text-lg font-serif font-bold text-[#0D6E6E]" style={{ display: 'none' }}>
-          {specialist.imageInitials}
-        </div>
+      <div className="w-14 h-14 rounded-full bg-[#E6F3F3] flex items-center justify-center text-lg font-serif font-bold text-[#0D6E6E] border border-[#B3D9D9]">
+        {specialist.imageInitials}
       </div>
       
       <div className="flex items-center gap-1.5 px-3 py-1 bg-[#E6F3F3] rounded-full border border-[#B3D9D9]">
         <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-        <span className="text-[10px] font-sans font-bold tracking-wider text-[#0D6E6E] uppercase">{specialist.status}</span>
+        <span className="text-[10px] font-sans font-bold tracking-wider text-[#0D6E6E] uppercase">LIVE</span>
       </div>
     </div>
 
@@ -138,44 +76,33 @@ const SpecialistCard: React.FC<{ specialist: Specialist; onOpenChat: (s: Special
         {specialist.name}
       </h3>
       <p className="text-[11px] font-sans font-semibold tracking-wider text-[#0D6E6E] uppercase">
-        {specialist.role} · {specialist.location}
+        {specialist.role}
       </p>
     </div>
 
     {/* Description */}
-    <p className="text-base text-ink/75 leading-relaxed mb-6 flex-grow font-sans">
+    <p className="text-base text-ink/75 leading-relaxed mb-8 flex-grow font-sans">
       {specialist.desc}
     </p>
 
-    {/* Tags */}
-    <div className="flex flex-wrap gap-2 mb-8">
-      {specialist.tags.map((tag) => (
-        <span key={tag} className="text-[9px] font-sans font-bold tracking-wider text-[#0D6E6E] px-2.5 py-1 rounded-full bg-[#E6F3F3] border border-[#B3D9D9]">
-          {tag}
-        </span>
-      ))}
-    </div>
-
     {/* Interactive Buttons */}
     <div className="space-y-4 pt-4 border-t border-neutral-100">
-      <button 
-        onClick={() => onOpenChat(specialist)}
+      <a 
+        href={specialist.chatUrl}
+        target="_blank" 
+        rel="noopener noreferrer"
         className="w-full bg-[#001A33] hover:bg-[#002B54] text-white py-4 rounded-xl font-sans font-semibold text-center transition-all flex items-center justify-center gap-2 text-sm shadow-sm"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 11.5C21 16.7467 16.7467 21 11.5 21C6.25329 21 2 16.7467 2 11.5C2 6.25329 6.25329 2 11.5 2C16.7467 2 21 6.25329 21 11.5Z" stroke="currentColor" strokeWidth="2"/>
-          <path d="M15 11.5C15 13.433 13.433 15 11.5 15C9.567 15 8 13.433 8 11.5C8 9.567 9.567 8 11.5 8C13.433 8 15 9.567 15 11.5Z" stroke="currentColor" strokeWidth="2"/>
-        </svg>
-        Chat with AI Assistant →
-      </button>
-      {specialist.websiteUrl && specialist.websiteUrl !== "#" && (
+        {specialist.buttonText}
+      </a>
+      {specialist.websiteUrl && (
         <a 
           href={specialist.websiteUrl} 
           target="_blank" 
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-sans font-bold tracking-wider text-ink/65 uppercase hover:text-[#0D6E6E] transition-colors py-2"
         >
-          Visit clinic website ↗
+          {specialist.linkText}
         </a>
       )}
     </div>
@@ -183,140 +110,196 @@ const SpecialistCard: React.FC<{ specialist: Specialist; onOpenChat: (s: Special
 );
 
 const SpecialistHub: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSpecialist, setSelectedSpecialist] = useState<Specialist | null>(null);
-
-  const openChat = (specialist: Specialist) => {
-    setSelectedSpecialist(specialist);
-    setIsModalOpen(true);
+  const specialistHubJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        "name": "Live Ask pages on NeuraScaleX",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ask Deepak — Prof. Deepak Ravindran, Pain Medicine", "url": "https://askdeepak.neurascalex.com" },
+          { "@type": "ListItem", "position": 2, "name": "Ask Dr Abrar — Dr Abrar Hussain, Consultant Psychiatrist", "url": "https://askabrar.neurascalex.com" },
+          { "@type": "ListItem", "position": 3, "name": "Ask Dr Cathy — Dr Catherine Sampa Muyeba, Consultant Psychiatrist", "url": "https://askcathy.neurascalex.com" }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.neurascalex.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Specialist Hub", "item": "https://www.neurascalex.com/specialist-hub" }
+        ]
+      }
+    ]
   };
 
   return (
     <div className="bg-[#F7F4ED] min-h-screen overflow-x-hidden pt-20">
-      <ChatModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        specialist={selectedSpecialist ? {
-          name: selectedSpecialist.name,
-          image: selectedSpecialist.image,
-          title: selectedSpecialist.title,
-          widgetId: selectedSpecialist.widgetId
-        } : null}
+      <SEO 
+        title="Live Ask Pages — Real UK Specialists | NeuraScaleX"
+        description="Meet the live Ask pages: Prof. Deepak Ravindran (pain medicine), Dr Abrar Hussain (psychiatry) and Dr Catherine Sampa Muyeba (REAPing Women). Ask them anything — exactly what your patients would experience."
+        canonical="https://www.neurascalex.com/specialist-hub"
+        robots="index, follow, max-image-preview:large"
+        ogType="website"
+        ogTitle="Meet the live Ask pages — real UK specialists, real governed conversations."
+        ogDescription="Click any page and ask it anything. Every conversation logged. Every booking attributed. Every safety boundary held."
+        ogImage="https://www.neurascalex.com/assets/og-hub.png"
+        jsonLd={specialistHubJsonLd}
       />
+      
       {/* Hero Section */}
       <section className="bg-[#F7F4ED] py-20 lg:py-28 text-ink relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E6F3F3] border border-[#B3D9D9] mb-6"
+            className="inline-block mb-4"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0D6E6E] animate-pulse"></span>
-            <span className="font-sans font-semibold text-[#0D6E6E] uppercase tracking-wider text-[11px]">LIVE PAGES</span>
+            <span className="font-sans text-[11px] font-semibold tracking-[0.25em] text-[#0D6E6E] uppercase block mb-3">
+              THE SPECIALIST HUB
+            </span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-ink mb-8 leading-[1.1] tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-ink mb-6 leading-tight tracking-tight max-w-4xl mx-auto"
           >
-            UK specialists already live <br />
-            <span className="text-[#0D6E6E] italic font-medium">on NeuraScaleX.</span>
+            Meet the <span className="text-[#0D6E6E] italic font-medium">live Ask pages.</span>
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-2xl text-ink/75 leading-relaxed font-serif italic max-w-4xl mx-auto mb-12"
+            className="text-lg md:text-xl text-ink/80 leading-relaxed font-sans max-w-3xl mx-auto mb-10"
           >
-            Each Ask page is trained only on its clinician's approved content. Click any card and chat with the AI — this is exactly what your patients would experience.
+            Real UK specialists. Real governed conversations. Ask them anything — this is exactly what your patients would experience on day one.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto mb-12"
+            className="flex flex-col items-center gap-10"
           >
-            <button 
-              onClick={() => document.getElementById('pilots-grid')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full sm:w-auto bg-[#0D6E6E] text-white px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-lg hover:bg-[#095050] transition-all flex items-center justify-center gap-2"
-            >
-              Explore the live pages
-              <svg className="w-4 h-4 transition-transform hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-            <Link to="/demo" className="w-full sm:w-auto bg-white border border-neutral-300 text-ink px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-sm hover:bg-neutral-50 transition-all text-center">
-              Book a founder demo
-            </Link>
-          </motion.div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto">
+              <button 
+                onClick={() => document.getElementById('pilots-grid')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full sm:w-auto bg-[#0D6E6E] hover:bg-[#0B5C5C] text-white px-8 py-4 rounded-xl font-sans font-semibold text-sm transition-all flex items-center justify-center gap-1 shadow-sm text-center tracking-wide cursor-pointer"
+              >
+                Explore the live pages ↓
+              </button>
+              <Link 
+                to="/demo" 
+                className="w-full sm:w-auto bg-[#F7F4ED] border border-ink/20 text-ink px-8 py-4 rounded-xl font-sans font-semibold text-sm hover:bg-neutral-50 transition-all text-center tracking-wide"
+              >
+                Book a founder demo
+              </Link>
+            </div>
 
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] text-ink/50 font-sans">
-            <div className="flex items-center gap-2">
-              <span className="text-[#0D6E6E]">✓</span> Approved sources only
+            {/* Badges */}
+            <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 font-sans text-[10px] font-bold text-ink/65 tracking-[0.1em] uppercase">
+              <span>APPROVED SOURCES ONLY</span>
+              <span className="opacity-40">•</span>
+              <span>NON-CLINICAL BY DESIGN</span>
+              <span className="opacity-40">•</span>
+              <span>24/7 AVAILABILITY</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#0D6E6E]">✓</span> Non-clinical by design
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#0D6E6E]">✓</span> 24/7 availability
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Specialist Grid Section */}
-      <section id="pilots-grid" className="py-20 lg:py-28 bg-[#F7F4ED]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {specialists.map((specialist, idx) => (
-              <SpecialistCard key={idx} specialist={specialist} onOpenChat={openChat} />
-            ))}
-          </div>
+      <section id="pilots-grid" className="pb-28 max-w-7xl mx-auto px-6 lg:px-12 scroll-mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {specialists.map((specialist, idx) => (
+            <SpecialistCard key={idx} specialist={specialist} />
+          ))}
         </div>
       </section>
 
       {/* Trust & Outcome Section */}
-      <section className="py-20 lg:py-28 bg-white border-t border-neutral-200/50 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <div className="space-y-8">
-            <h2 className="text-4xl md:text-6xl font-serif text-ink leading-tight tracking-tight">
-              Every conversation <span className="text-[#0D6E6E] italic font-medium">logged.</span>
-            </h2>
-            <h2 className="text-4xl md:text-6xl font-serif text-ink leading-tight tracking-tight">
-              Every booking <span className="text-[#0D6E6E] italic font-medium">attributed.</span>
-            </h2>
-            <h2 className="text-4xl md:text-6xl font-serif text-ink leading-tight tracking-tight">
-              Every safety boundary <span className="text-[#0D6E6E] italic font-medium">held.</span>
-            </h2>
+      <section className="py-28 bg-[#13222D] text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 relative min-h-[220px] md:min-h-[260px]">
+          <div className="absolute left-6 md:left-24 top-6">
+            <span className="text-4xl md:text-7xl font-serif italic text-[#3BA5A5] leading-none tracking-tight block">logged.</span>
           </div>
-          <div className="mt-16 inline-block h-px w-16 bg-[#0D6E6E]/20"></div>
+          <div className="absolute right-6 md:right-24 top-12">
+            <span className="text-4xl md:text-7xl font-serif italic text-[#3BA5A5] leading-none tracking-tight block">attributed.</span>
+          </div>
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-4 md:bottom-6">
+            <span className="text-4xl md:text-7xl font-serif italic text-[#3BA5A5] leading-none tracking-tight block">held.</span>
+          </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-20 lg:py-28 bg-[#F7F4ED] text-ink text-center relative overflow-hidden">
-         <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-         <div className="max-w-4xl mx-auto px-6 relative z-10">
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-ink leading-tight tracking-tight">
-              Become <span className="text-[#0D6E6E] italic font-medium">impossible to ignore.</span>
-            </h2>
-            <p className="text-lg md:text-xl text-ink/75 font-serif italic mb-12 max-w-2xl mx-auto leading-relaxed">
-              Join the UK specialist clinics turning every patient question into a booking on the calendar.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-              <Link to="/demo" className="w-full sm:w-auto bg-[#0D6E6E] hover:bg-[#0B5C5C] text-white px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-sm hover:shadow transition-all text-center">
-                Book a founder demo
-              </Link>
-              <Link to="/free-trial" className="w-full sm:w-auto bg-white border border-ink/20 text-ink px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-sm hover:bg-neutral-50 transition-all text-center">
-                Apply for the Founding 20
-              </Link>
+      {/* For Clinicians Section */}
+      <section className="py-24 bg-[#F7F4ED] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="text-left">
+              <span className="font-mono text-xs font-semibold tracking-[0.3em] text-[#0D6E6E] uppercase mb-4 block">FOR CLINICIANS</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-bold text-ink mb-8 leading-[1.15] tracking-tight">
+                You’ve seen what it does <br />
+                <span className="text-[#0D6E6E] italic font-medium">for their patients.</span> Now <br />
+                imagine it on yours.
+              </h2>
+              <div className="space-y-6 text-base md:text-lg text-ink/70 leading-relaxed font-sans">
+                <p>
+                  Every clinic above started where you are now. Years of patient education content. Strong referral networks. Loyal patients. And the same gap between content and conversion that every UK specialist faces.
+                </p>
+                <p className="font-bold text-ink">
+                  NeuraScaleX is the layer they added to close that gap.
+                </p>
+              </div>
             </div>
-         </div>
+
+            <div className="space-y-6 max-w-xl lg:ml-auto w-full text-left">
+              {/* Card 1 */}
+              <div className="bg-white border border-neutral-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                <h4 className="font-mono text-[10px] font-bold tracking-[0.2em] text-[#0D6E6E] uppercase mb-3">RAPID DEPLOYMENT</h4>
+                <p className="text-lg font-bold text-ink mb-2">Live within one week.</p>
+                <p className="text-sm text-ink/60 leading-relaxed font-sans">
+                  We build your Ask Page. We calibrate the safety boundaries. You review and approve every word. Your existing content becomes the foundation.
+                </p>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-white border border-neutral-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300">
+                <h4 className="font-mono text-[10px] font-bold tracking-[0.2em] text-[#0D6E6E] uppercase mb-3">GOVERNED FROM DAY ONE</h4>
+                <p className="text-lg font-bold text-ink mb-2">Trained only on your approved content.</p>
+                <p className="text-sm text-ink/60 leading-relaxed font-sans">
+                  Non-clinical by design. Transparency on every response. High safety, zero invention.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-28 bg-[#F7F4ED] text-ink text-center relative border-t border-neutral-200/20">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <h2 className="text-4xl md:text-7xl font-serif font-bold text-ink mb-10 leading-tight tracking-tight">
+            Become <span className="text-[#0D6E6E] italic font-medium">impossible to ignore.</span>
+          </h2>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
+            <Link 
+              to="/demo" 
+              className="w-full sm:w-auto bg-[#0D6E6E] hover:bg-[#0B5C5C] text-white px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-sm hover:shadow transition-all text-center"
+            >
+              Book a founder demo
+            </Link>
+            <Link 
+              to="/free-trial" 
+              className="w-full sm:w-auto bg-white border border-ink/20 text-ink px-8 py-4 rounded-xl font-sans font-semibold text-base shadow-sm hover:bg-neutral-50 transition-all text-center"
+            >
+              Apply for the Founding 20
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

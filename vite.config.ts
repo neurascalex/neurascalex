@@ -6,40 +6,19 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
       },
-      build: {
-        outDir: 'dist',
-        emptyOutDir: true,
-        sourcemap: false,
-        rollupOptions: {
-          output: {
-            manualChunks(id) {
-              if (id.includes('node_modules')) {
-                if (
-                  id.includes('react') ||
-                  id.includes('react-dom') ||
-                  id.includes('react-router') ||
-                  id.includes('motion')
-                ) {
-                  return 'vendor-react';
-                }
-                return 'vendor';
-              }
-            },
-          },
-        },
-      },
-      plugins: [react(), tailwindcss()],
+      plugins: [
+        react(),
+        tailwindcss(),
+      ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
       resolve: {
-        dedupe: ['react', 'react-dom'],
         alias: {
           '@': path.resolve(__dirname, '.'),
         }

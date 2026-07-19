@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +11,6 @@ interface Deployment {
   tags: string[];
   imageInitials: string;
   url: string;
-  imageUrl?: string;
 }
 
 const Experts: React.FC = () => {
@@ -24,19 +24,7 @@ const Experts: React.FC = () => {
       desc: "A multi-disciplinary clinic using the Twin to triage complex referrals, explain insurance pathways, and answer admin queries 24/7.",
       tags: ["Digital Twin", "Routing"],
       imageInitials: "BP",
-      url: "https://www.berkshirepainclinic.co.uk/",
-      imageUrl: "/images/berkshire-pain-clinic.png"
-    },
-    {
-      name: "Berkshire Psychiatrist Dr Abrar",
-      role: "Specialist Clinic",
-      location: "Reading, UK",
-      status: "Live",
-      desc: "A governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
-      tags: ["Digital Twin", "Routing"],
-      imageInitials: "BP",
-      url: "https://www.berkshirepsychiatrist.co.uk/",
-      imageUrl: "/images/berkshire-psychiatrist.png"
+      url: "https://www.berkshirepainclinic.co.uk/"
     }
   ];
 
@@ -49,8 +37,7 @@ const Experts: React.FC = () => {
       desc: "Uses his Twin to orient patients on pain management pathways and 'Long Covid' recovery, reducing repetitive questions before consultation.",
       tags: ["Digital Twin", "Intelligence"],
       imageInitials: "DR",
-      url: "https://deepakravindran.co.uk/",
-      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstdr3/assets/Deepak%20Profile%20pic.jpg?sv=2025-07-05&se=2035-11-22T17%3A53%3A51Z&sr=b&sp=r&sig=PSgWDM2uF04wNXvK85Ujy6SpvO10LKWxtofIqVO7bxQ%3D"
+      url: "https://deepakravindran.co.uk/"
     },
     {
       name: "Dr. Sunil Kumar",
@@ -60,8 +47,7 @@ const Experts: React.FC = () => {
       desc: "Educates patients on metabolic health programmes and qualifies suitability before they book a discovery call.",
       tags: ["Digital Twin", "Education"],
       imageInitials: "SK",
-      url: "https://drsunilkumar.co.uk/",
-      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstsk13/assets/IMG_9435.jpg?sv=2025-07-05&se=2035-11-09T07%3A18%3A13Z&sr=b&sp=r&sig=X5JekyGQUwmkfiLYuxwXygzHx8pvQ3wkQZG3w1UXlFQ%3D"
+      url: "https://drsunilkumar.co.uk/"
     },
     {
       name: "Dr. Arokia Antonysamy",
@@ -71,19 +57,17 @@ const Experts: React.FC = () => {
       desc: "Provides clear guidance on ADHD assessments and psychiatric pathways, managing patient expectations safely up front.",
       tags: ["Digital Twin", "Mental Health"],
       imageInitials: "AA",
-      url: "https://drarokia.com/",
-      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstaa83/assets/Arokia-MindKonnect.png?sv=2025-07-05&se=2035-12-09T14%3A20%3A40Z&sr=b&sp=r&sig=0KN0Jv4OZf5NkpRK7L4xLTkfsV6Ve1a0erKbO%2B3WeXY%3D"
+      url: "https://drarokia.com/"
     },
     {
       name: "Dr. Abrar Hussain",
       role: "Consultant Psychiatrist",
       location: "UK",
-      status: "Live",
+      status: "Launching Feb 9",
       desc: "Deploying a governed Twin to manage intake for private psychiatry practice and streamline new patient onboarding.",
-      tags: ["Digital Twin", "Routing"],
+      tags: ["Waitlist", "Psychiatry"],
       imageInitials: "AH",
-      url: "https://drabrarhussain.co.uk/",
-      imageUrl: "https://storagfd.blob.core.windows.net/fdablbstah88/assets/AbrarAI.avif?sv=2025-07-05&se=2036-01-14T15%3A59%3A33Z&sr=b&sp=r&sig=%2B5jOafWH2GI%2FyS9qaJVG0qLx95bOwkIqyTDm7kAK0Kk%3D"
+      url: ""
     },
     {
       name: "Private Practice Cohort",
@@ -98,8 +82,9 @@ const Experts: React.FC = () => {
   ];
 
   const renderCard = (expert: Deployment, i: number) => (
-    <div key={i} className="group bg-white border border-neutral-200/60 rounded-2xl p-8 hover:shadow-md transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+    <div key={i} className="group bg-white border border-gray-200 rounded-sm p-8 hover:shadow-xl transition-all duration-300 flex flex-col h-full relative overflow-hidden">
       
+      {/* Status Badge */}
       <div className="absolute top-6 right-6">
         {expert.status === 'Live' ? (
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-green-100 text-green-800">
@@ -116,13 +101,10 @@ const Experts: React.FC = () => {
         )}
       </div>
 
+      {/* Headshot / Identity */}
       <div className="mb-6">
-          <div className="w-20 h-20 bg-gray-100 rounded-2xl overflow-hidden mb-4 border border-neutral-200/60 group-hover:border-gold-500 transition-colors flex items-center justify-center relative">
-            {expert.imageUrl ? (
-              <img src={expert.imageUrl} alt={expert.name} className="w-full h-full object-cover" />
-            ) : (
-              <span className="text-2xl font-serif text-teal-900 font-bold">{expert.imageInitials}</span>
-            )}
+          <div className="w-20 h-20 bg-gray-100 rounded-full overflow-hidden mb-4 border border-gray-200 group-hover:border-gold-500 transition-colors flex items-center justify-center relative">
+            <span className="text-2xl font-serif text-teal-900 font-bold">{expert.imageInitials}</span>
           </div>
           <h3 className="text-xl serif text-navy-900 font-bold">{expert.name}</h3>
           <p className="text-[11px] font-bold uppercase tracking-widest text-teal-800 mt-1">
@@ -130,35 +112,38 @@ const Experts: React.FC = () => {
           </p>
       </div>
 
+      {/* Body */}
       <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-grow font-light">
         {expert.desc}
       </p>
 
+      {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-8">
         {expert.tags.map((tag, t) => (
-          <span key={t} className="px-2 py-1 bg-gray-50 text-gray-500 text-[10px] font-bold uppercase tracking-widest rounded-xl border border-neutral-200/60">
+          <span key={t} className="px-2 py-1 bg-gray-50 text-gray-500 text-[10px] font-bold uppercase tracking-widest rounded-sm border border-gray-100">
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="pt-6 border-t border-neutral-200/60">
+      {/* Actions */}
+      <div className="pt-6 border-t border-gray-100">
         {expert.status === 'Live' ? (
           <a 
             href={expert.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full bg-navy-900 text-gold-500 px-4 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-navy-800 transition-colors group-hover:shadow-sm"
+            className="flex items-center justify-center w-full bg-navy-900 text-gold-500 px-4 py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest hover:bg-navy-800 transition-colors group-hover:shadow-md"
           >
             See Live Twin
             <svg className="w-3 h-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
           </a>
         ) : expert.url ? (
-            <span className="block w-full text-center border border-neutral-200/60 text-gray-400 px-4 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest cursor-not-allowed">
+            <span className="block w-full text-center border border-gray-200 text-gray-400 px-4 py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest cursor-not-allowed">
               Deployment Pending
             </span>
         ) : (
-          <Link to="/demo" className="block w-full text-center border border-navy-900 text-navy-900 px-4 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-navy-900 hover:text-white transition-colors">
+          <Link to="/demo" className="block w-full text-center border border-navy-900 text-navy-900 px-4 py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest hover:bg-navy-900 hover:text-white transition-colors">
             Join Waitlist
           </Link>
         )}
@@ -168,8 +153,9 @@ const Experts: React.FC = () => {
   );
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-[#FAF7F0] min-h-screen font-sans">
+    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen font-sans">
       
+      {/* 1. HERO */}
       <section className="bg-navy-900 py-24 lg:py-32 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #d4af37 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
@@ -181,10 +167,10 @@ const Experts: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
-            <Link to="/demo" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">
+            <Link to="/demo" className="bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-xl hover:bg-gold-600 transition-all">
               Request a Demo
             </Link>
-            <Link to="/free-trial" className="text-white border border-white/20 px-10 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
+            <Link to="/free-trial" className="text-white border border-white/20 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
               Start Free Pilot
             </Link>
           </div>
@@ -208,7 +194,8 @@ const Experts: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-[#F7F4ED] border-b border-neutral-200/60">
+      {/* 2. MICRO-INSTRUCTION */}
+      <section className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4 text-center">
           <p className="text-xs text-navy-800 font-medium">
             <span className="font-bold text-teal-800 uppercase tracking-wider mr-2">Evidence First:</span> 
@@ -217,15 +204,17 @@ const Experts: React.FC = () => {
         </div>
       </section>
 
+      {/* 3. LISTINGS */}
       <section className="py-16 bg-white min-h-screen">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-neutral-200/60 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-gray-100 gap-6">
             <div>
               <h2 className="text-3xl serif text-navy-900 mb-2">Real clinicians. Real patient queries.</h2>
               <p className="text-gray-500 font-light">See how the platform scales across different specialties and clinic structures.</p>
             </div>
             
+            {/* Filters UI */}
             <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-400">
                <span className="text-gray-300">Filter by:</span>
                <button className="hover:text-navy-900 transition-colors flex items-center gap-1">Specialty <span className="text-[10px]">▼</span></button>
@@ -233,6 +222,7 @@ const Experts: React.FC = () => {
             </div>
           </div>
 
+          {/* SECTION A: PARTNER CLINICS */}
           <div className="mb-20">
              <div className="flex items-center mb-10">
                 <div className="h-px bg-gray-200 flex-grow"></div>
@@ -244,6 +234,7 @@ const Experts: React.FC = () => {
              </div>
           </div>
 
+          {/* SECTION B: SPECIALIST CLINICIANS */}
           <div className="mb-20">
              <div className="flex items-center mb-10">
                 <div className="h-px bg-gray-200 flex-grow"></div>
@@ -255,7 +246,8 @@ const Experts: React.FC = () => {
              </div>
           </div>
 
-          <div className="bg-softgreen rounded-2xl border border-teal-100 p-8 text-center max-w-4xl mx-auto mb-20">
+          {/* 7. WHY THIS MATTERS STRIP */}
+          <div className="bg-softgreen rounded-sm border border-teal-100 p-8 text-center max-w-4xl mx-auto mb-20">
              <h3 className="text-2xl serif text-teal-800 mb-2">Your expertise, available when people need it.</h3>
              <p className="text-gray-600 font-light">Patients look for clarity after hours—NSX keeps your standards consistent and your team protected.</p>
           </div>
@@ -263,6 +255,7 @@ const Experts: React.FC = () => {
         </div>
       </section>
 
+      {/* 8. BOTTOM CTA */}
       <section className="py-32 bg-navy-950 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         <div className="max-w-3xl mx-auto px-6 relative z-10">
@@ -272,10 +265,10 @@ const Experts: React.FC = () => {
            </p>
            
            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-10">
-              <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">
+              <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">
                 Start Free Pilot
               </Link>
-              <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
+              <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
                 Request a Demo
               </Link>
            </div>
