@@ -34,7 +34,7 @@ const specialists: Specialist[] = [
     imageInitials: "AH",
     status: 'LIVE',
     chatUrl: "https://askabrar.neurascalex.com/",
-    websiteUrl: "https://www.berkshirepainclinic.co.uk/",
+    websiteUrl: "https://www.berkshirepsychiatrist.co.uk/",
     buttonText: "Ask Dr Abrar →",
     linkText: "Visit clinic website ↗"
   },
@@ -45,7 +45,7 @@ const specialists: Specialist[] = [
     imageInitials: "CM",
     status: 'LIVE',
     chatUrl: "https://askcathy.neurascalex.com/",
-    websiteUrl: "https://www.berkshirepainclinic.co.uk/",
+    websiteUrl: "https://reapingwomen.com/",
     buttonText: "Ask Dr Cathy →",
     linkText: "Visit community website ↗"
   }
@@ -213,8 +213,8 @@ const SpecialistHub: React.FC = () => {
       {/* Specialist Grid Section */}
       <section id="pilots-grid" className="pb-28 max-w-7xl mx-auto px-6 lg:px-12 scroll-mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {specialists.map((specialist, idx) => (
-            <SpecialistCard key={idx} specialist={specialist} />
+          {specialists.map((specialist) => (
+            <SpecialistCard key={specialist.name} specialist={specialist} />
           ))}
         </div>
       </section>
