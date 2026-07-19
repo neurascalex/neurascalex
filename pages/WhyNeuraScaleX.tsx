@@ -160,7 +160,7 @@ const WhyNeuraScaleX: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                <div>
                   <h2 className="text-4xl font-serif mb-6 text-ink">45 minutes with you. <br/><span className="text-teal-precise italic">A system that runs without you.</span></h2>
-                  <p className="text-ink/40 font-light leading-relaxed mb-10 font-serif italic">
+                  <p className="text-ink/65 font-light leading-relaxed mb-10 font-serif italic">
                      Even with a great platform, most clinicians don’t have time to curate content, calibrate tone, test edge cases, and maintain safety. That’s what we handle.
                   </p>
                   <blockquote className="border-l-2 border-teal-precise pl-6 italic text-lg text-ink/70 font-serif">
@@ -178,7 +178,7 @@ const WhyNeuraScaleX: React.FC = () => {
                         <div className="flex-shrink-0 w-8 h-8 rounded-full border border-teal-precise flex items-center justify-center text-teal-precise text-xs font-bold mr-6 shadow-sm">{i+1}</div>
                         <div>
                            <h4 className="text-lg font-serif text-ink mb-2">{step.title}</h4>
-                           <p className="text-ink/40 text-sm font-light">{step.desc}</p>
+                           <p className="text-ink/65 text-sm font-light">{step.desc}</p>
                         </div>
                      </div>
                   ))}
@@ -206,7 +206,7 @@ const WhyNeuraScaleX: React.FC = () => {
                   <div key={i} className="bg-white p-6 border border-ink/5 shadow-sm flex items-center justify-between text-left group hover:border-teal-precise/30 transition-all">
                      <div>
                         <h4 className="text-sm font-bold text-ink label-mono opacity-100">{c.name}</h4>
-                        <p className="text-[10px] text-ink/40 label-mono opacity-100 font-bold uppercase">{c.role}</p>
+                        <p className="text-[10px] text-ink/65 label-mono opacity-100 font-bold uppercase">{c.role}</p>
                      </div>
                      <span className={`label-mono text-[9px] font-bold uppercase tracking-widest px-2 py-1 border ${c.status === "Live" ? "bg-teal-precise/5 text-teal-precise border-teal-precise/10" : "bg-teal-precise/5 text-teal-precise border-teal-precise/10"}`}>
                         {c.status}

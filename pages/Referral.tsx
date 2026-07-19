@@ -107,10 +107,10 @@ const Referral: React.FC = () => {
   // ── Success screen ───────────────────────────────────────────────────────────
   if (isSubmitted) {
     return (
-      <div className="animate-in fade-in duration-700 bg-paper min-h-[80vh] flex items-center justify-center py-16">
+      <div className="animate-in fade-in duration-700 bg-[#FAF7F0] min-h-[80vh] flex items-center justify-center py-16">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="mb-8 flex justify-center">
-            <div className="w-16 h-16 bg-teal-precise/10 rounded-full flex items-center justify-center border border-teal-precise/20">
+            <div className="w-16 h-16 bg-teal-precise/10 rounded-2xl flex items-center justify-center border border-teal-precise/20">
               <svg className="w-8 h-8 text-teal-precise" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
@@ -125,17 +125,17 @@ const Referral: React.FC = () => {
           <p className="text-lg font-light text-ink/70 mb-4 leading-relaxed font-serif italic max-w-xl mx-auto">
             We've received your referral and will reach out within 1–2 business days. Your promo code discount will be applied once the referred clinic activates their account.
           </p>
-          <div className="mt-8 p-6 border border-teal-precise/20 bg-teal-precise/5 text-left max-w-sm mx-auto">
+          <div className="mt-8 p-6 border border-teal-precise/20 rounded-xl bg-teal-precise/5 text-left max-w-sm mx-auto">
             <p className="label-mono text-teal-precise mb-2">PROMO CODE APPLIED</p>
             <p className="text-2xl font-mono font-bold text-ink tracking-widest">
               {formData.promoCode.trim().toUpperCase()}
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <Link to="/" className="bg-teal-precise text-paper px-8 py-4 font-bold uppercase tracking-widest hover:bg-teal-precise/90 transition-all">
+            <Link to="/" className="bg-teal-precise text-paper px-8 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-teal-precise/90 transition-all">
               BACK TO HOME
             </Link>
-            <Link to="/pricing" className="border border-ink/20 text-ink px-8 py-4 font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all">
+            <Link to="/pricing" className="border border-ink/20 text-ink px-8 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all">
               VIEW PRICING
             </Link>
           </div>
@@ -146,15 +146,15 @@ const Referral: React.FC = () => {
 
   // ── Form ─────────────────────────────────────────────────────────────────────
   return (
-    <div className="animate-in fade-in duration-1000 bg-paper min-h-screen font-sans">
+    <div className="animate-in fade-in duration-1000 bg-[#FAF7F0] min-h-screen font-sans">
 
       {/* Hero */}
-      <section className="relative pt-20 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-paper text-ink">
+      <section className="relative pt-20 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#FAF7F0] text-ink">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #001A33 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-precise/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none border border-teal-precise/20 mb-8 backdrop-blur-sm bg-paper">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-teal-precise/20 mb-8 backdrop-blur-sm bg-white">
             <span className="label-mono font-bold text-teal-precise uppercase tracking-[0.4em] text-[10px]">REFERRAL PROGRAMME</span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.05] mb-6 tracking-tight text-ink">
@@ -168,7 +168,7 @@ const Referral: React.FC = () => {
       </section>
 
       {/* How it works */}
-      <section className="py-12 bg-paper border-y border-ink/5">
+      <section className="py-12 bg-white border-y border-neutral-200/60">
         <div className="max-w-4xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -192,7 +192,7 @@ const Referral: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
 
             {/* ── Your Details ── */}
-            <fieldset className="border border-ink/10 p-6 space-y-4">
+            <fieldset className="border border-neutral-200/60 rounded-xl p-6 space-y-4 bg-white">
               <legend className="px-2 label-mono text-teal-precise tracking-[0.3em] text-[10px] font-bold uppercase">YOUR DETAILS</legend>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -248,7 +248,7 @@ const Referral: React.FC = () => {
             </fieldset>
 
             {/* ── Referee Details ── */}
-            <fieldset className="border border-ink/10 p-6 space-y-4">
+            <fieldset className="border border-neutral-200/60 rounded-xl p-6 space-y-4 bg-white">
               <legend className="px-2 label-mono text-teal-precise tracking-[0.3em] text-[10px] font-bold uppercase">COLLEAGUE YOU'RE REFERRING</legend>
 
               <div>
@@ -283,7 +283,7 @@ const Referral: React.FC = () => {
             </fieldset>
 
             {/* ── Promo Code ── */}
-            <fieldset className="border border-ink/10 p-6 space-y-4">
+            <fieldset className="border border-neutral-200/60 rounded-xl p-6 space-y-4 bg-white">
               <legend className="px-2 label-mono text-teal-precise tracking-[0.3em] text-[10px] font-bold uppercase">PROMO CODE</legend>
 
               <div>
@@ -300,7 +300,7 @@ const Referral: React.FC = () => {
                     type="button"
                     onClick={validatePromo}
                     disabled={!formData.promoCode.trim()}
-                    className="px-5 py-3 border border-teal-precise text-teal-precise font-mono text-xs uppercase tracking-wider hover:bg-teal-precise hover:text-paper transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-5 py-3 border border-teal-precise rounded-xl text-teal-precise font-mono text-xs uppercase tracking-wider hover:bg-teal-precise hover:text-paper transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     VERIFY
                   </button>
@@ -354,7 +354,7 @@ const Referral: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading || !formData.consent}
-              className="w-full bg-teal-precise text-paper py-5 font-bold uppercase tracking-widest hover:bg-teal-precise/90 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-teal-precise/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full bg-teal-precise text-paper py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-teal-precise/90 transition-all transform hover:-translate-y-0.5 shadow-md shadow-teal-precise/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">

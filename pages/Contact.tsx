@@ -2,29 +2,55 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sendToInfoInbox } from '../services/emailService';
+import { referralService } from '../services/referralService';
+import { leadService, LeadType } from '../services/leadService';
 
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     type: 'General enquiry',
-    message: ''
+    message: '',
+    referralCode: referralService.getReferralCode() || ''
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Send to info@neurascalex.com via service
-    const success = await sendToInfoInbox('CONTACT', formData);
-    
-    if (success) {
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      // 1. Submit to Firestore
+      await leadService.submitLead(
+        LeadType.CONTACT,
+        formData.name,
+        formData.email,
+        formData.referralCode,
+        {
+          enquiryType: formData.type,
+          message: formData.message
+        }
+      );
+
+      // 2. Relay to Inbox
+      const success = await sendToInfoInbox('CONTACT', formData);
+      
+      if (success) {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Even if email relay fails, Firestore has the data now
+        setSubmitted(true);
+      }
+    } catch (error) {
+      console.error('Submission failed:', error);
+      setError("Something went wrong. Please try again or email us directly at info@neurascalex.com");
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   if (submitted) {
@@ -75,7 +101,7 @@ const Contact: React.FC = () => {
               </div>
             )}
             <div className="space-y-2">
-              <label className="label-mono text-ink/40 opacity-100 font-bold text-[10px] uppercase tracking-widest">Name <span className="text-teal-precise">*</span></label>
+              <label className="label-mono text-ink/65 opacity-100 font-bold text-[10px] uppercase tracking-widest">Name <span className="text-teal-precise">*</span></label>
               <input 
                 required 
                 type="text" 
@@ -86,7 +112,7 @@ const Contact: React.FC = () => {
               />
             </div>
             <div className="space-y-2">
-              <label className="label-mono text-ink/40 opacity-100 font-bold text-[10px] uppercase tracking-widest">Email <span className="text-teal-precise">*</span></label>
+              <label className="label-mono text-ink/65 opacity-100 font-bold text-[10px] uppercase tracking-widest">Email <span className="text-teal-precise">*</span></label>
               <input 
                 required 
                 type="email" 
@@ -97,7 +123,7 @@ const Contact: React.FC = () => {
               />
             </div>
             <div className="space-y-2">
-              <label className="label-mono text-ink/40 opacity-100 font-bold text-[10px] uppercase tracking-widest">Type of enquiry <span className="text-teal-precise">*</span></label>
+              <label className="label-mono text-ink/65 opacity-100 font-bold text-[10px] uppercase tracking-widest">Type of enquiry <span className="text-teal-precise">*</span></label>
               <div className="relative">
                 <select 
                   required
@@ -118,7 +144,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="label-mono text-ink/40 opacity-100 font-bold text-[10px] uppercase tracking-widest">Message</label>
+              <label className="label-mono text-ink/65 opacity-100 font-bold text-[10px] uppercase tracking-widest">Message</label>
               <textarea 
                 className="w-full p-5 border border-ink/10 rounded-none outline-none focus:border-teal-precise transition-colors bg-teal-precise/5 text-ink text-sm font-serif italic min-h-[180px] resize-none"
                 placeholder="How can we help?"
@@ -126,6 +152,11 @@ const Contact: React.FC = () => {
                 onChange={e => setFormData({...formData, message: e.target.value})}
               ></textarea>
             </div>
+            {error && (
+              <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-serif italic text-center mb-8">
+                {error}
+              </div>
+            )}
             <div className="text-center pt-8">
               <button 
                 type="submit"
@@ -153,8 +184,8 @@ const Contact: React.FC = () => {
               </div>
               <div className="flex flex-col justify-end">
                  <div className="bg-ink/[0.02] p-6 border border-ink/10">
-                    <p className="label-mono text-ink/40 mb-4 opacity-100 font-bold">Integrity Disclaimer</p>
-                    <p className="text-xs text-ink/50 italic leading-relaxed font-serif">
+                    <p className="label-mono text-ink/65 mb-4 opacity-100 font-bold">Integrity Disclaimer</p>
+                    <p className="text-xs text-ink/70 italic leading-relaxed font-serif">
                       NeuraScaleX is committed to clinical integrity. We do not provide medical advice or diagnosis. All AI Assistant interactions are governed by approved professional standards.
                     </p>
                  </div>
@@ -164,7 +195,7 @@ const Contact: React.FC = () => {
        </section>
 
        <section className="py-12 bg-paper text-center border-t border-ink/5">
-          <p className="label-mono text-ink/30 italic opacity-100">
+          <p className="label-mono text-ink/55 italic opacity-100">
             Non-clinical. Not medical advice. Not a medical device.
           </p>
        </section>

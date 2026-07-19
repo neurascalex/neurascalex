@@ -1,11 +1,22 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URLS } from '../services/chatApi';
+import { sendToInfoInbox } from '../services/emailService';
+import { referralService } from '../services/referralService';
+import { leadService, LeadType } from '../services/leadService';
+import SEO from '../components/SEO';
 
 type DemoStep = 'form' | 'submitting' | 'path-a-portal' | 'path-b-review' | 'final-booked';
 
 const Demo: React.FC = () => {
+  const demoJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Book a founder demo — NeuraScaleX",
+    "url": "https://www.neurascalex.com/demo",
+    "description": "Request a 30-minute founder-led demo of the Ask Page and Ask Intelligence for UK specialist clinicians."
+  };
+
   const [step, setStep] = useState<DemoStep>('form');
   const [formData, setFormData] = useState({
     fullName: '',
@@ -16,7 +27,8 @@ const Demo: React.FC = () => {
     country: 'United Kingdom',
     description: '',
     goal: 'Reduce repetition & admin',
-    note: ''
+    note: '',
+    referralCode: referralService.getReferralCode() || ''
   });
 
   const calendarUrl = "https://calendar.app.google/8kSG3vmsYcZSgDXZ8";
@@ -31,41 +43,39 @@ const Demo: React.FC = () => {
     setStep('submitting');
 
     try {
-      const nameParts = formData.fullName.trim().split(' ');
-      const firstName = nameParts[0] ?? '';
-      const lastName = nameParts.slice(1).join(' ') || firstName;
+      // 1. Submit to Firestore
+      await leadService.submitLead(
+        LeadType.DEMO,
+        formData.fullName,
+        formData.email,
+        formData.referralCode,
+        {
+          role: formData.role,
+          website: formData.website,
+          linkedin: formData.linkedin,
+          country: formData.country,
+          goal: formData.goal,
+          note: formData.note
+        }
+      );
 
-      const payload = {
-        firstName,
-        lastName,
-        personalEmailId: formData.email,
-        speciality: formData.role,
-        personalWebsiteUrl: formData.website,
-        linkedInUrl: formData.linkedin,
-        country: formData.country,
-        primaryGoal: formData.goal,
-        message: formData.note,
-      };
-
-      const response = await fetch(`${API_URLS.dotnetApi}/Registration_NoKey/RequestDemo`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', accept: 'text/plain' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const text = await response.text();
-        throw new Error(text || `Request failed (${response.status})`);
-      }
-
-      // Routing Logic: verified clinicians (website/LinkedIn provided) get priority booking
+      // 2. Relay to Inbox
+      const success = await sendToInfoInbox('DEMO', formData);
+      
+      // Routing Logic: Verification Path
       const isVerified = formData.website.trim() !== '' || formData.linkedin.trim() !== '';
-      setStep(isVerified ? 'path-a-portal' : 'path-b-review');
+      
+      if (isVerified) {
+        setStep('path-a-portal');
+      } else {
+        setStep('path-b-review');
+      }
     } catch (error) {
-      console.error('Demo request failed:', error);
+      console.error('Relay failed:', error);
+      // Still proceed to review path so user isn't stuck
       setStep('path-b-review');
     }
-
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -73,6 +83,17 @@ const Demo: React.FC = () => {
   if (step === 'form' || step === 'submitting') {
     return (
       <div className="animate-in fade-in duration-1000 bg-paper min-h-screen">
+        <SEO 
+          title="Book a Founder Demo — 30 Minutes, No Pitch | NeuraScaleX"
+          description="Thirty minutes with the founder. See your Ask Page in action, walk through deployment on your own content, and leave with a clear answer. No deck. No pitch. UK specialist clinicians."
+          canonical="https://www.neurascalex.com/demo"
+          robots="index, follow"
+          ogType="website"
+          ogTitle="See your Ask Page in action — 30 minutes with the founder."
+          ogDescription="No deck. No pitch. Just the product, your questions, and a clear next step."
+          ogImage="https://www.neurascalex.com/assets/og-demo.png"
+          jsonLd={demoJsonLd}
+        />
         {/* HERO */}
         <section className="pt-32 pb-24 border-b border-ink/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -81,22 +102,21 @@ const Demo: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-precise"></span>
                 30-MINUTE DEMO
               </div>
-              <h1 className="text-6xl md:text-8xl font-serif font-bold text-ink mb-10 leading-[1.1]">
-                See the AI front door <br />
-                <span className="italic text-teal-precise">for your specialist clinic.</span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-ink mb-10 leading-[1.1] tracking-tight">
+                See your Ask Page <span className="italic text-teal-precise">in action.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-ink/60 font-serif italic leading-relaxed max-w-3xl mb-14 italic-moment">
-                30 minutes with the founding team. We show you the platform in action, walk through how it would deploy on your content, and answer everything you need to ask. No deck. No pitch. Just the product, your questions, and a clear next step.
+              <p className="text-xl md:text-2xl text-ink/60 font-serif italic leading-relaxed max-w-4xl mb-14 italic-moment">
+                Thirty minutes with the founder. We show you the platform live, walk through how it would deploy on your content, and answer everything you need to ask. <br className="hidden md:inline" />No deck. No pitch. Just the product, your questions, and a clear next step.
               </p>
               
               <div className="flex flex-col md:flex-row gap-x-12 gap-y-6">
                 {[
-                  "✓ NO COMMITMENT",
-                  "✓ FOUNDER-LED",
-                  "✓ ENDS WITH A CLEAR ANSWER"
+                  "NO COMMITMENT",
+                  "FOUNDER-LED",
+                  "ENDS WITH A CLEAR ANSWER"
                 ].map((bullet, i) => (
-                  <div key={i} className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-ink/40">
-                    <span className="w-2 h-2 border border-teal-precise rounded-full mr-3"></span>
+                  <div key={i} className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-ink/65">
+                    <span className="text-teal-precise mr-2 font-sans font-bold">✓</span>
                     {bullet}
                   </div>
                 ))}
@@ -111,7 +131,7 @@ const Demo: React.FC = () => {
             <div className="absolute inset-0 bg-paper/90 backdrop-blur-sm z-50 flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 border-2 border-teal-precise border-t-transparent rounded-full animate-spin mb-6"></div>
               <p className="label-mono text-teal-precise font-bold opacity-100">Relaying Request Context...</p>
-              <p className="text-xs text-ink/40 italic mt-2 font-serif">Securing Clinical Data Transmission</p>
+              <p className="text-xs text-ink/65 italic mt-2 font-serif">Securing Clinical Data Transmission</p>
             </div>
           )}
           <div className="max-w-3xl mx-auto px-6">
@@ -183,7 +203,7 @@ const Demo: React.FC = () => {
                   <button type="submit" className="bg-ink text-paper px-12 py-5 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-xl shadow-ink/10 active:scale-[0.98]">
                     Request Demo
                   </button>
-                  <p className="mt-8 label-mono text-ink/30 italic font-bold">
+                  <p className="mt-8 label-mono text-ink/60 italic font-bold">
                     By clicking, you agree to our terms and privacy policy.
                   </p>
                 </div>
@@ -199,6 +219,17 @@ const Demo: React.FC = () => {
   if (step === 'path-a-portal') {
     return (
       <div className="animate-in fade-in duration-700 bg-paper min-h-screen flex flex-col items-center py-32 px-6">
+        <SEO 
+          title="Book a Founder Demo — 30 Minutes, No Pitch | NeuraScaleX"
+          description="Thirty minutes with the founder. See your Ask Page in action, walk through deployment on your own content, and leave with a clear answer. No deck. No pitch. UK specialist clinicians."
+          canonical="https://www.neurascalex.com/demo"
+          robots="index, follow"
+          ogType="website"
+          ogTitle="See your Ask Page in action — 30 minutes with the founder."
+          ogDescription="No deck. No pitch. Just the product, your questions, and a clear next step."
+          ogImage="https://www.neurascalex.com/assets/og-demo.png"
+          jsonLd={demoJsonLd}
+        />
         <div className="max-w-4xl w-full">
           <div className="text-center mb-24">
             <div className="inline-flex items-center justify-center w-24 h-24 rounded-full border border-teal-precise/10 bg-white shadow-xl mb-12">
@@ -253,7 +284,7 @@ const Demo: React.FC = () => {
           </div>
 
           <div className="text-center space-y-10">
-            <p className="label-mono text-ink/30 italic font-bold">
+            <p className="label-mono text-ink/60 italic font-bold">
               Please note: Demos are informational and non-clinical in nature.
             </p>
             <Link to="/" className="inline-block text-ink font-bold uppercase tracking-[0.2em] text-[10px] border-b border-ink/20 pb-2 hover:border-teal-precise transition-colors">
@@ -269,6 +300,17 @@ const Demo: React.FC = () => {
   if (step === 'path-b-review') {
     return (
       <div className="animate-in fade-in duration-700 bg-paper min-h-screen flex items-center justify-center py-24">
+        <SEO 
+          title="Book a Founder Demo — 30 Minutes, No Pitch | NeuraScaleX"
+          description="Thirty minutes with the founder. See your Ask Page in action, walk through deployment on your own content, and leave with a clear answer. No deck. No pitch. UK specialist clinicians."
+          canonical="https://www.neurascalex.com/demo"
+          robots="index, follow"
+          ogType="website"
+          ogTitle="See your Ask Page in action — 30 minutes with the founder."
+          ogDescription="No deck. No pitch. Just the product, your questions, and a clear next step."
+          ogImage="https://www.neurascalex.com/assets/og-demo.png"
+          jsonLd={demoJsonLd}
+        />
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="mb-12 flex justify-center">
             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center border border-teal-precise/10 shadow-xl">

@@ -11,7 +11,7 @@ const Product: React.FC = () => {
   };
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen scroll-smooth">
+    <div className="animate-in fade-in duration-1000 bg-[#FAF7F0] min-h-screen scroll-smooth">
       {/* 2) Hero Section */}
       <section id="overview" className="relative pt-24 pb-32 lg:pt-32 lg:pb-48 overflow-hidden bg-navy-900 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
@@ -26,10 +26,10 @@ const Product: React.FC = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-6 mb-12">
-                <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">
+                <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-10 py-5 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">
                   Start free trial
                 </Link>
-                <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-10 py-5 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
+                <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-10 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
                   Request a demo
                 </Link>
               </div>
@@ -46,7 +46,7 @@ const Product: React.FC = () => {
 
             <div className="relative">
               {/* Composite Visual Representing the System */}
-              <div className="bg-navy-800 rounded-2xl shadow-3xl border border-white/10 p-4 aspect-[4/3] relative overflow-hidden group">
+              <div className="bg-navy-800 rounded-3xl shadow-md border border-white/10 p-4 aspect-[4/3] relative overflow-hidden group">
                 {/* Simulated Website UI */}
                 <div className="bg-white rounded-lg h-full w-full overflow-hidden shadow-inner flex flex-col">
                   <div className="h-6 bg-gray-100 flex items-center px-3 space-x-1">
@@ -101,7 +101,7 @@ const Product: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Module 1: Front Door */}
-          <div className="bg-white p-10 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+          <div className="bg-white p-10 rounded-3xl shadow-md border border-neutral-200/60 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
             <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-teal-800">1</div>
             <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-navy-900">FRONT DOOR</h3>
             <p className="text-lg serif italic mb-8 text-teal-800">Deflect & Educate</p>
@@ -122,7 +122,7 @@ const Product: React.FC = () => {
           </div>
 
           {/* Module 2: Signals */}
-          <div className="bg-navy-900 p-10 rounded-[24px] shadow-2xl border border-navy-800 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500 text-white">
+          <div className="bg-navy-900 p-10 rounded-3xl shadow-md border border-navy-800 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500 text-white">
             <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-gold-500">2</div>
             <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-gold-500">SIGNALS</h3>
             <p className="text-lg serif italic mb-8 text-white">Intelligence Dashboard</p>
@@ -143,7 +143,7 @@ const Product: React.FC = () => {
           </div>
 
           {/* Module 3: Actions */}
-          <div className="bg-white p-10 rounded-[24px] shadow-2xl border border-gray-100 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+          <div className="bg-white p-10 rounded-3xl shadow-md border border-neutral-200/60 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
             <div className="absolute top-0 right-0 p-6 text-6xl serif opacity-10 font-bold text-teal-800">3</div>
             <h3 className="text-2xl font-bold uppercase tracking-widest mb-2 text-navy-900">ACTIONS</h3>
             <p className="text-lg serif italic mb-8 text-teal-800">Smart Routing</p>
@@ -183,7 +183,7 @@ const Product: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
             {/* Card 1: Website Widget */}
-            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+            <div className="bg-[#F7F4ED] p-12 rounded-2xl border border-neutral-200/60 hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -196,7 +196,7 @@ const Product: React.FC = () => {
             </div>
 
             {/* Card 2: Shareable Link */}
-            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+            <div className="bg-[#F7F4ED] p-12 rounded-2xl border border-neutral-200/60 hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-2.46-4.743l5.353-5.353" />
@@ -209,7 +209,7 @@ const Product: React.FC = () => {
             </div>
 
             {/* Card 3: QR Code */}
-            <div className="bg-warm-white p-12 rounded-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+            <div className="bg-[#F7F4ED] p-12 rounded-2xl border border-neutral-200/60 hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm text-teal-800">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
@@ -223,8 +223,8 @@ const Product: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-8">
-            <Link to="/free-trial" className="bg-navy-900 text-gold-500 px-12 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy-800 transition-all shadow-xl hover:shadow-2xl">Start free trial</Link>
-            <Link to="/demo" className="bg-white border border-gray-200 text-navy-800 px-12 py-5 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-all">Request demo</Link>
+            <Link to="/free-trial" className="bg-navy-900 text-gold-500 px-12 py-5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-navy-800 transition-all shadow-md hover:shadow-lg">Start free trial</Link>
+            <Link to="/demo" className="bg-white border border-neutral-200/60 text-navy-800 px-12 py-5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-all">Request demo</Link>
           </div>
         </div>
       </section>
@@ -238,7 +238,7 @@ const Product: React.FC = () => {
               <p className="text-lg text-gray-600 font-light leading-relaxed mb-12">
                 Your knowledge is currently scattered. We unify it into a governed, searchable voice that represents your professional standards.
               </p>
-              <div className="bg-softgreen p-8 rounded-sm border border-teal-100 mb-12">
+              <div className="bg-softgreen p-8 rounded-2xl border border-teal-100 mb-12">
                 <p className="text-xs text-teal-800 leading-relaxed italic font-medium">
                    "We do not 'make things up.' If it isn’t supported by your approved material, the Twin is programmed to refuse or signpost safely."
                 </p>
@@ -253,7 +253,7 @@ const Product: React.FC = () => {
                 { t: "Structured FAQs", d: "Fees, pathways, logistics." },
                 { t: "Research", d: "Verified papers & studies." }
               ].map((item, i) => (
-                <div key={i} className="p-6 border border-gray-100 rounded-sm hover:border-gold-500 transition-colors">
+                <div key={i} className="p-6 border border-neutral-200/60 rounded-2xl hover:border-gold-500 transition-colors">
                   <h4 className="text-sm font-bold text-navy-900 mb-2 uppercase tracking-widest">{item.t}</h4>
                   <p className="text--[10px] text-gray-500 leading-relaxed font-light">{item.d}</p>
                 </div>
@@ -293,7 +293,7 @@ const Product: React.FC = () => {
           </div>
 
           <div className="mt-24 text-center">
-             <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">Start 30-day trial</Link>
+             <Link to="/free-trial" className="bg-gold-500 text-navy-950 px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">Start 30-day trial</Link>
           </div>
         </div>
       </section>
@@ -314,7 +314,7 @@ const Product: React.FC = () => {
               { t: "Refusal + Signposting", d: "Knows exactly where to stop and route back." },
               { t: "Auditability", d: "Continuous review, testing, and iteration of responses." }
             ].map((p, i) => (
-              <div key={i} className="p-10 border border-gray-100 rounded-sm shadow-sm hover:shadow-xl transition-all">
+              <div key={i} className="p-10 border border-neutral-200/60 rounded-2xl shadow-sm hover:shadow-md transition-all">
                 <h4 className="text-sm font-bold text-navy-900 mb-4 uppercase tracking-widest">{p.t}</h4>
                 <p className="text-xs text-gray-500 leading-relaxed font-light">{p.d}</p>
               </div>
@@ -329,7 +329,7 @@ const Product: React.FC = () => {
       </section>
 
       {/* 8) Use Cases Grid */}
-      <section id="use-cases" className="py-32 bg-softgreen">
+      <section id="use-cases" className="py-32 bg-[#F7F4ED]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
             <h2 className="text-4xl serif text-navy-800 mb-6">What clinicians use NeuraScaleX for.</h2>
@@ -344,7 +344,7 @@ const Product: React.FC = () => {
               "Content concierge (instant search for talks/PDFs)",
               "Team deflection (repeated questions to staff)"
             ].map((u, i) => (
-              <div key={i} className="bg-white p-8 border border-teal-800/5 rounded-sm flex items-center shadow-sm">
+              <div key={i} className="bg-white p-8 border border-neutral-200/60 rounded-2xl flex items-center shadow-sm">
                 <span className="text-gold-500 mr-4 font-serif italic text-2xl">0{i+1}</span>
                 <p className="text-sm font-bold text-navy-900 tracking-wide">{u}</p>
               </div>
@@ -375,7 +375,7 @@ const Product: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-navy-950 p-8 rounded-[24px] shadow-3xl border border-white/10 overflow-hidden">
+              <div className="bg-navy-950 p-8 rounded-3xl shadow-md border border-white/10 overflow-hidden">
                 <div className="flex justify-between items-center mb-8">
                   <h4 className="text-xs font-bold uppercase tracking-widest text-gold-500">Signals Dashboard</h4>
                   <span className="text-[10px] text-gray-500">Live Updates</span>
@@ -419,7 +419,7 @@ const Product: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl lg:text-5xl serif mb-24">Measured in trust and time saved.</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            <div className="p-10 border border-white/10 rounded-sm">
+            <div className="p-10 border border-white/10 rounded-2xl">
               <h3 className="text-2xl serif text-gold-500 mb-4 italic">Less repetition</h3>
               <p className="text-xs text-gray-400 leading-relaxed font-light uppercase tracking-wider">Answer routine queries before they hit your team.</p>
             </div>
@@ -452,7 +452,7 @@ const Product: React.FC = () => {
               { q: "How long to go live?", a: "Typically 7 days with guided onboarding, depending on content readiness and routing complexity." },
               { q: "Can I update content later?", a: "Yes. You can add or remove approved sources at any time via your dashboard, and the Twin updates its knowledge base immediately." }
             ].map((f, i) => (
-              <div key={i} className="border-b border-gray-100 pb-10">
+              <div key={i} className="border-b border-neutral-200/60 pb-10">
                 <h4 className="text-lg serif text-navy-900 mb-4 uppercase tracking-wider">{f.q}</h4>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{f.a}</p>
               </div>
@@ -466,10 +466,10 @@ const Product: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl md:text-6xl serif mb-12">Ready to install a governed digital front door?</h2>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-10">
-            <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">
+            <Link to="/free-trial" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">
               Start free trial
             </Link>
-            <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
+            <Link to="/demo" className="w-full sm:w-auto border border-white/20 text-white px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all">
               Request a demo
             </Link>
           </div>

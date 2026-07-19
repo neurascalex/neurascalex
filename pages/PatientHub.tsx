@@ -77,7 +77,7 @@ const PatientHub: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-warm-white font-sans selection:bg-teal-100 selection:text-teal-900">
+    <div className="min-h-screen bg-[#FAF7F0] font-sans selection:bg-teal-100 selection:text-teal-900">
       <ChatModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
@@ -85,7 +85,7 @@ const PatientHub: React.FC = () => {
       />
       
       {/* Section 1: The Patient Hero (B2C) */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden border-b border-gray-100">
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden border-b border-neutral-200/60">
         {/* Background Accents */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-softgreen rounded-full blur-3xl opacity-50"></div>
@@ -116,7 +116,7 @@ const PatientHub: React.FC = () => {
                 onClick={() => {
                   document.getElementById('specialists')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-navy-900 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-navy-800 transition-all flex items-center gap-2 group cursor-pointer border-none"
+                className="bg-navy-900 text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-navy-800 transition-all flex items-center gap-2 group cursor-pointer border-none"
               >
                 Find Your Specialist
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -142,7 +142,7 @@ const PatientHub: React.FC = () => {
             {specialists.map((specialist, idx) => (
               <div 
                 key={idx} 
-                className="group bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg hover:border-teal-100 transition-all duration-500 flex flex-col"
+                className="group bg-white rounded-3xl border border-neutral-200/60 p-8 hover:shadow-md hover:border-teal-100 transition-all duration-500 flex flex-col"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="relative">
@@ -152,7 +152,7 @@ const PatientHub: React.FC = () => {
                       className="w-20 h-20 rounded-2xl object-cover transition-all duration-500"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute -bottom-2 -right-2 bg-white p-1 rounded-lg shadow-sm border border-gray-50">
+                    <div className="absolute -bottom-2 -right-2 bg-white p-1 rounded-xl shadow-sm border border-neutral-200/60">
                       <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                     </div>
                   </div>
@@ -171,7 +171,7 @@ const PatientHub: React.FC = () => {
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {specialist.badges.map((badge, bIdx) => (
-                    <span key={bIdx} className="text-[10px] font-medium text-gray-400 uppercase tracking-wider bg-gray-50 px-2 py-1 rounded">
+                    <span key={bIdx} className="text-[10px] font-medium text-gray-400 uppercase tracking-wider bg-[#F7F4ED] px-2 py-1 rounded-xl">
                       {badge}
                     </span>
                   ))}
@@ -243,14 +243,14 @@ const PatientHub: React.FC = () => {
 
               <Link 
                 to="/free-trial" 
-                className="inline-block bg-gold-500 text-navy-950 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-gold-400 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-1"
+                className="inline-block bg-gold-500 text-navy-950 px-10 py-5 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-gold-400 hover:shadow-md hover:shadow-teal-900/20 transition-all transform hover:-translate-y-1"
               >
                 Secure Your Spot: Next Deployment Wave
               </Link>
             </div>
 
             <div className="relative">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] p-8 md:p-12">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12">
                 <div className="mb-8">
                   <div className="text-gold-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-4">B2B Value Proposition</div>
                   <h3 className="text-2xl serif text-white mb-4 italic">"The Hub routes high-intent visitors to the right next step — booking, enquiry, waitlist or resources — ready for your team."</h3>

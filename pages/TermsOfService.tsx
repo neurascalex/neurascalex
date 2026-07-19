@@ -23,7 +23,7 @@ const TermsOfService: React.FC = () => {
             <p className="font-bold text-ink">
               The service is non-clinical by design. It does not provide medical advice, diagnosis, prescribing, or individual treatment plans.
             </p>
-            <p className="text-sm text-ink/40">
+            <p className="text-sm text-ink/65">
               User interactions with any AI Assistant are not intended to replace professional medical consultations.
             </p>
           </section>

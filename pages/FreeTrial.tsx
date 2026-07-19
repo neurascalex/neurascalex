@@ -1,13 +1,15 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URLS } from '../services/chatApi';
+import { referralService } from '../services/referralService';
+import { leadService, LeadType } from '../services/leadService';
+import SEO from '../components/SEO';
 
 const FreeTrial: React.FC = () => {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,7 +25,8 @@ const FreeTrial: React.FC = () => {
     consentAuth: false,
     consentNonClinical: false,
     consentContact: false,
-    consentPublicVerification: false
+    consentPublicVerification: false,
+    referralCode: referralService.getReferralCode() || ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -37,43 +40,55 @@ const FreeTrial: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setSubmitError(null);
+    setIsSubmitting(true);
+    setError(null);
+
     try {
-      const payload = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        personalEmailId: formData.email,
-        speciality: formData.role,
-        personalWebsiteUrl: formData.website,
-        linkedInUrl: formData.linkedin,
-        phoneNumber: formData.phone,
-        country: formData.country,
-        primaryGoal: formData.primaryGoal,
-        deploymentPreference: formData.deployment,
-        message: formData.message,
-      };
-      const response = await fetch(`${API_URLS.dotnetApi}/Registration_NoKey/RequestTrial`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', accept: 'text/plain' },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        const text = await response.text();
-        throw new Error(text || `Request failed (${response.status})`);
-      }
+      await leadService.submitLead(
+        LeadType.FREE_TRIAL,
+        `${formData.firstName} ${formData.lastName}`,
+        formData.email,
+        formData.referralCode,
+        {
+          role: formData.role,
+          country: formData.country,
+          website: formData.website,
+          linkedin: formData.linkedin,
+          phone: formData.phone,
+          primaryGoal: formData.primaryGoal,
+          deployment: formData.deployment,
+          message: formData.message,
+          consents: {
+            auth: formData.consentAuth,
+            nonClinical: formData.consentNonClinical,
+            contact: formData.consentContact,
+            publicVerification: formData.consentPublicVerification,
+          }
+        }
+      );
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err: unknown) {
-      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } catch (err) {
+      console.error("Trial submission failed:", err);
+      setError("Something went wrong with your application. Please try again or contact us directly.");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   if (isSubmitted) {
     return (
       <div className="animate-in fade-in duration-700 bg-paper min-h-[80vh] flex items-center justify-center py-16">
+        <SEO 
+          title="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+          description="Join the founding cohort of UK private specialist clinicians. Get your custom Ask Page built, approved, and live within one week — with priority terms."
+          canonical="https://www.neurascalex.com/free-trial"
+          robots="index, follow"
+          ogType="website"
+          ogTitle="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+          ogDescription="Get your custom Ask Page built, approved, and live within one week."
+          ogImage="https://www.neurascalex.com/assets/og-f20.png"
+        />
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="mb-8 flex justify-center">
             <div className="w-16 h-16 bg-teal-precise/10 rounded-full flex items-center justify-center border border-teal-precise/20">
@@ -120,6 +135,16 @@ const FreeTrial: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-1000 bg-paper min-h-screen py-16">
+      <SEO 
+        title="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+        description="Join the founding cohort of UK private specialist clinicians. Get your custom Ask Page built, approved, and live within one week — with priority terms."
+        canonical="https://www.neurascalex.com/free-trial"
+        robots="index, follow"
+        ogType="website"
+        ogTitle="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+        ogDescription="Get your custom Ask Page built, approved, and live within one week."
+        ogImage="https://www.neurascalex.com/assets/og-f20.png"
+      />
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="label-mono text-teal-precise mb-8 block font-bold uppercase text-[10px] tracking-[0.4em] opacity-100">FREE TRIAL · 30 DAYS · NO CARD REQUIRED</span>
@@ -132,13 +157,13 @@ const FreeTrial: React.FC = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 pt-10 border-t border-ink/5 max-w-2xl mx-auto">
-             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/65">
                 <span className="text-teal-precise text-sm">✓</span> APPROVED SOURCES ONLY
              </div>
-             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/65">
                 <span className="text-teal-precise text-sm">✓</span> NON-CLINICAL BY DESIGN
              </div>
-             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/40">
+             <div className="flex items-center gap-2 label-mono text-[10px] font-bold uppercase tracking-widest text-ink/65">
                 <span className="text-teal-precise text-sm">✓</span> NO COMMITMENT BEYOND DAY 30
              </div>
           </div>
@@ -147,13 +172,13 @@ const FreeTrial: React.FC = () => {
         {/* Progress Indicator */}
         <div className="flex items-center justify-center mb-12 space-x-4">
           <div className="flex items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 1 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/20'}`}>1</div>
-            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 1 ? 'text-teal-precise' : 'text-ink/20'}`}>Your details</span>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 1 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/50'}`}>1</div>
+            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 1 ? 'text-teal-precise' : 'text-ink/50'}`}>Your details</span>
           </div>
           <div className={`w-12 h-px ${step >= 2 ? 'bg-teal-precise/30' : 'bg-ink/5'}`}></div>
           <div className="flex items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 2 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/20'}`}>2</div>
-            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 2 ? 'text-teal-precise' : 'text-ink/20'}`}>Goals + Deployment</span>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= 2 ? 'bg-teal-precise text-paper' : 'bg-paper border border-ink/5 text-ink/50'}`}>2</div>
+            <span className={`ml-3 label-mono font-bold opacity-100 ${step >= 2 ? 'text-teal-precise' : 'text-ink/50'}`}>Goals + Deployment</span>
           </div>
         </div>
 
@@ -174,7 +199,7 @@ const FreeTrial: React.FC = () => {
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Work email*</label>
-                  <p className="text-[10px] text-ink/40 mb-1">If you don’t have a work email, use personal email and add your GMC/NMC/HCPC or clinic link below.</p>
+                  <p className="text-[10px] text-ink/65 mb-1">If you don’t have a work email, use personal email and add your GMC/NMC/HCPC or clinic link below.</p>
                   <input required name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="name@nhs.net / name@clinic.com" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                 </div>
 
@@ -197,7 +222,7 @@ const FreeTrial: React.FC = () => {
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-ink">Website / clinic page</label>
-                  <p className="text-[10px] text-ink/40 mb-1">Used to verify identity and plan your embed.</p>
+                  <p className="text-[10px] text-ink/65 mb-1">Used to verify identity and plan your embed.</p>
                   <input name="website" value={formData.website} onChange={handleInputChange} type="url" placeholder="https://yourclinic.com" className="w-full p-4 bg-paper border border-ink/5 outline-none focus:ring-1 focus:ring-teal-precise text-sm transition-all" />
                 </div>
 
@@ -274,20 +299,22 @@ const FreeTrial: React.FC = () => {
                   </div>
                 </div>
 
-                {submitError && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded text-sm text-red-700">
-                    {submitError}
-                  </div>
-                )}
-
                 <div className="pt-8 flex flex-col items-center">
-                  <button type="submit" disabled={isLoading} className="w-full bg-ink text-paper py-6 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-2xl mb-8 disabled:opacity-60 disabled:cursor-not-allowed">
-                    {isLoading ? 'SUBMITTING…' : 'SEND APPLICATION'}
+                  {error && (
+                    <div className="w-full p-4 bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-serif italic text-center mb-6">
+                      {error}
+                    </div>
+                  )}
+
+                  <button 
+                    disabled={isSubmitting}
+                    className={`w-full bg-ink text-paper py-6 rounded-lg text-xs font-bold tracking-[0.2em] uppercase hover:bg-teal-precise transition-all shadow-2xl mb-8 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                    {isSubmitting ? 'Processing...' : 'SEND APPLICATION'}
                   </button>
                   <button type="button" onClick={handleBack} className="label-mono font-bold opacity-40 hover:opacity-100 transition-opacity">
                     ← Back to step 1
                   </button>
-                  <p className="mt-8 text-[10px] font-bold text-gray-400 uppercase tracking-widest text-center">
+                  <p className="mt-8 text-[10px] font-bold text-ink/60 uppercase tracking-widest text-center">
                     Privacy: We use your details to verify identity, create your private tenant, and run onboarding. We don’t sell your data. No credit card required.
                   </p>
                 </div>
@@ -296,10 +323,10 @@ const FreeTrial: React.FC = () => {
           </form>
         </div>
 
-        <div className="mt-16 text-center text-xs text-gray-400 flex flex-wrap justify-center gap-6 font-bold uppercase tracking-widest">
-           <Link to="/privacy" className="hover:text-navy-900">Privacy Policy</Link>
-           <span className="text-gray-200">|</span>
-           <Link to="/terms" className="hover:text-navy-900">Terms of Service</Link>
+        <div className="mt-16 text-center text-xs text-ink/60 flex flex-wrap justify-center gap-6 font-bold uppercase tracking-widest">
+           <Link to="/privacy" className="hover:text-teal-precise">Privacy Policy</Link>
+           <span className="text-ink/20">|</span>
+           <Link to="/terms" className="hover:text-teal-precise">Terms of Service</Link>
         </div>
       </div>
     </div>

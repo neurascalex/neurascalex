@@ -49,13 +49,13 @@ const Safety: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-serif mb-12">Ready to install a governed digital front door?</h2>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-10">
             <Link to="/free-trial" className="w-full sm:w-auto bg-teal-precise text-paper px-12 py-6 font-bold uppercase tracking-widest shadow-2xl shadow-teal-precise/20 hover:brightness-110 transition-all text-center label-mono text-xs">
-              Start free pilot
+              Apply for the Founding 20
             </Link>
             <Link to="/demo" className="w-full sm:w-auto border border-ink/20 text-ink px-12 py-6 font-bold uppercase tracking-widest hover:bg-teal-precise hover:text-paper hover:border-teal-precise transition-all text-center label-mono text-xs">
-              Request a demo
+              Book a founder demo
             </Link>
           </div>
-          <p className="label-mono text-ink/40 opacity-100 italic">
+          <p className="label-mono text-ink/65 opacity-100 italic">
             Onboarding reach-out within 24 hours. No credit card required.
           </p>
         </div>

@@ -104,7 +104,7 @@ const Pricing: React.FC = () => {
                 )}
                 
                 <h3 className={`text-2xl font-serif font-bold mb-2 ${plan.highlight ? 'text-teal-precise' : 'text-ink'}`}>{plan.name}</h3>
-                <p className={`text-sm mb-10 font-serif italic min-h-[40px] ${plan.highlight ? 'text-ink/60' : 'text-ink/50'}`}>{plan.description}</p>
+                <p className={`text-sm mb-10 font-serif italic min-h-[40px] ${plan.highlight ? 'text-ink/75' : 'text-ink/70'}`}>{plan.description}</p>
                 
                 <div className="mb-12">
                    <div className="flex items-baseline">
@@ -148,7 +148,7 @@ const Pricing: React.FC = () => {
                     {enterpriseFeatures.map((feature, idx) => (
                       <div key={idx} className="flex items-center">
                         <span className="w-5 h-5 bg-teal-precise text-paper flex items-center justify-center text-[10px] mr-3 flex-shrink-0">✓</span>
-                        <span className="text-xs label-mono font-bold uppercase tracking-widest text-ink/40">{feature}</span>
+                        <span className="text-xs label-mono font-bold uppercase tracking-widest text-ink/65">{feature}</span>
                       </div>
                     ))}
                  </div>
@@ -189,7 +189,7 @@ const Pricing: React.FC = () => {
               Apply for 30-Day Pilot
             </Link>
           </div>
-          <p className="label-mono text-ink/40 opacity-100 text-[10px] tracking-[0.3em] font-bold uppercase">
+          <p className="label-mono text-ink/65 opacity-100 text-[10px] tracking-[0.3em] font-bold uppercase">
             No credit card required. Live in 14 days. Clinician-led governance.
           </p>
         </div>

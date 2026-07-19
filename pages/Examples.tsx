@@ -101,7 +101,7 @@ const Examples: React.FC = () => {
             These examples show how a governed Twin answers routine questions from approved sources, stays inside boundaries, and routes safely—without giving clinical advice.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-ink/40 text-[10px] font-bold uppercase tracking-widest mb-16 label-mono">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-ink/65 text-[10px] font-bold uppercase tracking-widest mb-16 label-mono">
             <div>Approved sources only</div>
             <div className="text-teal-precise opacity-100">•</div>
             <div>Non-clinical by design</div>
@@ -117,7 +117,7 @@ const Examples: React.FC = () => {
               Request a Demo
             </Link>
           </div>
-          <p className="mt-8 text-[10px] text-ink/30 uppercase tracking-widest label-mono font-bold">Not medical advice.</p>
+          <p className="mt-8 text-[10px] text-ink/55 uppercase tracking-widest label-mono font-bold">Not medical advice.</p>
         </div>
       </section>
 
@@ -159,12 +159,12 @@ const Examples: React.FC = () => {
               <h3 className="text-2xl serif text-ink mb-6">{twin.title}</h3>
               
               <div className="mb-8">
-                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/30 mb-3 label-mono">Best for:</h4>
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/55 mb-3 label-mono">Best for:</h4>
                 <p className="text-sm text-ink/70 italic leading-relaxed font-serif">{twin.goodAt}</p>
               </div>
 
               <div className="space-y-4 mb-10 flex-grow">
-                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/30 label-mono">Try asking:</h4>
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-ink/55 label-mono">Try asking:</h4>
                 {twin.prompts.map((p, idx) => (
                   <div key={idx} className="text-xs bg-teal-precise/5 p-3 rounded-none text-ink/80 border-l-2 border-teal-precise/20 font-serif italic">
                     "{p}"
@@ -256,7 +256,7 @@ const Examples: React.FC = () => {
               Request a Demo
             </Link>
           </div>
-          <p className="text-[10px] uppercase tracking-widest font-bold text-ink/40 label-mono">
+          <p className="text-[10px] uppercase tracking-widest font-bold text-ink/65 label-mono">
             Live in 7 days. Approved sources only. Designed to know where to stop.
           </p>
         </div>
@@ -266,7 +266,7 @@ const Examples: React.FC = () => {
       {selectedTwin && (
         <div className="fixed inset-0 bg-ink/90 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
           <div className="bg-paper w-full max-w-lg rounded-none p-12 relative border border-teal-precise/20">
-            <button onClick={() => setSelectedTwin(null)} className="absolute top-6 right-6 text-ink/30 hover:text-ink transition-colors">
+            <button onClick={() => setSelectedTwin(null)} className="absolute top-6 right-6 text-ink/60 hover:text-ink transition-colors">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -282,7 +282,7 @@ const Examples: React.FC = () => {
                 ))}
               </div>
             </div>
-            <p className="text-[10px] text-ink/40 leading-relaxed italic font-serif">
+            <p className="text-[10px] text-ink/65 leading-relaxed italic font-serif">
               * This interactive sandbox is fueled by real clinical knowledge repositories. 
               The actual deployment will be embedded directly on your site.
             </p>
@@ -293,19 +293,19 @@ const Examples: React.FC = () => {
       {showRefusal && (
         <div className="fixed inset-0 bg-ink/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in zoom-in-95 duration-200">
           <div className="bg-paper w-full max-w-md rounded-none p-10 relative border-t-4 border-teal-precise">
-            <button onClick={() => setShowRefusal(null)} className="absolute top-6 right-6 text-ink/30 hover:text-ink">
+            <button onClick={() => setShowRefusal(null)} className="absolute top-6 right-6 text-ink/60 hover:text-ink">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <h3 className="text-[10px] font-bold uppercase tracking-widest text-teal-precise mb-6 label-mono opacity-100">Safe Refusal Example</h3>
             <div className="bg-teal-precise/5 p-6 rounded-none border border-teal-precise/10 font-mono text-[10px] text-ink mb-6">
-              <span className="text-ink/30 block mb-2 label-mono">Patient Query:</span>
+              <span className="text-ink/60 block mb-2 label-mono">Patient Query:</span>
               <p className="mb-4 font-serif italic">"{showRefusal.split('(')[0].trim()}"</p>
               <span className="text-teal-precise block mb-2 label-mono opacity-100">Digital Twin Response:</span>
               <p className="italic font-serif">"I cannot provide clinical diagnosis or treatment advice. As a governed Digital Twin, my role is to provide education and orientation. To address this specific clinical concern, please book a direct consultation with Dr. [Name] here: [Link]"</p>
             </div>
-            <p className="text-[10px] text-ink/40 font-serif italic">
+            <p className="text-[10px] text-ink/65 font-serif italic">
               The Twin detects the clinical liability and immediately switches to its refusal protocol.
             </p>
           </div>

@@ -11,7 +11,7 @@ const HowItWorks: React.FC = () => {
   };
 
   return (
-    <div className="animate-in fade-in duration-1000 bg-warm-white min-h-screen scroll-smooth font-sans">
+    <div className="animate-in fade-in duration-1000 bg-[#FAF7F0] min-h-screen scroll-smooth font-sans">
       
       {/* 1. HERO */}
       <section className="bg-navy-900 py-24 lg:py-32 text-white relative overflow-hidden">
@@ -75,7 +75,7 @@ const HowItWorks: React.FC = () => {
                      </div>
 
                      <div className="space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-sm border border-gray-100">
+                        <div className="bg-[#F7F4ED] p-6 rounded-xl border border-neutral-200/60">
                            <h4 className="text-sm font-bold text-navy-900 mb-3 uppercase tracking-wider">What we do:</h4>
                            <p className="text-gray-600 leading-relaxed font-light">
                               We run a structured interview to capture what your Twin can cover (fees, pathways, services), how it should sound, and—most importantly—what it must never do.
@@ -119,7 +119,7 @@ const HowItWorks: React.FC = () => {
                      <p className="text-xs font-bold uppercase tracking-widest text-teal-800 mb-6 bg-teal-50 inline-block px-3 py-1 rounded-full">Effort from you: Minimal</p>
 
                      <div className="space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-sm border border-gray-100">
+                        <div className="bg-[#F7F4ED] p-6 rounded-xl border border-neutral-200/60">
                            <h4 className="text-sm font-bold text-navy-900 mb-3 uppercase tracking-wider">What we do:</h4>
                            <p className="text-gray-600 leading-relaxed font-light">
                               We build from your approved materials—website pages, FAQs, policies, documents, and any transcripts or resources you choose to include. We structure it so the Twin answers consistently and routes to the right next step.
@@ -165,13 +165,13 @@ const HowItWorks: React.FC = () => {
                      </div>
 
                      <div className="space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-sm border border-gray-100">
+                        <div className="bg-[#F7F4ED] p-6 rounded-xl border border-neutral-200/60">
                            <h4 className="text-sm font-bold text-navy-900 mb-3 uppercase tracking-wider">What we do:</h4>
                            <p className="text-gray-600 leading-relaxed font-light">
-                              We run a short verification session with you: accuracy checks, boundary checks, and “edge case” questions that commonly create risk (e.g., diagnostic intent, medication requests, medicolegal requests).
+                              We run a short verification session with you: accuracy checks, boundary checks, and "edge case" questions that commonly create risk (e.g., diagnostic intent, medication requests, medicolegal requests).
                            </p>
                         </div>
-                        <div className="bg-navy-900 text-white p-6 rounded-sm border border-gold-500">
+                        <div className="bg-navy-900 text-white p-6 rounded-xl border border-gold-500">
                            <h4 className="text-sm font-bold text-gold-500 mb-3 uppercase tracking-wider">Launch Condition:</h4>
                            <p className="text-gray-300 leading-relaxed font-light mb-4">
                               We go live only after you sign off.
@@ -194,7 +194,7 @@ const HowItWorks: React.FC = () => {
       </section>
 
       {/* 3. PROOF OF PROCESS (Visual Verification) */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-[#F7F4ED] border-y border-neutral-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
            <div className="text-center mb-16">
               <h2 className="text-4xl serif text-navy-900 mb-4">What a typical calibration looks like.</h2>
@@ -204,15 +204,15 @@ const HowItWorks: React.FC = () => {
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Card 1: Legal Boundary */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                 <div className="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+              <div className="bg-white rounded-2xl shadow-sm border border-neutral-200/60 overflow-hidden">
+                 <div className="bg-[#F7F4ED] px-6 py-4 border-b border-neutral-200/60 flex justify-between items-center">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Log ID: LEGAL-04</span>
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                  </div>
                  <div className="p-8">
                     <div className="mb-6">
                        <p className="text-[10px] font-bold uppercase tracking-widest text-navy-900 mb-2">Test Prompt:</p>
-                       <p className="font-mono text-sm bg-gray-50 p-3 rounded text-navy-800">“Can you provide a report for a legal case?”</p>
+                       <p className="font-mono text-sm bg-[#F7F4ED] p-3 rounded-lg text-navy-800">"Can you provide a report for a legal case?"</p>
                     </div>
                     
                     <div className="space-y-3 mb-8">
@@ -236,7 +236,7 @@ const HowItWorks: React.FC = () => {
               </div>
 
               {/* Card 2: Medical Boundary */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm border border-neutral-200/60 overflow-hidden">
                  <div className="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Log ID: CLINICAL-09</span>
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -244,7 +244,7 @@ const HowItWorks: React.FC = () => {
                  <div className="p-8">
                     <div className="mb-6">
                        <p className="text-[10px] font-bold uppercase tracking-widest text-navy-900 mb-2">Test Prompt:</p>
-                       <p className="font-mono text-sm bg-gray-50 p-3 rounded text-navy-800">“What medication should I take?”</p>
+                       <p className="font-mono text-sm bg-[#F7F4ED] p-3 rounded-lg text-navy-800">"What medication should I take?"</p>
                     </div>
                     
                     <div className="space-y-3 mb-8">
@@ -260,7 +260,7 @@ const HowItWorks: React.FC = () => {
                        </div>
                     </div>
 
-                    <div className="pt-6 border-t border-gray-100 flex justify-between items-center">
+                    <div className="pt-6 border-t border-neutral-200/60 flex justify-between items-center">
                        <span className="text-xs font-bold text-navy-900">Status:</span>
                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-green-200">VERIFIED</span>
                     </div>
@@ -300,7 +300,7 @@ const HowItWorks: React.FC = () => {
                    )
                 }
               ].map((card, i) => (
-                 <div key={i} className="p-10 border border-gray-100 rounded-sm hover:shadow-xl transition-all group">
+                 <div key={i} className="p-10 border border-neutral-200/60 rounded-2xl hover:shadow-md transition-all group">
                     <div className="mb-6 group-hover:scale-110 transition-transform">{card.icon}</div>
                     <h3 className="text-xl serif text-navy-900 mb-4">{card.title}</h3>
                     <p className="text-sm text-gray-600 leading-relaxed font-light">{card.desc}</p>
@@ -318,7 +318,7 @@ const HowItWorks: React.FC = () => {
             We’re onboarding a limited number of pilots to ensure quality, safety, and fast turnaround.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-10">
-            <Link to="/demo" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-sm text-sm font-bold uppercase tracking-widest shadow-2xl hover:bg-gold-600 transition-all">
+            <Link to="/demo" className="w-full sm:w-auto bg-gold-500 text-navy-950 px-12 py-6 rounded-xl text-sm font-bold uppercase tracking-widest shadow-md hover:bg-gold-600 transition-all">
               Book a Discovery Call
             </Link>
           </div>
