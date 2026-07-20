@@ -83,8 +83,6 @@ const Footer: React.FC = () => {
             <ul className="space-y-3.5 text-ink/80 font-sans text-[15px] font-normal">
               <li><Link to="/about" className="hover:text-[#0D6E6E] transition-colors">About</Link></li>
               <li><Link to="/case-studies" className="hover:text-[#0D6E6E] transition-colors">Case studies</Link></li>
-              <li><Link to="/pricing" className="hover:text-[#0D6E6E] transition-colors">Pricing</Link></li>
-              <li><Link to="/contact" className="hover:text-[#0D6E6E] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -102,25 +100,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center label-mono text-[9px] tracking-widest uppercase font-bold opacity-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center label-mono text-[9px] tracking-widest uppercase font-bold opacity-40">
           <div className="text-left">
             <p>© 2026 NeuraScaleX. All rights reserved.</p>
           </div>
-          <div className="text-center">
+          <div className="text-center md:text-right">
             <p className="not-italic">Built with clinicians. Built for the calendars they deserve.</p>
-          </div>
-          <div className="text-right">
-            <p>
-              Developed by{' '}
-              <a 
-                href="https://hrdigitalmedia.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-teal-precise transition-colors underline underline-offset-4 decoration-ink/10"
-              >
-                HR Digital Media
-              </a>
-            </p>
           </div>
         </div>
       </div>

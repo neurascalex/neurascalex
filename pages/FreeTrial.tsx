@@ -80,12 +80,12 @@ const FreeTrial: React.FC = () => {
     return (
       <div className="animate-in fade-in duration-700 bg-paper min-h-[80vh] flex items-center justify-center py-16">
         <SEO 
-          title="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+          title="Apply for the Founding 20 Founder-Led, Live in One Week | NeuraScaleX"
           description="Join the founding cohort of UK private specialist clinicians. Get your custom Ask Page built, approved, and live within one week — with priority terms."
           canonical="https://www.neurascalex.com/free-trial"
           robots="index, follow"
           ogType="website"
-          ogTitle="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+          ogTitle="Apply for the Founding 20 Founder-Led, Live in One Week | NeuraScaleX"
           ogDescription="Get your custom Ask Page built, approved, and live within one week."
           ogImage="https://www.neurascalex.com/assets/og-f20.png"
         />
@@ -136,12 +136,12 @@ const FreeTrial: React.FC = () => {
   return (
     <div className="animate-in fade-in duration-1000 bg-paper min-h-screen py-16">
       <SEO 
-        title="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+        title="Apply for the Founding 20 Founder-Led, Live in One Week | NeuraScaleX"
         description="Join the founding cohort of UK private specialist clinicians. Get your custom Ask Page built, approved, and live within one week — with priority terms."
         canonical="https://www.neurascalex.com/free-trial"
         robots="index, follow"
         ogType="website"
-        ogTitle="Apply for the Founding 20 — Private Specialist AI Cohort | NeuraScaleX"
+        ogTitle="Apply for the Founding 20 Founder-Led, Live in One Week | NeuraScaleX"
         ogDescription="Get your custom Ask Page built, approved, and live within one week."
         ogImage="https://www.neurascalex.com/assets/og-f20.png"
       />
