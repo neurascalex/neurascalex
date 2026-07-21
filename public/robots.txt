@@ -1,0 +1,28 @@
+# robots.txt for neurascalex.com
+User-agent: *
+Allow: /
+
+# Allow AI answer-engine crawlers explicitly
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+Sitemap: https://www.neurascalex.com/sitemap.xml
+Sitemap: https://www.neurascalex.com/sitemap-ask-pages.xml
