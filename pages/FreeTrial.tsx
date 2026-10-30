@@ -304,9 +304,9 @@ const FreeTrial: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center text-xs text-gray-400 flex flex-wrap justify-center gap-6 font-bold uppercase tracking-widest">
-           <Link to="/privacy" className="hover:text-navy-900">Privacy Policy</Link>
+           <Link to="/privacy-policy" className="hover:text-navy-900">Privacy Policy</Link>
            <span className="text-gray-200">|</span>
-           <Link to="/terms" className="hover:text-navy-900">Terms of Service</Link>
+           <Link to="/terms-of-service" className="hover:text-navy-900">Terms of Service</Link>
         </div>
       </div>
     </div>

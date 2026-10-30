@@ -78,8 +78,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Governance</h3>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy & GDPR</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy & GDPR</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link></li>
               <li><span className="text-gray-600 block pt-2">ISO 27001 Ready</span></li>
             </ul>
           </div>
