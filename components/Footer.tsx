@@ -93,8 +93,8 @@ const Footer: React.FC = () => {
               <li><Link to="/demo" className="hover:text-[#0D6E6E] transition-colors">Book a founder demo</Link></li>
               <li><Link to="/free-trial" className="hover:text-[#0D6E6E] transition-colors">Apply — Founding 20</Link></li>
               <li><Link to="/safety" className="hover:text-[#0D6E6E] transition-colors">Safety promise</Link></li>
-              <li><Link to="/privacy" className="hover:text-[#0D6E6E] transition-colors">Privacy & GDPR</Link></li>
-              <li><Link to="/terms" className="hover:text-[#0D6E6E] transition-colors">Terms of service</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-[#0D6E6E] transition-colors">Privacy & GDPR</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-[#0D6E6E] transition-colors">Terms of service</Link></li>
             </ul>
           </div>
         </div>
