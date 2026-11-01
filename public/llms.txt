@@ -1,0 +1,24 @@
+# NeuraScaleX
+
+> Governed Digital Twin + Intelligence for UK specialist clinicians. NeuraScaleX builds an Ask Page that answers patient questions 24/7 from clinician-approved content only — educational and signposting, never diagnostic — plus Intelligence showing what patients need and what to do next.
+
+## Key pages
+- [Home](https://www.neurascalex.com/): Ask Dr You — patient questions answered in your voice
+- [Platform](https://www.neurascalex.com/platform): how the Ask Page and Ask Intelligence work
+- [Specialist Hub](https://www.neurascalex.com/specialist-hub): live Ask Pages from UK specialist clinicians
+- [About](https://www.neurascalex.com/about): founding team and principles
+- [Book a demo](https://www.neurascalex.com/demo): thirty minutes with the founder
+- [Founding cohort](https://www.neurascalex.com/free-trial): join the founding 20 UK specialist clinicians
+- [Contact](https://www.neurascalex.com/contact): get in touch
+- [Privacy Policy](https://www.neurascalex.com/privacy-policy): privacy and cookie policy
+- [Terms of Service](https://www.neurascalex.com/terms-of-service): terms of use
+
+## Live Ask Pages
+- [Ask Deepak](https://askdeepak.neurascalex.com/): Prof. Deepak Ravindran, Pain Medicine
+- [Ask Dr Abrar](https://askabrar.neurascalex.com/): Dr Abrar Hussain, Consultant Psychiatrist
+- [Ask Dr Cathy](https://askcathy.neurascalex.com/): Dr Catherine Sampa Muyeba, Consultant Psychiatrist
+
+## Notes
+- Ask Pages answer only from clinician-approved sources. They do not diagnose, prescribe, or give personalised clinical advice.
+- Built for UK private specialist practice. UK-hosted and GDPR-aligned.
+- Contact: info@neurascalex.com
